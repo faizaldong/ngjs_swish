@@ -1,0 +1,112 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/buy-tickets.jpg');">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Buy Tickets</h1>
+        	<p>Get tickets to top attraction venues in Singapore 24/7</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<a id="search-buy"></a>
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Buy Tickets</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+<!-- FILTER
+================================================== -->
+<section class="bg-verylightgrey hidden-sm hidden-xs">
+    <div class="container container-padding-xlarge">
+        <div class="main_title">
+            <h2>Are you <span>looking</span> for a specific attraction?</h2>
+            <h3 class="thin lato mt10">Type in to filter the list below</h3>
+        </div>
+        <div class="gap-sm"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <input type="text" id="filter" class="form-control no-curve no-border" placeholder="Search for attractions..." value="lorem ipsum">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENT
+================================================== -->
+<section class="bg-lightestgrey">
+    <div class="container container-padding-large">
+        
+        <!-- styling all inline coz its only for computer view and to be used one time off only -->
+        <div id="not-found" class="hidden-xs hidden-sm text-center" style="padding: 50px 0">
+            <h2 style="font-size:60px;font-weight: bold;margin-bottom: 20px;">UH-OH!</h2>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p style="font-size:16px;line-height:25px;margin-bottom: 0">Looks like the attraction that you are looking for is not here... but fret not!</p>
+                    <p style="font-size:16px;line-height:25px;"><a ui-sref="contact" style="color: #7ac943">Contact us</a> and we will assist you with your exciting attraction tickets!</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<!-- Holder for notifcations. The notifications will render in this element -->
+<div class="notification-container"><div class="notification-holder"></div></div>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Buy Tickets"></update-title>
+<update-meta name="description" content="Get tickets to top attraction venues in Singapore 24/7"></update-meta>
+<update-meta property="og:title" content="Buy Tickets at Swish.sg!"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/buy-tickets"></update-meta>
+<update-meta property="og:description" content="Get tickets to top attraction venues in Singapore 24/7"></update-meta>
+<update-meta property="og:image" content="http://www.swish.sg/assets/common/img/buy-tickets.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<style type="text/css">
+    [data-notify="progressbar"] {
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
+}
+</style>
+
+
+<!-- jFilter -->
+<script src="assets/common/js/jquery.jfilter.js"></script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('#filter').jfilter({
+                list: '#filterable',
+                speed: 100,
+                highlight: 'set' // Class name with no "."
+            });
+        });
+
+        $('input, textarea').placeholder(); // For IE =__=
+</script>
+
+<script type="text/javascript">
+    //Smooth Anchor Scrolling
+    // Any anchor on that page with # tags will automatically trigger this smooth scroll rather than jumping instantly
+    setTimeout(function(){
+        $("input#filter").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#search-buy").offset().top
+            }, 600);
+        });
+    },100);
+</script>

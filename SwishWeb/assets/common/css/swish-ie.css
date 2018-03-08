@@ -1,0 +1,83 @@
+.parallax-content-1 div{position: relative;}
+.tour_title h3{height: 43px}
+.notification-container .killed.ui-notification{opacity: 0 !important;cursor: default;z-index: -1}
+
+.demo-default{width: 100%;padding:8px 8px 8px 0;border:none;border-bottom:1px #E6E6E6 solid;}
+
+/**************************************************\ 
+(LG) Large Monitor Only
+\**************************************************/
+@media screen and (min-width: 1200px){}
+
+/* Special Case */
+@media screen and (min-width: 1199px) and (max-width: 1350px){}
+
+/**************************************************\ 
+Small Monitor and above
+\**************************************************/
+@media screen and (min-width: 992px){}
+
+
+/**************************************************\ 
+(MD) Small Monitor Only
+\**************************************************/
+@media screen and (min-width:992px) and (max-width: 1199px){
+	.history-list-container .item-block .action-buttons{margin-top: 10px;}
+}
+
+
+/**************************************************\ 
+Small Monitor and below
+\**************************************************/
+@media screen and (max-width: 1199px){}
+
+
+/**************************************************\ 
+Tablet and above; Excluding Phone
+\**************************************************/
+@media screen and (min-width: 768px){}
+
+
+/**************************************************\ 
+(SM) Tablet Only
+\**************************************************/
+@media screen and (min-width:768px) and (max-width: 991px){}
+
+
+
+/**************************************************\ 
+(SM) Tablet Only (Landscape)
+\**************************************************/
+@media screen and (min-width:768px) and (max-width: 991px) and (orientation : landscape){}
+
+
+/**************************************************\ 
+(SM) Tablet Only (Portrait)
+\**************************************************/
+@media screen and (min-width:768px) and (max-width: 991px) and (orientation : portrait){}
+
+
+/**************************************************\ 
+Tablet and below
+\**************************************************/
+@media screen and (max-width: 991px){}
+
+/**************************************************\ 
+(XS) Phone only
+\**************************************************/
+@media screen and (max-width:767px){
+	.tp-simpleresponsive .tp-caption.tp-price{top: 150px !important;}
+	.tp-simpleresponsive .tp-caption.tp-price > div{display: block !important;font-size: 30px}
+}
+
+/**************************************************\ 
+Phone Landscape Only
+\**************************************************/
+@media only screen and (min-width: 497px) and (max-width: 767px) {
+}
+
+
+/**************************************************\ 
+Phone Portrait Only
+\**************************************************/
+@media only screen and (max-width: 496px){}

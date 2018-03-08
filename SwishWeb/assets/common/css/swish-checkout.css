@@ -1,0 +1,190 @@
+/*Mandatory for template modification*/
+body{background-color: #fff !important;}
+header,footer{display: none !important;}
+.checkout-wrapper .pl0{padding-left: 0 !important}
+.checkout-wrapper .pr0{padding-right: 0 !important}
+.checkout-wrapper .footer{text-align: center;padding-top: 0;}
+.checkout-wrapper h3{margin-bottom: 0;margin-top: 0;font-size: 24px;}
+.checkout-wrapper p{color: #b3b3b3}
+.checkout-wrapper a{color: #8CD001}
+.checkout-wrapper a:hover{cursor: pointer;}
+.checkout-wrapper .back-to-cart{color: #000;font-size: 10px;}
+.checkout-wrapper .header-contents{margin-top: 10px;margin-bottom: 15px;}
+
+/*Forms*/
+.checkout-wrapper .pop-content{padding: 0 15px;border-top:none;max-width: 100%}
+.checkout-wrapper .pop-content a.btn_1.medium{width: auto;padding:10px 30px;float: right;font-weight: bold;}
+.checkout-wrapper .font-12{font-size: 12px !important;}
+
+
+
+/*==================== STEP 1 : SIGN IN ============================*/
+.checkout-wrapper .divider-left{border-left: #cccccc 1px solid;padding-left: 70px;margin-left: 5%;}
+/*Progress Bar*/
+/*Default settings*/
+.checkout-wrapper .progress-container{text-align: center;margin-top: 8px;position: relative;}
+.checkout-wrapper .progress-container:first-child .progress-before{display: none;}
+.checkout-wrapper .progress-container .progress-before{position: absolute;z-index: 1;width: 50%;left: 0;border-top: 1px dashed #808080;top:15px;}
+.checkout-wrapper .progress-container:last-child .progress-after{display: none;}
+.checkout-wrapper .progress-container .progress-after{position: absolute;z-index: 1;width: 50%;right: 0;border-top: 1px dashed #808080;top:15px;}
+.checkout-wrapper .progress-container .dot{height: 10px;width:10px;border-radius: 10px;background-color: #808080;display: inline-block;margin-top: 10px;position: relative;z-index: 6;}
+.checkout-wrapper .progress-container .plane-container{display: none;width: calc( 100% - 30px);z-index: 7;}
+.checkout-wrapper .progress-container p{position:relative;z-index:5;margin-bottom: 2px;margin-top: 8px;font-size: 12px;color: #fff}
+/*Current progress*/
+.checkout-wrapper .progress-container.current .plane-container{display: block;position: absolute;top: 0;padding-top: 0px;text-align: center}
+.checkout-wrapper .progress-container.current .progress-before{border-top-color:#fff;}
+/*Completed progress*/
+.checkout-wrapper .progress-container.completed .progress-line{border-top-color: #fff}
+.checkout-wrapper .progress-container.completed .dot{background-color: #fff;}
+
+.checkout-wrapper .panel-default{border:none;}
+.checkout-wrapper .panel-default>.panel-heading{border:none;border-bottom:#e6e6e6 1px solid;}
+.checkout-wrapper .panel-body{border: none !important}
+.checkout-wrapper .panel-default:last-child>.panel-heading{border-bottom:none;}
+
+.checkout-wrapper h2{font-size: 30px;}
+.checkout-wrapper h2 span a{font-size: 14px;}
+
+
+/*==================== STEP 2 : PAYMENT METHOD ============================*/
+.disabled{background-color: #e6e6e6 !important; pointer-events: none;border-color: #e6e6e6 !important}
+.payment-options .panel-title label span{color: #333}
+.payment-options .panel-title label{display: block;}
+
+
+
+/*==================== STEP 3 : PLACE ORDER ============================*/
+.error{display: table;width: 100%;border-radius: 10px;border:2px solid #c1272d;}
+.error > div{display: table-cell;padding: 15px 20px;}
+.error .icon{font-size: 36px;color: #fff;background-color: #c1272d;vertical-align: middle;text-align: center;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+.error h5{margin-top: 5px;color: #c1272d;font-weight: bold;margin-bottom: 0;}
+.error p{margin-bottom: 0;color:#999;}
+
+.checkout-wrapper .buy-list-header{background-color:#e6e6e6;margin-bottom: 10px;}
+.checkout-wrapper .buy-list-header p{color: #666;margin:10px 0;font-size: 12px;}
+/* Reduce the gutter's width */
+.buy-header, .item-list, .buy-header div[class^="col-"], .item-list div[class^="col-"]{padding-left: 5px;padding-right: 5px;}
+.buy-header div[class^="row"], .item-list div[class^="row"]{margin-left: 0px;margin-right: 0px;}
+.item-list{padding-bottom: 8px;padding-top:8px;}
+.item-list h5{margin-bottom: 0;line-height: 1.4}
+.item-list p{margin-bottom: 0;font-size: 13px;}
+
+/*Off edit mode*/
+.item-list a{font-size: 10px;}
+.item-list a:hover{cursor: pointer;}
+.item-list a.edit-mode-remove, .item-list a.edit-mode-deactivate{display: none;}
+
+/*On edit mode*/
+.item-list.edit-mode a.edit-mode-activate{display: none;}
+.item-list.edit-mode a.edit-mode-deactivate, .item-list.edit-mode a.edit-mode-remove{display: inline-block;margin-left: 15px;font-size: 13px;margin-right: 5px;}
+.item-list.edit-mode a.edit-mode-deactivate{font-weight: bold;}
+.item-list.edit-mode a.edit-mode-deactivate.btn{padding:6px 20px;font-weight: normal;}
+.item-list.edit-mode a.edit-mode-remove{color: #ccc;font-weight: normal;}
+.item-list.edit-mode .edit-buttons{padding-top: 10px;}
+
+.item-list .tix-amount button{width: 25px;height: 25px;border: none;background-color: #8DC001;color: #FFF;font-size: 16px;border-radius: 50px;padding: 0;display: none;}
+.item-list .tix-amount button:disabled{background-color: #e6e6e6;color: #CCC;}
+.item-list .tix-amount span{margin:0 5px;color: #666666}
+
+.item-list .tix-price p{color: #666666;font-size: 13px;}
+
+.item-list .tix-total button{pointer-events: none;background: transparent;border: none;width: 100%;text-align: right;padding-right: 0;font-size: 13px;color: #666;font-weight: bold;}
+.item-list .tix-total button:disabled{color: #e6e6e6;}
+
+.item-list.edit-mode{border: 1px solid #ccc !important}
+.item-list.edit-mode .tix-amount button{display: inline-block;}
+
+.item-list .gap{display: none;}
+
+.order-list-container .alert{margin-bottom: 0}
+
+.total{padding:10px 10px 20px 0;margin: 10px 0;border-top:#e6e6e6 1px solid;border-bottom:#e6e6e6 1px solid;}
+.total p{margin-bottom: 10px;}
+.total h5{color: #aaa}
+
+p.saved{color: #c1272d;text-align: right;}
+.checkout-wrapper .modal{padding-top: 0;}
+/*.checkout-wrapper .modal-dialog{margin-top: 30px;}*/
+.checkout-wrapper .modal p{color: #777}
+
+/*==================== STEP 4 : CONFIRMATION ============================*/
+h2.tq{font-family: 'Damion', cursive;font-size: 72px;text-align: center;}
+h2.order-id{font-size: 48px;font-weight: bold;margin-top: 5px;}
+.confirmation-summary .item-list{border-bottom: 1px solid #eee}
+.confirmation-summary .item-list:last-child{border-bottom: 0}
+.font-14{font-size: 14px;}
+
+.mobile-x{display: none;}
+
+/*======================== MEDIA QUERY START ============================*/
+
+/**************************************************\ 
+(SM) Tablet Only
+\**************************************************/
+@media screen and (min-width:768px) and (max-width: 991px){
+	h1{font-size: 30px;}
+	.checkout-wrapper .divider-left{border-left: none;margin-right: auto;margin-left: auto;padding-left: 15px;width: 80%}
+	.item-list .tix-amount button{width: 30px;height: 30px;}
+}
+
+
+/**************************************************\ 
+(XS) Phone only
+\**************************************************/
+@media screen and (max-width:767px){
+	h1{font-size: 20px !important;text-align: right;margin-top: 10px;}
+	.checkout-wrapper .progress-container p{font-size: 10px;line-height: 1.4}
+
+	.checkout-wrapper .divider-left{border-left: none;margin-right: auto;margin-left: auto;padding-left: 15px;}
+	.checkout-wrapper .pop-content a.btn_1.green, button.btn, .checkout-wrapper .pop-content a.btn-primary{width: 100%;}
+	.checkout-wrapper .footer{font-size: 10px;line-height: 1.4}
+
+	.checkout-wrapper .panel-default > .panel-heading{padding-left: 0;padding-right: 0;}
+	
+	.card-holder{margin-top: 10px;}
+	.card-holder img{height: 21px}
+	h4.panel-title label{max-width: none}
+	.checkout-wrapper .panel-body{padding-left: 0;padding-right: 0;}
+	.checkout-wrapper .panel-body > .row{padding-right: 5px;padding-left: 5px;}
+
+	.pl0-xs{padding-left: 0;}
+	
+	.total{padding-right: 0;}
+	.total > div{padding-left: 0;}
+	.total h5{font-size: 14px;}
+	.total h3{font-size: 18px;}
+	p.saved{font-size: 11px;}
+	.checkout-terms p{font-size: 10px;line-height: 1.4}
+	.checkout-wrapper h2{font-size: 24px;}
+	.checkout-wrapper h3{font-size: 18px;}
+
+	.text-left-xs{text-align: left !important;}
+	
+	.mobile-x{display: inline-block;}
+	.edit-mode .mobile-x{display: none;}
+	.item-list{border-bottom: #eee 1px solid;padding-left: 0;padding-right: 0;}
+	.item-list.edit-mode{padding-left: 5px;padding-right: 5px;}
+	.item-list:last-child{border-bottom: none;}
+	.item-list h5{font-size: 14px;}
+	.item-list p{font-size: 11px;}
+	.item-list p.text-right.text-left-xs{color: #333;font-size: 12px;}
+	h2.tq{font-size: 30px;}
+	h2.order-id{font-size: 38px;}
+	.font-14{font-size: 12px;}
+	
+	.cvv-xs.cvv-xs span img{height: 30px;display: inline-block;float: left;}
+	.cvv-xs.cvv-xs:before{content:'';top:30%;left:0;border: solid transparent;height: 0;width:0;position: absolute;pointer-events: none;border-color:transparent;border-right-color: #333; border-width: 10px;margin-left:-20px;}
+	.cvv-xs.cvv-xs{display: block;opacity: 1;width: 100%;position: relative;z-index: 1;left: auto;bottom: auto;box-shadow: none;margin: 0;font-size: 10px;;line-height: 1.3;padding: 10px;margin-top: 5px;min-height: 50px;border-radius: 5px}
+	.cvv-xs.cvv-xs:after{display: none;}
+	.item-list .tix-amount button{width: 30px;height: 30px;}
+	.item-list a{font-size: 11px;}
+	.item-list.edit-mode .gap{display: block;}
+
+	.checkout-wrapper .modal-content{border: none;border-radius: 0}
+}
+
+
+/**************************************************\ 
+(XXS) Phone Portrait Only
+\**************************************************/
+@media only screen and (max-width: 496px){}

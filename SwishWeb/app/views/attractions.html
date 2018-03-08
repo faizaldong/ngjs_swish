@@ -1,0 +1,162 @@
+<!-- BANNER
+================================================== -->
+<!-- <section class="parallax-window bg-center" ng-parallax pattern="'assets/common/img/covers/attractions.jpg'" speed="3" reverse="false"> -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/attractions.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Attractions</h1>
+        	<p>Discover top Singapore attractions and enjoy your perfect vacation whenever you book through us today!</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Attractions</li>
+            <li>All Attractions</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-large">
+	<div class="row">
+
+        <aside class="col-lg-3 col-md-3 sidebar">
+            <h3 class="mt0 mb20">Browse</h3>
+			<div class="box_style_cat attractions-nav">
+				<ul id="cat_nav">
+					<li>
+                        <!-- <a ui-sref="attractionfor({ attraction_category: '', attraction_category_id: '' })" id="active"> -->
+                        <a href="" ng-click="prodSelected()" ng-attr-id="{{ prodid == undefined ? 'active': '' }}">
+                            <div class="sub-nav all"></div>All<span>({{ attractCatMenu.total_all }})</span>
+                        </a>
+                    </li>
+					<li ng-repeat="prodCategory in attractCatMenu.result">
+                        <!-- <a ui-sref="attractionfor({ attraction_category: prodCategory.product_category.ProductCategoryCategoryName, attraction_category_id: prodCategory.product_category.ProductCategoryId })"> -->
+                        <!-- <a href="" ng-click="prodSelected(prodCategory.product_category.ProductCategoryId)" ng-attr-id="{{ prodid == prodCategory.product_category.ProductCategoryId ? 'active':'' }}">
+								<div class="sub-nav sentosa"></div>{{ prodCategory.product_category.ProductCategoryCategoryName }} <span>({{ prodCategory.total_product_category }})</span>
+							 </a> by daeng-->
+						
+						
+						<a href="" ng-click="prodSelected(prodCategory.product_category.ProductCategoryId)" ng-attr-id="{{ prodid == prodCategory.product_category.ProductCategoryId ? 'active':'' }}">
+                            {{ prodCategory.product_category.ProductCategoryCategoryName }} <span>({{ prodCategory.total_product_category }})</span>
+                        </a>
+                    </li>
+					<!-- <li><a href="#"><div class="sub-nav city"></div>City <span>(5)</span></a></li>
+					<li><a href="#"><div class="sub-nav others"></div>Others <span>(2)</span></a></li> -->
+				</ul>
+				
+			</div>
+
+			<a ui-sref="buy-tickets" class="btn btn-secondary form-control">Buy Tickets Now</a>
+
+			<div class="gap-md"></div>
+	        
+		</aside><!--End aside -->
+	    <div class="col-md-9">
+            
+			<!-- <div class="row">
+				<div class="col-md-6 col-xs-6 col-xxs-12 wow zoomIn animated" ng-repeat="attraction in attractionList" data-wow-delay="0.{{ $index }}s" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;">
+					<div class="tour_container">
+                    <div class="img_container">
+                        <a ui-sref="{{ attraction.id }}">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ attraction.labelColor }}">{{ attraction.label }}</div></div> <h1>Status Ribbon </h1>
+                        <img src="{{ attraction.image }}" class="img-responsive" alt="{{ attraction.title }}">
+                        <div class="ribbon {{ attraction.label }}"></div>
+                        <div class="short_info">
+                            <img src="assets/common/img/icons/{{ attraction.category }}.png" alt="{{ attraction.category }} icon" class="icon-category"> &nbsp;{{ attraction.category }}<span class="price"><sup>SGD</sup>{{ attraction.adultPrice }}</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis">{{ attraction.title }}</h3>
+                    </div>
+                    </div>
+				</div>
+            </div> -->
+
+            <div class="row">
+              <div class="col-lg-4 col-xs-6 col-xxs-12 wow zoomIn animated" ng-repeat="attraction in attractionListCat" data-wow-delay="0.{{ $index }}s" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;">
+                <a href="{{ attraction.id }}">
+                  <!-- <a href="http://localhost/#/attractions/City/{{attraction.productId}}" data-ng-click="attraction_details(attraction.productId,attraction.productCategory)"> -->
+                  <a href="/#/attractions/{{attraction.productCategory}}/{{attraction.productId}}">
+                  <div class="tour_container animate">
+                    <div class="img_container" style="background: url('{{ attraction.largeImageUrl  }}') no-repeat center center; background-size: cover;" href="" data-ng-click="attraction_details(attraction.productId,attraction.productCategory)">
+                        
+                            <!-- <img ng-src="{{ attraction.mediumImageUrl }}" class="img-responsive center"> -->
+                            <!-- <img ng-src="{{ attraction.largeImageUrl }}" class="img-responsive center" style="height: 230px; width: 280px"> -->
+                            <!-- <img ng-src="{{ attraction.largeImageUrl }}" class="img-responsive center"> -->
+                            <div class="short_info">
+                                <img src="assets/common/img/icons/sentosa.png" alt="{{ attraction.productCategory }} icon" class="icon-category"> &nbsp;{{ attraction.productCategory }}
+                                    <span class="price" ng-repeat="price in attraction.prices" ng-if="price.priceType == 'Adult' && price.promotionPrices != null && price.specialPrices == null && price.priceTiers.length > 0"><sup>SGD{{ price.promotionPrices }}</sup></span>
+                                    <span class="price" ng-repeat="price in attraction.prices" ng-if="price.priceType == 'Adult' && price.promotionPrices == null && price.specialPrices != null && price.priceTiers.length > 0"><sup>SGD{{ price.specialPrices }}</sup></span>
+                                    <span class="price" ng-repeat="price in attraction.prices | unique: 'price.pricingTypeId'" ng-if="price.priceType == 'Adult' && price.promotionPrices == null && price.specialPrices == null && price.priceTiers.length > 0"><sup>SGD{{ price.priceTiers[0].price }}</sup></span>
+
+                            </div>
+                        
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis">{{ attraction.productName }}</h3>
+                    </div>
+                  </div>
+                  </a>
+                </a>
+              </div>
+            </div>
+
+            <hr>
+				<!-- <div class="text-center">
+					<ul class="pagination">
+						<li><a href="#">Prev</a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">Next</a></li>
+					</ul>
+				</div> --><!-- end pagination-->
+                
+		</div>
+
+    </div>
+</section>
+
+
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Attractions"></update-title>
+<update-meta name="description" content="Discover top Singapore attractions and enjoy your perfect vacation whenever you book through us today!"></update-meta>
+<update-meta property="og:title" content="Singapore's Attractions"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/attractions"></update-meta>
+<update-meta property="og:description" content="Discover top Singapore attractions and enjoy your perfect vacation whenever you book through us today!"></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<style type="text/css"></style>
+
+<!-- jQuery only -->
+<script type="text/javascript">
+
+// jQuery Ellipsis trigger function upon load view
+$(document).ready(function() {
+  setTimeout(function(){ 
+    $(".ellipsis").dotdotdot({
+
+      /*  The text to add as ellipsis. */
+      ellipsis  : '... ',   
+      /*  Whether to update the ellipsis: true/'window' */
+      watch   : "window"
+
+    });
+  }, 1000); //delay 1sec
+  
+  // More scripts below here
+});
+</script>

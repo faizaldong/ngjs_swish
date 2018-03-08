@@ -1,0 +1,187 @@
+<!-- BANNER
+================================================== -->
+<!-- <section class="parallax-window bg-center" ng-parallax pattern="'assets/common/img/covers/attractions.jpg'" speed="3" reverse="false"> -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/attractions.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Search</h1>
+        	<p>Search for attraction tickets</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Attractions</li>
+            <li>All Attractions</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-large">
+	<div class="row">
+
+        <!--<aside class="col-lg-3 col-md-3 sidebar hidden-xs hidden-sm"><!-- Hide here and show same copy after search query for mobile devices -->
+            <!--<h3 class="mt0 mb20">Browse</h3>
+			<div class="box_style_cat attractions-nav">
+				<ul id="cat_nav">
+					<li><a href="#"><div class="sub-nav all"></div>All <span>(21)</span></a></li>
+					<li><a href="#"><div class="sub-nav sentosa"></div>Sentosa <span>(14)</span></a></li>
+					<li><a href="#"><div class="sub-nav city"></div>City <span>(5)</span></a></li>
+					<li><a href="#"><div class="sub-nav others"></div>Others <span>(2)</span></a></li>
+				</ul>
+			</div>
+			<a ui-sref="buy" class="btn btn-secondary form-control">Buy Tickets Now</a>
+			<div class="gap-md"></div>
+		</aside><!--End aside -->
+		
+	    <aside class="col-lg-3 col-md-3 sidebar">
+            <h3 class="mt0 mb20">Browse</h3>
+			<div class="box_style_cat attractions-nav">
+				<ul id="cat_nav">
+					<li>
+                        <a href="" ng-click="prodSelected()" ng-attr-id="{{ prodid == undefined ? 'active': '' }}">
+                            <div class="sub-nav all"></div>All<span>({{ attractCatMenu.total_all }})</span>
+                        </a>
+                    </li>
+					<li ng-repeat="prodCategory in attractCatMenu.result">
+                        <a href="" ng-click="prodSelected(prodCategory.product_category.ProductCategoryId)" ng-attr-id="{{ prodid == prodCategory.product_category.ProductCategoryId ? 'active':'' }}">
+                            {{ prodCategory.product_category.ProductCategoryCategoryName }} <span>({{ prodCategory.total_product_category }})</span>
+                        </a>
+                    </li>
+				</ul>
+			</div>
+			<a ui-sref="buy-tickets" class="btn btn-secondary form-control">Buy Tickets Now</a>
+			<div class="gap-md"></div>
+		</aside><!--End aside -->
+		<div class="col-lg-9 col-md-8">
+
+			<h2 class="mt0 mb20" style="color:#999999">Found For {{ search }} </h2><!-- with results -->
+            <!-- <h2 class="mt0 mb20" style="color:#999999">2 found for "Tram"</h2><!-- with results -->
+            <!-- <h2 class="mt0 mb20" style="color:#999999">0 found for "Trammin'"</h2> --><!-- 0 results -->
+
+            <div class="row mb20">
+                <div class="col-xs-9 pr0">
+                    <!--<input type="text" class="form-control no-curve" placeholder="Search for attractions..." value="Tram">-->
+					<input type="text" class="form-control no-curve" placeholder="Search for attractions..." ng-model="search">
+                </div>
+                <div class="col-xs-3 pl0">
+                    <input type="submit" class="form-control no-curve btn btn-primary" value="Search">
+                </div>
+            </div>
+
+            <div class="row"><!-- with results -->
+                <!--<div class="col-md-6 col-xs-6 col-xxs-12 wow zoomIn animated" ng-repeat="attraction in attractionList" data-wow-delay="0.{{ $index }}s" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;">
+                    <div class="tour_container">
+                    <div class="img_container">
+                        <a ui-sref="{{ attraction.id }}">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ attraction.labelColor }}">{{ attraction.label }}</div></div><!-- Status Ribbon -->
+                        <!--<img src="{{ attraction.image }}" class="img-responsive" alt="{{ attraction.title }}">
+                        <div class="ribbon {{ attraction.label }}"></div>
+                        <div class="short_info">
+                            <img src="assets/common/img/icons/{{ attraction.category }}.png" alt="{{ attraction.category }} icon" class="icon-category"> &nbsp;{{ attraction.category }}<span class="price"><sup>SGD</sup>{{ attraction.adultPrice }}</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis">{{ attraction.title }}</h3>
+                    </div>
+                </div> 
+                </div><!-- End col-md-6 -->
+				
+				<div class="col-md-6 col-xs-6 col-xxs-12 wow zoomIn animated" ng-repeat="attraction in attractionListCat | filter: { productName: search } " data-wow-delay="0.{{ $index }}s" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;">
+                <!-- <div class="col-md-6 col-xs-6 col-xxs-12 wow zoomIn animated" ng-repeat="attraction in attractionList" data-wow-delay="0.{{ $index }}s" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;"> -->
+                    <div class="tour_container">
+						<div class="img_container">
+							<!-- <a ui-sref="attraction_details({ attraction_id: attraction.productId, attraction_category: attraction.productCategory })"> -->
+							<a href="" data-ng-click="attraction_details(attraction.productId,attraction.productCategory)">
+								<img ng-src="{{ attraction.mediumImageUrl }}" class="img-responsive center">
+								<div class="short_info">
+									<img src="assets/common/img/icons/sentosa.png" alt="{{ attraction.productCategory }} icon" class="icon-category"> &nbsp;{{ attraction.productCategory }}
+									<span class="price" ng-repeat="price in attraction.prices" ng-if="price.priceType == 'Adult'"><sup>SGD{{ price.originalPrice }}</sup></span>
+								</div>
+							</a>
+						</div>
+						<div class="tour_title">
+							<h3 class="ellipsis">{{ attraction.productName }}</h3>
+						</div>
+					</div>
+                </div>
+            </div><!-- End row -->
+            
+            <!-- 0 results -->
+            <!-- 
+            <div class="row mb20">
+                <div class="col-sm-12">
+                    <p style="font-size:16px;line-height:25px;margin-bottom: 0">Looks like the attraction that you are looking for is not here... but fret not! <a ui-sref="contact" style="color: #7ac943">Contact us</a> and we will assist you with your exciting attraction tickets!</p>
+                </div>
+            </div> -->
+            
+			
+                
+		</div>
+
+        <aside class="col-lg-3 col-md-3 sidebar visible-xs visible-sm"><!-- show same copy after search query for mobile devices -->
+            <h3 class="mt0 mb20">Browse</h3>
+			<div class="box_style_cat attractions-nav">
+				<ul id="cat_nav">
+					<li>
+                        <a href="" ng-click="prodSelected()" ng-attr-id="{{ prodid == undefined ? 'active': '' }}">
+                            <div class="sub-nav all"></div>All<span>({{ attractCatMenu.total_all }})</span>
+                        </a>
+                    </li>
+					<li ng-repeat="prodCategory in attractCatMenu.result">
+                        <a href="" ng-click="prodSelected(prodCategory.product_category.ProductCategoryId)" ng-attr-id="{{ prodid == prodCategory.product_category.ProductCategoryId ? 'active':'' }}">
+                            {{ prodCategory.product_category.ProductCategoryCategoryName }} <span>({{ prodCategory.total_product_category }})</span>
+                        </a>
+                    </li>
+				</ul>
+			</div>
+			<a ui-sref="buy-tickets" class="btn btn-secondary form-control">Buy Tickets Now</a>
+			<div class="gap-md"></div>
+        </aside><!--End aside -->
+
+    </div>
+</section>
+
+
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Attractions"></update-title>
+<update-meta name="description" content="Discover top Singapore attractions and enjoy your perfect vacation whenever you book through us today!"></update-meta>
+<update-meta property="og:title" content="Singapore's Attractions"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/attractions"></update-meta>
+<update-meta property="og:description" content="Discover top Singapore attractions and enjoy your perfect vacation whenever you book through us today!"></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<style type="text/css">
+</style>
+
+<!-- jQuery only -->
+<script type="text/javascript">
+
+// jQuery Ellipsis trigger function upon load view
+$(document).ready(function() {
+  setTimeout(function(){ 
+    $(".ellipsis").dotdotdot({
+
+      /*  The text to add as ellipsis. */
+      ellipsis  : '... ',   
+      /*  Whether to update the ellipsis: true/'window' */
+      watch   : "window"
+
+    });
+  }, 1000); //delay 1sec
+  
+  // More scripts below here
+});
+</script>

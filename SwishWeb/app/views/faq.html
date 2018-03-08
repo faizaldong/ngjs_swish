@@ -1,0 +1,252 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/faq.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>FAQ</h1>
+        	<p>Frequently Asked Questions</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>FAQ</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-xlarge">
+    <div class="row">
+        
+        <aside class="col-lg-3 col-md-3 sidebar hidden-xs hidden-sm">
+        
+            <div class="box_style_cat attractions-nav faq-nav">
+                <ul id="cat_nav">
+                    <li><a href="#about" class="faq-nav-about active"><div class="sub-nav nav-about"></div>About Swish <span>(1)</span></a></li>
+                    <li><a href="#purchasing" class="faq-nav-purchasing"><div class="sub-nav nav-purchasing"></div>Purchasing Tickets <span>(14)</span></a></li>
+                    <li><a href="#ticketing" class="faq-nav-ticketing"><div class="sub-nav nav-ticketing"></div>Ticketing Info <span>(4)</span></a></li>
+                    <li><a href="#refunds" class="faq-nav-refunds"><div class="sub-nav nav-refunds"></div>Refunds <span>(7)</span></a></li>
+                    <li><a href="#others" class="faq-nav-others"><div class="sub-nav nav-others"></div>Others <span>(2)</span></a></li>
+                </ul>
+            </div>
+
+            <div class="gap-md"></div>
+            
+        </aside><!--End aside -->
+
+        <div class="col-lg-9 col-md-8">
+                
+                <h2 class="faq-about">About Swish</h2>
+
+                <div class="panel-group" id="about">
+                    <div class="panel panel-default faq-about" data-ng-repeat="about in FAQabout">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#about" data-target="#collapseAbout{{ $index }}">{{ about.title }}<i class="indicator pull-right icon-plus"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapseAbout{{ $index }}" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>{{ about.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-md"></div>
+                
+                <h2 class="faq-purchasing">Purchasing Tickets</h2>
+
+                <div class="panel-group" id="purchasing">
+                    <div class="panel panel-default faq-purchasing" data-ng-repeat="purchasing in FAQpurchasing">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#purchasing" data-target="#collapsePurchasing{{ $index }}">{{ purchasing.title }}<i class="indicator pull-right icon-plus"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapsePurchasing{{ $index }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{{ purchasing.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-md"></div>
+                
+                <h2 class="faq-ticketing">Ticketing Info</h2>
+
+                <div class="panel-group" id="ticketing">
+                    <div class="panel panel-default faq-ticketing" data-ng-repeat="ticketing in FAQticketing">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#ticketing" data-target="#collapseTicketing{{ $index }}">{{ ticketing.title }}<i class="indicator pull-right icon-plus"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapseTicketing{{ $index }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{{ ticketing.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-md"></div>
+                
+                <h2 class="faq-refunds">Refunds</h2>
+
+                <div class="panel-group" id="refunds">
+                    <div class="panel panel-default faq-refunds" data-ng-repeat="refunds in FAQrefunds">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#refunds" data-target="#collapseRefunds{{ $index }}">{{ refunds.title }}<i class="indicator pull-right icon-plus"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapseRefunds{{ $index }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{{ refunds.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-md"></div>
+                
+                <h2 class="faq-others">Others</h2>
+
+                <div class="panel-group" id="others">
+                    <div class="panel panel-default faq-others" data-ng-repeat="others in FAQothers">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#others" data-target="#collapseOthers{{ $index }}">{{ others.title }}<i class="indicator pull-right icon-plus"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapseOthers{{ $index }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>{{ others.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: FAQ"></update-title>
+<update-meta name="description" content="Frequently asked questions for Swish services"></update-meta>
+<update-meta property="og:title" content="Frequently Asked Questions"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/faq"></update-meta>
+<update-meta property="og:description" content="Frequently asked questions for Swish services"></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<!-- Custom CSS/JS -->
+<style type="text/css">
+    h2{margin-top: 0;}
+    .panel-title a{line-height: 1.6;width: calc(100% - 30px);position: relative;}
+    .panel-body p{margin-bottom: 0;color: #000;font-size: 13px;line-height: 1.8 !important}
+    i.indicator{position: absolute;right: -30px;top: 0;}
+    .panel-group .panel{border-radius: 0 !important}
+
+    #cat_nav.stickydiv{position: fixed;top: 0;z-index: 10000;margin-top:110px;background-color: #fff;border:1px solid #ddd;width:262.5px;}
+    @media screen and (min-width: 992px) and (max-width: 1199px){#cat_nav.stickydiv{width: 210.5px}}
+
+    /*About*/
+    h2.faq-about{color: #29abe2;}
+    div.faq-about{border-color: #29abe2;}
+    div.faq-about i.indicator{color: #29abe2;}
+    div.faq-about>.panel-heading+.panel-collapse>.panel-body{border-top-color: #29abe2;}
+
+    /*Purchasing*/
+    h2.faq-purchasing{color: #e25a6b;}
+    div.faq-purchasing{border-color: #e25a6b;}
+    div.faq-purchasing i.indicator{color: #e25a6b;}
+    div.faq-purchasing>.panel-heading+.panel-collapse>.panel-body{border-top-color: #e25a6b;}
+
+    /*Ticketing*/
+    h2.faq-ticketing{color: #39b54a;}
+    div.faq-ticketing{border-color: #39b54a;}
+    div.faq-ticketing i.indicator{color: #39b54a;}
+    div.faq-ticketing>.panel-heading+.panel-collapse>.panel-body{border-top-color: #39b54a;}
+
+    /*Refunds*/
+    h2.faq-refunds{color: #e862ef;}
+    div.faq-refunds{border-color: #e862ef;}
+    div.faq-refunds i.indicator{color: #e862ef;}
+    div.faq-refunds>.panel-heading+.panel-collapse>.panel-body{border-top-color: #e862ef;}
+
+    /*Others*/
+    h2.faq-others{color: #f7931e;}
+    div.faq-others{border-color: #f7931e;}
+    div.faq-others i.indicator{color: #f7931e;}
+    div.faq-others>.panel-heading+.panel-collapse>.panel-body{border-top-color: #f7931e;}
+</style>
+
+<script type="text/javascript">
+
+// Sticky sidebar on scroll
+$(document).ready(function () {
+$(window).scroll(function(){
+        var window_top = $(window).scrollTop() + 110; 
+       // the "12" should equal the margin-top value for nav.stickydiv
+        var div_top = $('.faq-nav').offset().top;
+        if (window_top >= div_top) {
+                $('#cat_nav').addClass('stickydiv');
+            } else {
+                $('#cat_nav').removeClass('stickydiv');
+            }
+    });  
+
+  $(document).on("scroll", onScroll);
+
+// Scroll to ID
+$('#cat_nav a[href^="#"]').on('click', function (e) {
+      e.preventDefault();
+        $(document).off("scroll");
+         $('a').each(function () {
+            $(this).removeClass('active');
+        })
+        $(this).addClass('active');
+         var target = this.hash,
+         menu = target;
+         $target = $(target);
+       $('html, body').stop().animate({
+            'scrollTop': $target.offset().top-160
+        }, 600, 'swing', function () {
+            // window.location.hash = target;
+            $(document).on("scroll", onScroll);
+        });
+    });
+});
+
+// Change navbar colors upon scroll position #prolem here cant get proper position
+function onScroll(event){
+    var scrollPos = $(document).scrollTop();
+    $('#cat_nav a').each(function () {
+        var currLink = $(this);
+       var refElement = $(currLink.attr("href"));
+        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+            $('#cat_nav li a').removeClass("active");
+            currLink.addClass("active");
+        }
+        else{
+            currLink.removeClass("active");
+        }
+    });
+}
+
+
+</script>

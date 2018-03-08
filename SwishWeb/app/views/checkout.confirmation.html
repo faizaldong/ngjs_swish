@@ -1,0 +1,304 @@
+<div class="checkout-wrapper">
+    <!-- HEADER
+    ================================================== -->
+    <div class="header">
+        <div class="container">
+            <!-- <div class="gap-sm"></div>
+            <a ui-sref="cart" class="back-to-cart">&laquo; <i class="fa fa-shopping-cart" aria-hidden="true"></i> Back to Cart</a>
+ -->
+            <div class="row header-contents">
+                <div class="col-sm-2 col-xs-3"><img src="assets/common/img/logo_sticky.png" class="max-width"></div><!-- Logo -->
+                <div class="col-sm-8 col-xs-9 text-center"><h1>CONFIRMATION</h1></div><!-- Title -->
+                <div class="col-sm-2 hidden-xs"><img src="assets/common/img/rapidssl.gif" class="max-width mt10"></div><!-- Security Seal -->
+            </div>
+        </div>
+    </div><!-- End Header -->
+
+    <!-- PROGRESS BAR
+    ================================================== -->
+    <div class="bg-verydarkgrey container-padding-mini">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Sign In</p>
+                        </div>
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Payment Method</p>
+                        </div>
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Place Order</p>
+                        </div>
+                        <div class="col-xs-3 progress-container current"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Confirmation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container container-padding-large">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                
+                <!-- First Segment -->
+                <div class="text-center">
+                    <h2 class="tq">Thank you for your order</h2>
+                    <p class="font-14">You will receive a confirmation email shortly at <span class="bold">user_email@email.com</span></p>
+                    <div class="gap-md"></div>
+
+                    <h3 class="text-center mb0">YOUR ORDER NUMBER IS:</h3>
+                    <h2 class="order-id">{{ orderHistories.order.order_number }}</h2>
+                    <!-- <p class="font-14"><a href="">Print receipt</a> &nbsp; | &nbsp; <a href="">Print Tickets</a></p> -->
+                    <div class="gap-md"></div>
+                    <p>In any case when you need to contact us regarding your order, you are required to provide your order number.</p>
+                </div>
+                
+                <div ng-show="hideinsertpassword">
+                    <div class="gap"></div>
+                    <hr>
+                    <div class="gap"></div>
+                    
+                    <!-- Second Segment -->
+                    <div class="text-center">
+                        <h3 class="text-center">Save your information for next time</h3>
+                        <div class="gap-sm"></div>
+                        <p>Your login username is your email address. All you need now is a password only.</p>
+                        <div class="gap-sm"></div>
+                    </div>
+                    <div class="row pop-content">
+                        <div class="col-sm-6">
+                            <div class="js-float-label-wrapper">
+                                <label for="password" class="float-label">Password</label>
+                                <input type="password" class="form-control lock" id="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="js-float-label-wrapper">
+                                <label for="confirm-password" class="float-label">Confirm Password</label>
+                                <input type="password" class="form-control lock" id="confirm-password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="gap"></div>
+                        <input type="submit" class="btn_1 med green" value="CREATE ACCOUNT">
+                        <div class="gap"></div>
+                    </div>
+
+                    <div class="gap"></div>
+                    <hr>
+                    <div class="gap"></div>
+                </div>
+
+                <!-- Third Segment -->
+                <div class="text-center">
+                    <h3 class="text-center">Order summary</h3>
+                    <div class="gap-md"></div>
+                </div>
+
+                <p style="color:#333333;font-size: 14px;">1. Payment method : Visa ending in 0807</p>
+                <p style="color:#333333;font-size: 14px;" class="mb0-xs">2. Your orders :</p>
+
+                <!-- Order Starts Here -->
+                <div class="row ml0 mr0 order-list-container confirmation-summary">
+
+                    <!-- Header -->
+                    <div class="col-sm-12 buy-header buy-list-header hidden-xs">
+                        <div class="row">
+                            <div class="col-sm-6"><p>Attraction</p></div><!-- Title + Description -->
+                            <div class="col-sm-6 pr0"><!-- Price & Qty -->
+                                <div class="row">
+                                    <div class="col-sm-2"><p class="text-right">Type</p></div>
+                                    <div class="col-sm-4"><p class="text-right">Price /unit</p></div>
+                                    <div class="col-sm-2"><p class="text-right">Qty</p></div>
+                                    <div class="col-sm-4"><p class="text-right">Total</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Listing -->
+                    <div class="col-sm-12 item-list" data-ng-repeat="item in orderHistories.ticket_details">
+                      <div class="row">
+                        <div class="col-sm-2 hidden-xs hidden-sm"><img ng-src="{{ item.image.LargeImageUrl }}" class="full-width"></div>
+                        <div class="col-sm-4">
+                          <h5>{{ item.tickets[0].ticket_name }}</h5><p>{{ item.tickets[0].expiry_date }}</p></div><!-- Title + Description -->
+                        <div class="col-sm-6 pr0">
+
+                            <div class="row mb10 mt10">
+                                <div class="col-sm-2 col-xs-3"><!-- Ticket Type -->
+                                    <p class="text-right text-left-xs">{{ item.type}}</p>
+                                </div>
+                                <div class="col-sm-4 tix-price hidden-xs"><!-- Price/unit -->
+                                    <p class="text-right">SGD {{ item.sw_order_line_items.price | number:2 }}</p>
+                                </div>
+
+                                <div class="col-sm-2 col-xs-4"><!-- Qty -->
+                                    <p class="text-right tix-amount text-left-xs">
+                                        <span class="mobile-x">x</span>
+                                        <span>{{ item.sw_order_line_items.quantity }}</span>
+                                    </p>
+                                </div>
+                                <div class="col-sm-4 col-xs-5 tix-total"><!-- Total -->
+                                    <p class="text-right">
+                                        <button data-ng-init="adultTotalPrice = (parseInt(adultDetails.original_price) * parseInt(adultDetails.total_ticket))" class="swish-price">SGD {{ item.sw_order_line_items.TotalPrice | number:2 }}</button><!-- using this element for the purpose of taking advantage of the disabled element -->
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Adult Tix -->
+                            <!-- <div class="row mb10 mt10" data-ng-repeat="adultDetails in tickets.ticket_type_details" ng-if="adultDetails.pricing_type_id == 1">
+                                <div class="col-sm-2 col-xs-3">
+                                    <p class="text-right text-left-xs">{{ adultDetails.pricing_type}}</p>
+                                </div>
+                                <div class="col-sm-4 tix-price hidden-xs">
+                                    <p class="text-right">SGD {{ adultDetails.original_price | number:2 }}</p>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <p class="text-right tix-amount text-left-xs">
+                                        <span class="mobile-x">x</span>
+                                        <span>{{ adultDetails.total_ticket }}</span>
+                                    </p>
+                                </div>
+                                <div class="col-sm-4 col-xs-5 tix-total">
+                                    <p class="text-right">
+                                        <button data-ng-init="adultTotalPrice = (parseInt(adultDetails.original_price) * parseInt(adultDetails.total_ticket))" class="swish-price">SGD {{ adultTotalPrice | number:2 }}</button>
+                                    </p>
+                                </div>
+                            </div> -->
+                            
+                            <!-- Child Tix -->
+                            <!-- <div class="row" data-ng-repeat="childDetails in tickets.ticket_type_details" ng-if="childDetails.pricing_type_id == 2">
+                                <div class="col-sm-2 col-xs-3">
+                                    <p class="text-right text-left-xs">{{ childDetails.pricing_type }}</p>
+                                </div>
+                                <div class="col-sm-4 tix-price hidden-xs">
+                                    <p class="text-right">SGD {{ childDetails.original_price | number:2 }}</p>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <p class="text-right tix-amount text-left-xs">
+                                        <span class="mobile-x">x</span>
+                                        <span>{{ childDetails.total_ticket }}</span>
+                                    </p>
+                                </div>
+                                <div class="col-sm-4 col-xs-5 tix-total">
+                                    </p>
+                                    <p class="text-right">
+                                        <button data-ng-init="childTotalPrice = (parseInt(childDetails.original_price) * parseInt(childDetails.total_ticket))" class="swish-price">SGD {{ childTotalPrice | number:2 }}</button>
+                                </div>
+                            </div> -->
+
+
+                        </div>
+                      </div>
+                    </div><!-- item-list -->
+
+                </div><!-- order-list-container -->
+
+                <div class="row total">
+                    <!-- Taxes -->
+                    <div class="col-sm-9 col-xs-7">
+                    <h5 class="bold text-right">Taxes inclusive in total</h5>
+                    </div>
+                    <div class="col-sm-3col-xs-5 pr0">
+                    <h5 class="bold text-right">SGD 7.00</h5>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="col-sm-9 col-xs-7">
+                        <h3 class="bold text-right">Grand Total</h3>
+                    </div>
+                    <div class="col-sm-3col-xs-5 pr0">
+                        <h3 class="bold text-right">SGD {{ subTotal | number: 2}}</h3>
+                    </div>
+                </div>
+
+                <p class="saved"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> You saved <span class="bold">SGD 26.00</span> with Swish!</p>
+                <div class="gap"></div>
+
+                <a ng-click="hisitory()"  class="btn_1 green"><i class="fa fa-print" aria-hidden="true"></i> Download Tickets</a><div class="gap-sm visible-xs"></div>
+                <!-- <a href="" class="btn_1 green"><i class="fa fa-print" aria-hidden="true"></i> Print Receipt</a><div class="gap visible-xs"></div> -->
+                <!-- <a ui-sref="home" class="btn_1 medium blue pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Continue Shopping</a> -->
+                <a ng-click="home()" class="btn_1 medium blue pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Continue Shopping</a>
+                <p id="download_url" ng-show="false">{{download_url}}</p>
+                <p id="token" ng-show="false">{{token}}</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <div class="footer container-padding-large">
+        &copy; 2016 Swish. All rights reserved. <br class="visible-xs"/> <a ui-sref="terms" target="_blank">Terms and Conditions</a> | <a ui-sref="privacy" target="_blank">Privacy Policy</a>
+    </div>
+</div>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Checkout"></update-title>
+
+<!-- Custom CSS/JS -->
+<link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/common/css/swish-checkout.css">
+<style type="text/css"></style>
+
+<!-- For forms -->
+<script type="text/javascript" language="javascript" src="assets/common/js/jquery.FloatLabel.js"></script>
+<script type="text/javascript" language="javascript">
+    $('.js-float-label-wrapper').FloatLabel();
+    $('.js-float-label-wrapper').removeClass('populated'); //clear the sudden trigger
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $(".print").on('click', function(){
+      var token = angular.element("#token").scope().token;
+      var download_url = angular.element("#download_url").scope().download_url;
+
+      var link = document.createElement('a');
+      link.setAttribute('download', null);
+      link.style.display = 'none';
+
+      document.body.appendChild(link);
+      for (var i = 0; i < download_url.length; i++) {
+        link.setAttribute('href', download_url[i]);
+        link.click();
+      }
+      document.body.removeChild(link);
+
+      // var zip = new JSZip();
+      // // zip.file("nested/hello.txt", download_url);
+      // zip.file("ticketLinks.txt", JSON.stringify(download_url))
+
+      // zip.generateAsync({type:"blob"})
+      // .then(function (blob) {
+      //     saveAs(blob, "tickets.zip");
+      // });
+
+
+    })
+  })
+</script>

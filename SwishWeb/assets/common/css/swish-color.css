@@ -1,0 +1,7 @@
+.green, a.green{background-color: #8DC001;color: #fff;}
+.blue, a.blue{background-color: #207497;color:#fff;}
+.color-green{color: #8DC001}
+.color-blue{color: #207497}
+
+h2 span, h3 span, h4 span, h5 span, h6 span{color: #8DC001}
+h2 span, h3 span, h4 span, h5 span, h6 span{color: #207497}

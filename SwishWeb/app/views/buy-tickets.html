@@ -1,0 +1,1131 @@
+<!-- BANNER
+================================================== -->
+<!-- <section class="parallax-window bg-center" data-ng-parallax pattern="'assets/common/img/covers/buy-tickets.jpg'" speed="3" reverse="false"> -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/buy-tickets.jpg');">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Buy Tickets</h1>
+        	<p>Get tickets to top attraction venues in Singapore 24/7</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<a id="search-buy"></a>
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Buy Tickets</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+<!-- FILTER
+================================================== -->
+<section class="bg-verylightgrey hidden-sm hidden-xs">
+    <div class="container container-padding-xlarge">
+        <div class="main_title">
+            <h2>Are you <span>looking</span> for a specific attraction?</h2>
+            <h3 class="thin lato mt10">Type in to filter the list below</h3>
+        </div>
+        <div class="gap-sm"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <input type="text" id="filter" class="form-control no-curve no-border" placeholder="Search for attractions...">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENT
+================================================== -->
+<!-- <section class="bg-lightestgrey">
+    <div class="container container-padding-xlarge" style="position:relative;">
+        
+        
+        <div class="ready-to-cart text-warning bg-warning alert">
+            <a ui-sref="cart" class="btn_1 medium blue pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a>
+            <h4 class="mb10 mt10">Ready to checkout? Let's go!</h4>
+        </div>
+        
+        
+        <div class="col-sm-12 buy-header buy-list-header hidden-xs">
+            <div class="row">
+                <div class="col-md-3 hidden-xs hidden-sm"><p>Attraction</p></div>
+                <div class="col-lg-6 col-md-5 col-sm-6"><p>Description</p></div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-sm-6"><p>Price</p></div>
+                    <div class="col-sm-6"><p class="text-center">Qty</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="filterable">
+        
+            
+            <div class="item-block" data-ng-repeat="ride in rideList">
+                
+                <div class="col-md-3 hidden-sm p0">
+                    <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ ride.labelColor }}">{{ ride.label }}</div></div>
+                    <a ui-sref="{{ ride.id }}"><img ng-src="{{ ride.image }}" class="full-width" alt="{{ ride.title }}"></a>
+                </div>
+                
+                <div class="col-lg-6 col-md-5 col-sm-6 description">
+                    <div class="pt20">
+                        <div class="search-target">
+                            <h4><a ui-sref="{{ ride.id }}">{{ ride.title }}</a></h4>
+                        </div>
+                        <p>{{ ride.ticketType }}</p>
+                        <div class="gap-sm"></div>
+                        <a ui-sref="{{ ride.id }}">More details</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 price-block">
+                    <div class="row">
+                        
+                        <div class="col-xs-12 ticket-category">
+                            
+                            <div class="col-xs-6">
+                                <p class="person">Adult</p>
+                                <p class="swish-price">SGD{{ ride.adultSwishPrice }}</p>
+                                <p class="normal-price">SGD{{ ride.adultPrice }}</p>
+                            </div>
+                            
+                            <div class="col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="adultCount = adultCount-1; removed()" data-ng-disabled="adultCount == 0" data-ng-init="adultCount=0"> - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ adultCount }}</span>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="adultCount = adultCount+1; added()"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 ticket-category">
+                            
+                            <div class="col-xs-6">
+                                <p class="person">Child</p>
+                                <p class="swish-price">SGD{{ ride.childSwishPrice }}</p>
+                                <p class="normal-price">SGD{{ ride.childPrice }}</p>
+                            </div>
+                            
+                            <div class="col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="childCount = childCount-1; removed()" data-ng-disabled="childCount == 0" data-ng-init="childCount=0"> - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ childCount }}</span>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="childCount = childCount+1; added()"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a ui-sref="cart" class="btn_1 medium blue pull-right mt40"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a>
+
+        </div>
+
+
+    </div>
+</section> -->
+<!-- CONTENT
+================================================== -->
+<section class="bg-lightestgrey">
+    <div class="container container-padding-xlarge" style="position:relative;">
+
+        <div id="not-found" class="hidden-xs hidden-sm text-center" style="padding: 50px 0; display: none">
+            <h2 style="font-size:60px;font-weight: bold;margin-bottom: 20px;">UH-OH!</h2>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p style="font-size:16px;line-height:25px;margin-bottom: 0">Looks like the attraction that you are looking for is not here... but fret not!</p>
+                    <p style="font-size:16px;line-height:25px;"><a ui-sref="contact" style="color: #7ac943">Contact us</a> and we will assist you with your exciting attraction tickets!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="attractionList">
+            <!-- Only visible when an item is added -->
+            <div class="ready-to-cart-container">
+              <div class="ready-to-cart text-warning bg-warning alert" ng-show="ready_to_cart">
+                  <h5 class="mb10 mt10 visible-xs text-center">{{totalticket}} passes selected</h5>
+                  <!-- <a ui-sref="cart" class="btn_1 medium blue pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a> -->
+                  <a class="btn_1 medium blue pull-right" id="saveCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> add to Cart</a>
+                  <!-- <h4 class="mb10 mt10">Ready to checkout? Let's go!</h4> -->
+                  <h4 class="mb10 mt10 hidden-xs">{{totalticket}} passes selected</h4>
+                  <p id="outofStock" ng-show="false"></p>
+              </div>
+            </div>
+            
+            <!-- Header -->
+            <div class="col-sm-12 buy-header buy-list-header hidden-xs buyHeader">
+                <div class="row">
+                    <div class="col-md-3 hidden-xs hidden-sm"><p>Attraction</p></div><!-- Image -->
+                    <div class="col-lg-6 col-md-5 col-sm-6"><p>Description</p></div><!-- Title + Description -->
+                    <div class="col-lg-3 col-md-4 col-sm-6"><!-- Price & Qty -->
+                        <div class="col-sm-6"><p>Price</p></div>
+                        <div class="col-sm-6"><p class="text-center">Qty</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="filterable">
+                <p id="prodId" ng-show="false">{{prodId}}</p>
+                <!-- Item List -->
+                <!-- <div class="item-block" data-ng-repeat="prod in prodList" ng-if="prod.isActive == true"> -->
+                <div class="item-block" data-ng-repeat="prod in prodList">
+                    <!-- Image -->
+                    <div class="col-md-3 hidden-sm p0">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ prod.labelColor }}">{{ prod.label }}</div></div><!-- Status Ribbon -->
+                        <!-- <a href="" ng-click="attraction_details(prod.productId,prod.productCategory)"><img ng-src="{{image.images}}" class="full-width" alt="{{ prod.productName }}"></a> -->
+                        <a href="" ng-click="attraction_details(prod.productId,prod.productCategory)"><img ng-src="{{prod.largeImageUrl}}" class="full-width center" alt="{{ prod.productName }}"></a>
+                        <p class="prodId" ng-show="false">{{ prod.productId }}</p>
+                    </div>
+                    <!-- Description -->
+                    <div class="col-lg-6 col-md-5 col-sm-6 description">
+                        <div class="pt20">
+                            <div class="search-target">
+                                <h4><a href="" ng-click="attraction_details(prod.productId,prod.productCategory)" class="productName">{{ prod.productName }}</a></h4>
+                            </div>
+                            <p>{{ prod.retailerName }}</p>
+                            <div class="gap-sm"></div>
+                            <a href="" ng-click="attraction_details(prod.productId,prod.productCategory)" >More details</a>
+                            <!-- <p class="mt10" style="font-size: 12px;color: red;"><span>Limited Stock!</span></p> -->    <!-- IF LIMITED STOCK -->
+                        </div>
+                    </div>
+                    <!-- Price & Qty -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 price-block">
+                        <div class="row">
+                            <!-- Adult Section -->
+                            <div class="col-xs-12 ticket-category" ng-repeat="price in prod.prices" ng-if="price.priceType == 'Adult' && price.priceTiers.length > 0">
+                                <!-- Price -->
+                                <div class="col-xs-6">
+                                    <p class="person">{{price.priceType}}</p>
+                                    <p class="swish-price" ng-if="price.promotionPrices != null && price.specialPrices == null && price.priceTiers.length > 0">SGD{{ price.promotionPrices }} <p data-ng-init="priceticket=price.promotionPrices"></p> </p>
+                                    <p class="swish-price" ng-if="price.specialPrices != null && price.promotionPrices == null && price.priceTiers.length > 0">SGD{{ price.specialPrices }} <p data-ng-init="priceticket=price.specialPrices"></p> </p>
+                                    <p class="swish-price" ng-if="price.promotionPrices == null && price.specialPrices == null" >SGD{{ price.priceTiers[0].price }} <p data-ng-init="priceticket=price.priceTiers[0].price"></p> </p>
+                                    <p class="normal-price" >SGD{{ price.originalPrice }}</p>
+                                    <p class="person">{{ price.pricingName }}</p>
+                                </div>
+                                <!-- Quantity -->
+                                <div class="col-xs-6 buy-qty">
+                                    <div>
+                                        <div class="btn-container-decrement">
+                                            <button data-ng-click="adultCount = adultCount-1; adultAmount = adultAmount-parseInt(priceticket); removed(prod.productCategory, prod.productName, adultCount, priceticket, price.priceType)" data-ng-disabled="adultCount == 0" data-ng-init="adultCount=0"> - </button>
+                                        </div>
+                                        <div class="num-container">
+                                            <!-- <span> {{ (adultCount[prod.productId].value }}</span> -->
+                                            <span>{{adultCount}}</span>
+                                        </div>
+                                        <div class="btn-container-increment button">
+                                            <button data-ng-click="adultCount = adultCount+1; adultAmount = adultAmount+parseInt(priceticket); added(prod.productCategory, prod.productName, adultCount, priceticket, price.priceType)"> + </button>
+                                        </div>
+                                    </div>
+                                    <ul class="prices" ng-if="adultCount != 0" ng-show="false">
+                                        <li class="orderId">{{ prodId }}</li>
+                                        <li class="priceid">{{price.pricingId}}</li>
+                                        <li class="price_tier_id">{{price.priceTiers[0].priceTierId}}</li>
+                                        <li class="pricetype">1</li>
+                                        <li class="pricetype_name">{{price.priceType}}</li>
+                                        <li class="productid">{{prod.productId}}</li>
+                                        <li class="productname">{{prod.productName}}</li>
+                                        <li class="adultCount">{{adultCount}}</li>
+                                        <li class="ticketredeem">0</li>
+                                        <li class="largeImageUrl">{{prod.largeImageUrl}}</li>
+                                        <li class="original_price">{{price.originalPrice}}</li>
+                                        <li class="price">{{priceticket}}</li>
+                                        <li class="total_ticket">{{adultCount}}</li>
+                                        <li class="pricingName">{{price.pricingName}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Child Section -->
+                            <div class="col-xs-12 ticket-category" ng-repeat="price in prod.prices" ng-if="price.priceType == 'Child' && price.priceTiers.length > 0">
+                                <!-- Price -->
+                                <div class="col-xs-6">
+                                    <p class="person">{{price.priceType}}</p>
+                                    <p class="swish-price" ng-if="price.promotionPrices != null && price.specialPrices == null && price.priceTiers.length > 0">SGD{{ price.promotionPrices }} <p data-ng-init="priceticket=price.promotionPrices"></p> </p>
+                                    <p class="swish-price" ng-if="price.specialPrices != null && price.promotionPrices == null && price.priceTiers.length > 0">SGD{{ price.specialPrices }} <p data-ng-init="priceticket=price.specialPrices"></p> </p>
+                                    <p class="swish-price" ng-if="price.promotionPrices == null && price.specialPrices == null" >SGD{{ price.priceTiers[0].price }} <p data-ng-init="priceticket=price.priceTiers[0].price"></p> </p>
+                                    <p class="normal-price" >SGD{{ price.originalPrice }}</p>
+                                    <p class="person">{{ price.pricingName }}</p>
+                                </div>
+                                <!-- Quantity -->
+                                <div class="col-xs-6 buy-qty">
+                                    <div>
+                                        <div class="btn-container-decrement">
+                                            <button data-ng-click="childCount = childCount-1; childAmount = childAmount-priceticket; removed(prod.productCategory, prod.productName, childCount, priceticket, price.priceType)" data-ng-disabled="childCount == 0" data-ng-init="childCount=0"> - </button>
+                                        </div>
+                                        <div class="num-container">
+                                            <span>{{ childCount }}</span>
+                                        </div>
+                                        <div class="btn-container-increment button">
+                                            <button data-ng-click="childCount = childCount+1; childAmount = childAmount+priceticket; added(prod.productCategory, prod.productName, childCount, priceticket, price.priceType)"> + </button>
+                                        </div>
+                                    </div>
+                                    <ul class="prices" ng-if="childCount != 0" ng-show="false">
+                                        <li class="orderId">{{ prodId }}</li>
+                                        <li class="priceid">{{price.pricingId}}</li>
+                                        <li class="price_tier_id">{{price.priceTiers[0].priceTierId}}</li>
+                                        <li class="pricetype">2</li>
+                                        <li class="pricetype_name">{{price.priceType}}</li>
+                                        <li class="productid">{{prod.productId}}</li>
+                                        <li class="productname">{{prod.productName}}</li>
+                                        <li class="adultCount">{{childCount}}</li>
+                                        <li class="ticketredeem">0</li>
+                                        <li class="largeImageUrl">{{prod.largeImageUrl}}</li>
+                                        <li class="original_price">{{price.originalPrice}}</li>
+                                        <li class="price">{{priceticket}}</li>
+                                        <li class="total_ticket">{{childCount}}</li>
+                                        <li class="pricingName">{{price.pricingName}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <span id="totAmount" ng-show="false">{{subTotal}}</span>
+                        <p id="ticketsprodID" ng-show="false">{{ticketsprodID}}</p>
+                    </div>
+                </div><!-- /.item-list -->
+
+                <!-- <a ui-sref="cart" class="btn_1 medium blue pull-right mt40"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a> -->
+                <!-- <a class="btn_1 medium blue pull-right mt40" ng-click="saveCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a> -->
+
+                <!-- <a class="btn_1 medium blue pull-right mt40 saveCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Go to Cart</a> -->
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Holder for notifcations. The notifications will render in this element -->
+<div class="notification-container"><div class="notification-holder"></div></div>
+<p id="token" style="display: none;">{{token}}</p>
+<p id="host" style="display: none;">{{host}}</p>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Buy Tickets"></update-title>
+<update-meta name="description" content="Get tickets to top attraction venues in Singapore 24/7"></update-meta>
+<update-meta property="og:title" content="Buy Tickets at Swish.sg!"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/buy-tickets"></update-meta>
+<update-meta property="og:description" content="Get tickets to top attraction venues in Singapore 24/7"></update-meta>
+<update-meta property="og:image" content="http://www.swish.sg/assets/common/img/buy-tickets.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<style type="text/css">
+    [data-notify="progressbar"] {
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
+}
+
+[data-notify="progressbar"] {    
+  margin-bottom: 0px;    
+  position: absolute;    
+  bottom: 0px;    
+  left: 0px;    
+  width: 100%;    
+  height: 5px;
+}
+  
+.ready-to-cart{position: absolute;top:-5px;width: calc(100% - 30px)}
+.ready-to-cart h4{margin-top: 10px;}
+
+.main-menu > ul > li > a.btn.btn-buy-tickets{color: #fff;background-color: transparent;margin-left: 0;}
+.sticky .main-menu > ul > li > a.btn.btn-buy-tickets{color: #333;background-color: #fff;margin-left: 0;}
+
+.ready-to-cart .btn_1.medium{margin-top: 3px;}
+
+.ready-sticky{
+  top: 103px;
+  left: 0;
+  background-color: #fcf8e3;
+  position: fixed;width: 100%;
+  z-index: 1;
+  -webkit-box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.41);}
+
+.ready-sticky .ready-to-cart{border:none;position: relative;width: 1140px;max-width:90%;margin: auto;top: 0;padding-left: 0;padding-right: 0;}
+
+.notification-container.sticky-gap{top: 165px}
+
+@media screen and (max-width:991px){    
+  .ready-to-cart-container{
+    background-color: #fcf8e3;
+    position: fixed;width: 100%;
+    z-index: 1;
+    top: auto;
+    bottom: 0;
+    left:0;
+    -webkit-box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.60);
+    -moz-box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.60);
+    box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.60);
+}    
+
+.ready-to-cart.alert{border:none;position: relative;width:90%;margin: auto;top: 0;padding-left: 0;padding-right: 0;}}
+
+@media screen and (min-width: 768px) and (max-width:991px){    
+  .notification-container{top: 90px !important}    
+  #toTop.cart-bottom-adjust{bottom:76px;}
+}
+
+@media screen and (max-width:767px){    
+  .notification-container.sticky-gap{top: 70px}    
+  .ready-to-cart h5{margin-top: 5px;color: #8a6d3b}    
+  .ready-to-cart .btn_1.medium{margin-bottom: 20px;}    
+  #toTop.cart-bottom-adjust{bottom:130px;}
+}
+
+/*Temporary Hide*/
+.notification-container{display: none !important;}
+
+</style>
+
+<!-- Sticky -->
+<script type="text/javascript">    
+  $(window).scroll(function() {        
+
+    var scroll = $(window).scrollTop();    
+
+    if (scroll >= 770) {        
+      $(".ready-to-cart-container").addClass("ready-sticky");        
+      $(".notification-container").addClass("sticky-gap");    
+    } else {        
+      $(".ready-to-cart-container").removeClass("ready-sticky");        
+      $(".notification-container").removeClass("sticky-gap");    
+    }
+  });
+</script>
+
+
+<!-- jFilter -->
+<script src="assets/common/js/jquery.jfilter.js"></script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('#filter').jfilter({
+                list: '#filterable',
+                speed: 100,
+                highlight: 'set' // Class name with no "."
+            });
+        });
+
+        $('input, textarea').placeholder(); // For IE =__=
+</script>
+
+
+<script type="text/javascript">
+$('#toTop').addClass('cart-bottom-adjust'); 
+    //Smooth Anchor Scrolling
+    // Any anchor on that page with # tags will automatically trigger this smooth scroll rather than jumping instantly
+    setTimeout(function(){
+        $("input#filter").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#search-buy").offset().top
+            }, 600);
+        });
+
+        // $('.ready-to-cart').hide();
+
+
+        // $('.btn-container-increment button').click(function(){
+        //     $('#toTop').addClass('cart-bottom-adjust');    
+        //     // $('.ready-to-cart').fadeIn();
+        // });
+
+
+    },100);
+
+    // if(Cookies.get('guest')){var guestexistCart = $.parseJSON(Cookies.get('guest')); console.log(guestexistCart);}
+
+    $("#saveCart, .saveCart").on('click', function(){
+
+        // Cookies.remove('guest');
+
+        var host = 'http://' + angular.element("#host").scope().host + '#/cart';
+        var token = angular.element("#token").scope().token;
+        var totalAmount = angular.element("#totAmount").scope().subTotal;
+        var prodId = angular.element("#prodId").scope().prodId;
+
+        if(token){
+
+            /*
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                tickets.push({
+                    orderId: idorder,
+                    pricing_id: $(".priceid").eq(index).text(),
+                    pricing_type_id: $(".pricetype").eq(index).text(),
+                    product_id: $(".productid").eq(index).text(),
+                    ticket_name: $(".productname").eq(index).text(),
+                    total_ticket: $(".adultCount").eq(index).text(),
+                    total_ticket_redeemed: $(".ticketredeem").eq(index).text()
+
+                })
+            });
+            var addtoCart = { 
+                total_price: totalAmount,
+                total_price_converted_currency: '',
+                discount_amount: '',
+                exchange_rate: '',
+                email_to: '',
+                email_bcc: '',
+                invoice_number: '',
+                invoice_url: '',
+                total_tax_amount: '',
+                sw_payment_mode_id: '3',
+                sw_currency_id: '8',
+                sw_order_status_id: '4',
+                tickets: tickets
+            };
+
+
+            if(tickets != ''){
+
+                // console.log(Cookies.get('loggerorderID'));
+
+                if(Cookies.get('loggerorderID') == undefined){
+                    $.ajax({
+                        type: 'GET',
+                        url: window.__env.apiUrl+'api/sw_orders',
+                        beforeSend: function (request){
+                            request.setRequestHeader("Authorization", "Bearer "+token);
+                        },
+                        success: function(res){
+                            if(res.result.length == 0){
+                                // console.log(res.result.length);
+                                $.ajax({
+                                    type: 'POST',
+                                    url: window.__env.apiUrl+'api/sw_orders',
+                                    data: addtoCart,
+                                    beforeSend: function (request){
+                                        request.setRequestHeader("Authorization", "Bearer "+token);
+                                    },
+                                    success: function(res){
+                                        Cookies.set('loggerorderID', res.result.id);
+
+                                        swal({
+                                          title: "Successfuly add to cart",
+                                          text: "Item has been added to your cart",
+                                          type: "success",
+                                          showCancelButton: true,
+                                          showConfirmButton: true,
+                                          cancelButtonText: "Continue buy tiket",
+                                          confirmButtonText: "Go to cart",
+                                          html: true
+                                        },
+                                        function(isConfirm){
+                                            if (isConfirm) {
+                                                window.location = host;
+                                                location.reload();
+                                            }else{
+                                                location.reload();
+                                            }
+                                        });
+                                    }
+                                })
+                                console.log('create new order');
+                            }
+
+                            if(res.result.length > 0){
+                                // console.log(res.result.length);
+                                $.ajax({
+                                    type: 'POST',
+                                    url: window.__env.apiUrl+'api/sw_orders',
+                                    data: addtoCart,
+                                    beforeSend: function (request){
+                                        request.setRequestHeader("Authorization", "Bearer "+token);
+                                    },
+                                    success: function(res){
+                                        Cookies.set('loggerorderID', res.result.id);
+
+                                        swal({
+                                          title: "Successfuly add to cart",
+                                          text: "Item has been added to your cart",
+                                          type: "success",
+                                          showCancelButton: true,
+                                          showConfirmButton: true,
+                                          cancelButtonText: "Continue buy tiket",
+                                          confirmButtonText: "Go to cart",
+                                          html: true
+                                        },
+                                        function(isConfirm){
+                                            if (isConfirm) {
+                                                window.location = host;
+                                                location.reload();
+                                            }else{
+                                                location.reload();
+                                            }
+                                        });
+                                    }
+                                })
+                                console.log('create another order');
+
+                            }
+                        }
+                    })
+                }
+
+                if(Cookies.get('loggerorderID')){
+                    var orderid = Cookies.get('loggerorderID');
+
+                    $.ajax({
+                        type: 'PUT',
+                        url: window.__env.apiUrl+'api/sw_orders/'+orderid,
+                        data: {tickets: tickets},
+                        beforeSend: function (request){
+                            request.setRequestHeader("Authorization", "Bearer "+token);
+                        },
+                        success: function(){
+                            swal({
+                              title: "Your item(s) has been added to cart",
+                              // text: "Item has been added to your cart",
+                              type: "success",
+                              showCancelButton: true,
+                              showConfirmButton: true,
+                              cancelButtonText: "Continue shopping",
+                              confirmButtonText: "Go to cart",
+                              html: true,
+                              allowOutsideClick: true
+                            },
+                            function(isConfirm){
+                                if (isConfirm) {
+                                    window.location = host;
+                                    location.reload();
+                                }else{
+                                    location.reload();
+                                }
+                            });
+                        }
+                    })
+                    console.log('update cart');
+                }
+            }else{
+                toastr.error('Please add cart.', 'Empty')
+            }
+            */
+
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: $(".pricingName").eq(index).text(),
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: '',
+                        price_ticket: $(".price").eq(index).text(),
+                        ticket_name: $(".productname").eq(index).text(),
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        price_tier_id: $(".price_tier_id").eq(index).text(),
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+
+            var result = []
+                var order = { 
+                    order:{
+                        email_to: '',
+                        email_bcc: '',
+                        sw_payment_mode_id: '3',
+                        sw_order_status_id: 4,
+                        is_paid: false
+                    },
+                    tickets: tickets
+                };
+            result.push(order);
+
+            var cart = {
+                status: true,
+                result: result     
+            };
+
+            // console.log(cart);
+
+
+            // this JSON is submit to check the stock list
+            var ticketsCheck = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                ticketsCheck.push({
+                    pricing_id: $(".priceid").eq(index).text(),
+                    price_tier_id: $(".price_tier_id").eq(index).text(),
+                    special_price_id: null,
+                    promotion_price_id: null,
+                    product_id: $(".productid").eq(index).text(),
+                    total_ticket: $(".total_ticket").eq(index).text()
+
+                })
+            });
+
+            var addtoCart = {
+                email_to: '',
+                email_bcc: '',
+                sw_payment_mode_id: '3',
+                // user_id: guestuserID,
+                tickets: ticketsCheck
+            };
+            // console.log(addtoCart)
+
+
+            if(tickets != ''){
+
+              $.ajax({
+                type: 'POST',
+                url: window.__env.apiUrl+'api/stock_checks',
+                data: addtoCart,
+                success: function(res){
+
+                    // console.log(res)
+                    var checkuserexistCart = Cookies.get('userCarts');
+                    var checkuserexistCart = localStorage.getItem('userCarts');
+                    
+                    if(checkuserexistCart == undefined){
+
+                        // document.cookie = "userCarts="+ JSON.stringify(cart);
+                        $.each(cart.result, function(i, v){
+                            v.order.total_price = totalAmount;
+                        })
+                        
+                        localStorage.setItem("userCarts", JSON.stringify(cart))
+                        // console.log(localStorage.getItem('userCarts'))
+                        swal({
+                          title: "Your item(s) has been added to cart",
+                          // text: "Item has been added to your cart",
+                          type: "success",
+                          showCancelButton: true,
+                          showConfirmButton: true,
+                          cancelButtonText: "Continue shopping",
+                          confirmButtonText: "Go to cart",
+                          html: true,
+                          allowOutsideClick: true
+                        },
+                        function(isConfirm){
+                            if (isConfirm) {
+                                window.location = host;
+                                window.location.reload(true);
+                            }else{
+                                location.reload();
+                            }
+                        });
+                    }else{
+
+                        var updatetotalAmount = totalAmount;
+                        // var userCarts = $.parseJSON(Cookies.get('userCarts'))
+                        var userCarts = $.parseJSON(localStorage.getItem('userCarts'))
+                        var ticketsprodID = angular.element("#ticketsprodID").scope().ticketsprodID; //get product Id from existing cart tickets
+
+                        angular.forEach(tickets, function(newticket){
+
+                            var idFound = ticketsprodID.includes(newticket.product_id);
+                            if(idFound == false){ //if product id not found then add new ticket to tickets array
+                                angular.forEach(userCarts.result, function(existticket){
+                                    existticket.tickets.push(newticket);
+                                })
+                            } else { //if product id found
+
+                            
+                                // check if you product is existing
+                                var product = $.grep(userCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+                                // console.log(product);
+                                if (product.length > 0)
+                                {
+                                    $.each(newticket.ticket_type_details, function (i, nt) {
+                                        // since there is always 1 product index 0
+                                        var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+                                        // console.log(ticket);
+                                        /// now if ticket exist + 1
+                                        if(ticket.length > 0)
+                                        {
+                                            ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+                                        }
+                                        else {
+                                            // just push
+                                            product[0].ticket_type_details.push(nt);
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    userCarts.result[0].tickets(newticket)
+                                }
+
+                                // console.log(exData);
+                            }
+
+                        })
+
+                        
+                        
+                        angular.forEach(userCarts.result, function(tickets){
+                            tickets.order.total_price = tickets.order.total_price + updatetotalAmount;
+                        })
+
+                        // console.log(JSON.stringify(userCarts));
+                        // document.cookie = "userCarts=" + JSON.stringify(userCarts);
+                        localStorage.setItem("userCarts", JSON.stringify(userCarts))
+                        // console.log(Cookies.get('userCarts'));
+
+                        swal({
+                          title: "Your item(s) has been added to cart",
+                          // text: "Item has been added to your cart",
+                          type: "success",
+                          showCancelButton: true,
+                          showConfirmButton: true,
+                          cancelButtonText: "Continue shopping",
+                          confirmButtonText: "Go to cart",
+                          html: true,
+                          allowOutsideClick: true
+                        },
+                        function(isConfirm){
+                            if (isConfirm) {
+                                var cart = 'http://' + angular.element("#host").scope().host + '#/cart';;
+                                window.location = cart;
+                                window.location.reload(true);
+                            }else{
+                                location.reload(); //but here i already do refresh
+                            }
+                        });
+                    }
+                },
+                error: function(res){
+                    // console.log(res)
+                    var outofStock_arr = [];
+                    var outofStock = $.parseJSON(res.responseText);
+
+                    $.each(outofStock.sold_out_product, function(i, v){
+                      outofStock_arr.push(v.ProductName)
+                    })
+                    outofStock_arr.splice();
+                    document.getElementById("outofStock").innerHTML = outofStock_arr;
+                    var outofStockList = $("#outofStock").text();
+
+                    toastr.error(outofStockList, outofStock.message)
+                }
+
+              })
+
+                    
+            }else{
+                toastr.error('Please add cart.', 'Empty')
+            }
+
+        }
+
+        if(token == undefined || token == ''){
+
+    
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: $(".pricingName").eq(index).text(),
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        price_ticket: $(".price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        price_tier_id: $(".price_tier_id").eq(index).text(),
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+
+            var result = []
+                var order = { 
+                    order:{
+                        email_to: '',
+                        email_bcc: '',
+                        sw_payment_mode_id: '3',
+                        sw_order_status_id: 4,
+                        is_paid: false
+                    },
+                    tickets: tickets
+                };
+            result.push(order);
+
+            var cart = {
+                status: true,
+                result: result     
+            };
+
+            // console.log(cart);
+
+
+            // this JSON is submit to check the stock list
+            var ticketsCheck = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                ticketsCheck.push({
+                    pricing_id: $(".priceid").eq(index).text(),
+                    price_tier_id: $(".price_tier_id").eq(index).text(),
+                    special_price_id: null,
+                    promotion_price_id: null,
+                    product_id: $(".productid").eq(index).text(),
+                    total_ticket: $(".total_ticket").eq(index).text()
+
+                })
+            });
+
+            var addtoCart = {
+                email_to: '',
+                email_bcc: '',
+                sw_payment_mode_id: '3',
+                // user_id: guestuserID,
+                tickets: ticketsCheck
+            };
+            // console.log(addtoCart)
+            
+            
+            if(tickets != ''){
+
+              $.ajax({
+                type: 'POST',
+                url: window.__env.apiUrl+'api/stock_checks',
+                data: addtoCart,
+                success: function(res){
+                   
+                    // var checkguestexistCart = Cookies.get('guestCarts');
+                    var checkguestexistCart = localStorage.getItem('guestCarts')
+                    if(checkguestexistCart == undefined){
+
+                        
+                        // Cookies.set('guestCarts', JSON.stringify(cart));
+                        // document.cookie = "guestCarts="+ JSON.stringify(cart);
+                        $.each(cart.result, function(i, v){
+                            v.order.total_price = totalAmount;
+                        })
+
+                        // console.log(cart)
+                        localStorage.setItem("guestCarts", JSON.stringify(cart));
+                        // console.log($.parseJSON(Cookies.get('guestCarts')))
+                        swal({
+                          title: "Your item(s) has been added to cart",
+                          // text: "Item has been added to your cart",
+                          type: "success",
+                          showCancelButton: true,
+                          showConfirmButton: true,
+                          cancelButtonText: "Continue shopping",
+                          confirmButtonText: "Go to cart",
+                          html: true,
+                          allowOutsideClick: true
+                        },
+                        function(isConfirm){
+                            if (isConfirm) {
+                                window.location = host;
+                                location.reload();
+                            }else{
+                                location.reload();
+                            }
+                        });
+                        
+                    }else{
+
+                        var updatetotalAmount = totalAmount;
+                        // var guest = $.parseJSON(Cookies.get('guestCarts'))
+                        var guest = $.parseJSON(localStorage.getItem('guestCarts'))
+                        var guestCarts = guest;
+                        var ticketsprodID = angular.element("#ticketsprodID").scope().ticketsprodID; //get product Id from existing cart tickets
+                        
+                        angular.forEach(tickets, function(newticket){
+
+                            var idFound = ticketsprodID.includes(newticket.product_id);
+                            console.log(idFound);
+                            if(idFound == false){ //if product id not found then add new ticket to tickets array
+                                angular.forEach(guestCarts.result, function(existticket){
+                                    existticket.tickets.push(newticket);
+                                })
+                            } else { //if product id found
+
+                            
+                                // check if you product is existing
+                                var product = $.grep(guestCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+                                // console.log(product);
+                                if (product.length > 0)
+                                {
+                                    $.each(newticket.ticket_type_details, function (i, nt) {
+                                        // since there is always 1 product index 0
+                                        var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+                                        // console.log(ticket);
+                                        /// now if ticket exist + 1
+                                        if(ticket.length > 0)
+                                        {
+                                            ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+                                        }
+                                        else {
+                                            // just push
+                                            product[0].ticket_type_details.push(nt);
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    guestCarts.result[0].tickets(newticket)
+                                }
+
+                                // console.log(exData);
+                            }
+
+                        })
+
+                        
+                        
+                        angular.forEach(guestCarts.result, function(tickets){
+                            tickets.order.total_price = tickets.order.total_price + updatetotalAmount;
+                        })
+
+                        // console.log(guestCarts)
+                        // Cookies.set('guestCarts', JSON.stringify(guestCarts));
+                        // document.cookie = "guestCarts=" + JSON.stringify(guestCarts);
+                        localStorage.setItem('guestCarts', JSON.stringify(guestCarts))
+                        // console.log($.parseJSON(Cookies.get('guestCarts')));
+
+                        swal({
+                          title: "Your item(s) has been added to cart",
+                          // text: "Item has been added to your cart",
+                          type: "success",
+                          showCancelButton: true,
+                          showConfirmButton: true,
+                          cancelButtonText: "Continue shopping",
+                          confirmButtonText: "Go to cart",
+                          html: true,
+                          allowOutsideClick: true
+                        },
+                        function(isConfirm){
+                            if (isConfirm) {
+                                var cart = 'http://' + angular.element("#host").scope().host + '#/cart';;
+                                window.location = cart;
+                                window.location.reload(true);
+                            }else{
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+                error: function(res){
+
+                  var outofStock_arr = [];
+                  var outofStock = $.parseJSON(res.responseText);
+
+                  $.each(outofStock.sold_out_product, function(i, v){
+                    outofStock_arr.push(v.ProductName)
+                  })
+                  outofStock_arr.splice();
+                  document.getElementById("outofStock").innerHTML = outofStock_arr;
+                  var outofStockList = $("#outofStock").text();
+
+                  toastr.error(outofStockList, outofStock.message)
+                }
+              })
+                
+
+                    
+            }else{
+                toastr.error('Please add cart.', 'Empty')
+            }
+        }
+
+    })
+
+</script>

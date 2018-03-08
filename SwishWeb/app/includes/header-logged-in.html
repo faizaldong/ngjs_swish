@@ -1,0 +1,169 @@
+<header>
+	        <div id="top_line">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-sm-3 col-xs-6"><i class="icon-phone"></i><strong>(65) 8688 8398</strong></div>
+	                    
+	                    <div class="col-sm-9 col-xs-6">
+	                        <ul id="top_links">
+	                            <li class="visible-sm-inline-block">
+	                                <div class="dropdown dropdown-cart">
+	                                    <a ng-show="havecart" href="" class="dropdown-toggle" data-toggle="modal" data-target="#cartModal"><i class=" icon-basket-1"></i> {{totItem}} Item(s) : <span class="bold">SGD {{subTotal | number:2}}</span></a>
+	                                    <a ng-show="havenocart" href="" class="dropdown-toggle" data-toggle="modal" data-target="#cartemptyModal"><i class=" icon-basket-1"></i> 0 Item(s) : <span class="bold">SGD 0.00</span></a>
+	                                </div><!-- End Dropdown access -->
+	                            </li>
+	                            <li class="visible-md-inline-block visible-lg-inline-block no-border">
+	                                <div class="dropdown dropdown-cart">
+	                                    <a ng-show="havecart" href="" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i> {{totItem}} Item(s) : <span class="bold">SGD {{subTotal | number:2}}</span></a>
+	                                    <a ng-show="havenocart" href="" class="dropdown-toggle" data-toggle="dropdown"><i class=" icon-basket-1"></i> 0 Item(s) : <span class="bold">SGD 0.00</span></a>
+	                                    <ul class="dropdown-menu empty-cart" id="cart_items">
+	                                    	<!-- <li>
+	                                    		<div class="image"><a ui-sref="attractions.gardens-by-the-bay"><div style="background-image:url('assets/common/img/attractions/thumb/gardens-by-the-bay.jpg');"></div></a></div>
+	                                    		<strong>
+	                                    			<a ui-sref="attractions.gardens-by-the-bay">Gardens by the Bay - Flower Dome &amp; Cloud Forest Day Pass</a>1x Adult : <span class="bold">SGD 28.00</span> 
+	                                    		</strong>
+	                                    		<a href="#" class="action"><i class="icon-trash"></i></a>
+	                                    	</li> -->
+		                                    	
+
+	                                    	<div ng-show="cartEmpty">
+			                                    <li>
+													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+			                                        <h4><center><b>WHOA!</b></center></h4>
+			                                        <h6 style="color: grey;"><center>Your cart is empty. Let's shop!</center></h6>
+
+			                                        <a ui-sref="buy-tickets" class="btn btn-primary" style="width: 100%">BUY TICKETS</a>
+			                                    </li>
+			                                </div>
+			                                <div ng-show="cartnotEmpty">
+		                                    	<div data-ng-repeat="cart in order_history.result track by $index" ng-if="cart.order.sw_order_status_id == 4 && cart.order.is_paid == false || cart.order.sw_order_status_id == 5">
+			                                    	<li data-ng-repeat="tickets in cart.tickets track by $index">
+			                                    		<div class="image">
+			                                    			<!-- <a href="" ng-click="attraction_details(tickets.product_id,tickets.product_name)"> -->
+			                                    			<a href="http://{{host}}/#/attractions/{{tickets.product_name}}/{{tickets.product_id}}">
+			                                    				<!-- <div ng-style="{'background-image':'url({{ tickets.img_src }})'}"></div> -->
+			                                    				<img ng-src="{{tickets.img_src}}" class="full-width center" alt="{{ tickets.product_name }}" style="width: 100%; height: 50px;">
+			                                    			</a>
+			                                    		</div>
+			                                    		<!-- <div class="image"><a ui-sref="attractions.madame-tussauds"><img ng-src="{{tickets.product.LargeImageUrl}}" class="full-width" alt="{{ prod.productName }}"></a></div> -->
+			                                    		
+			                                    		<strong>
+			                                    			<!-- <a href="" ng-click="attraction_details(tickets.product_id,tickets.product_name)">{{tickets.product_name}}</a> -->
+			                                    			<a href="http://{{host}}/#/attractions/{{tickets.product_name}}/{{tickets.product_id}}">{{tickets.product_name}}</a>
+				                                    			<!-- 1x Adult : SGD 19.00 <br/> -->
+			                                    				<font size="1" class="pull-left" ng-repeat="ticketAdults in tickets.ticket_type_details" ng-if="ticketAdults.pricing_type_id == 1">
+			                                    					{{ticketAdults.total_ticket}}x {{ticketAdults.pricing_type}} : SGD {{ticketAdults.price_ticket}}
+			                                    				</font> <br/>
+			                                    			  	<!-- 1x Child : SGD 17.00 -->
+			                                    				<font size="1" class="pull-left" ng-repeat="ticketChild in tickets.ticket_type_details" ng-if="ticketChild.pricing_type_id == 2">
+			                                    					{{ticketChild.total_ticket}}x {{ticketChild.pricing_type}} : SGD {{ticketChild.price_ticket}}
+			                                    				</font>
+			                                    		</strong>
+			                                    		<!-- <a href="#" class="action"><i class="icon-trash"></i></a>-->
+														<a href="" class="action" data-ng-init="ticketTotalAmount=0" ng-click="remove_($rootScope.tot, cart, $index)"><i class="icon-trash"></i></a>
+			                                    	</li>
+		                                    	</div>
+		                                    
+			                                    <li>
+			                                        <div>Total: <span>SGD {{subTotal | number:2}}</span></div>
+			                                        <a ui-sref="cart" class="button_drop outline">Go to cart</a>
+			                                        <a ui-sref="checkout-payment-method" class="button_drop checkout">Check out</a>
+			                                    </li>
+			                                </div>
+		                                </ul>
+	                                </div><!-- End Dropdown access -->
+	                            </li>
+	                            <li class="visible-md-inline-block visible-lg-inline-block">
+	                            	<div class="dropdown dropdown-cart">
+		                            	<a class="dropdown-toggle btn-login" href="" data-toggle="dropdown"><i class="fa fa-user"></i> Welcome, {{ name }}</a>
+		                            	<ul class="dropdown-menu user-dropdown">
+		                                    <li><a ui-sref="settings">Account Settings</a></li>
+		                                    <li><a ui-sref="purchase-history">Purchase History</a></li>
+		                                    <li><a href="" ng-click="logout()" >Sign Out</a></li><!-- Supposed to sign out. and redirect to home page -->
+		                                </ul>
+	                                </div>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div><!-- End row -->
+	            </div><!-- End container-->
+	        </div><!-- End top line-->
+	        
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-3 col-sm-3 col-xs-3">
+	                    <div id="logo_home">
+	                    	<h1><a href="#/" title="Swish">Swish</a></h1>
+	                    </div>
+	                </div>
+	                <nav class="col-md-9 col-sm-9 col-xs-9">
+	                    <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);" ng-class="{'active': isActive}" ng-click="activeButton()"><span>Menu mobile</span></a><!-- Mobile Logo -->
+	                    <div class="main-menu text-right">
+
+	                        <!--  Logo  -->
+	                        <!-- <div id="header_menu">
+	                            <a href="#/" title="Swish" class="open_close"><img src="assets/common/img/logo_sticky.png" alt="Swish" data-retina="true"></a>
+	                        </div> -->
+							
+							<!--  Greeting  -->
+	                        <div class="greeting">
+	                        	<h3>Welcome, {{ name }}</h3>
+	                        	<h4 class="ellipsis">{{ name }}</h4>
+	                        </div>
+							
+							<!--  Main Menu  -->
+	                        <div class="mobile-nav-title">
+	                    		<h5>menu</h5>
+	                    	</div>
+	                        <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
+	                        <ul class="nav-list">
+	                            <li><a ui-sref="attractions" class="open_close"><span class="nav-sprite nav-attractions"></span>Attractions</a></li>
+	                            <li><a ui-sref="faq" class="open_close"><span class="nav-sprite nav-faq"></span>FAQ</a></li>
+	                            <li class="hidden-sm hidden-xs"><a ui-sref="tourist-info" class="open_close"><span class="nav-sprite nav-tourist-info"></span>Tourist Info</a></li>
+	                            <li class="visible-sm visible-xs submenu">
+	                            	<a class="show-submenu" href="javascript:void(0);"><span class="nav-sprite nav-tourist-info"></span>Tourist Info<i class="icon-down-open-mini"></i></a>
+	                            	<ul class="mobile-nav-dropdown">
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info">The Country</a></li>
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-language">Language</a></li>
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-climate">Climate</a></li> 
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-currency">Currency</a></li>
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-food">Food &amp; Beverages</a></li>
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-transportation">Public Transportation</a></li>
+	                            		<li><a class="mobile-nav" ui-sref="tourist-info-others">Others</a></li>
+	                            	</ul>
+	                            </li>
+	                            <li><a ui-sref="about" class="open_close"><span class="nav-sprite nav-about"></span>About</a></li>
+	                            <li><a ui-sref="contact" class="open_close"><span class="nav-sprite nav-contact"></span>Contact</a></li>
+	                            <li><a ui-sref="buy-tickets" class="btn open_close"><span class="nav-sprite nav-buy"></span>Buy Tickets</a></li>
+
+	                            <!-- <li><a href="" ng-click="attractions()" class="open_close"><span class="nav-sprite nav-attractions"></span>Attractions</a></li>
+	                            <li><a href="" ng-click="faq()" class="open_close"><span class="nav-sprite nav-faq"></span>FAQ</a></li>
+	                            <li><a href="" ng-click="tourist()" class="open_close"><span class="nav-sprite nav-tourist-info"></span>Tourist Info</a></li></li>
+	                            <li><a href="" ng-click="about()" class="open_close"><span class="nav-sprite nav-about"></span>About</a></li>
+	                            <li><a href="" ng-click="contact()" class="open_close"><span class="nav-sprite nav-contact"></span>Contact</a></li>
+	                            <li><a ui-sref="buy-tickets" class="btn open_close"><span class="nav-sprite nav-buy"></span>Buy Tickets</a></li> -->
+
+	                        </ul>
+	
+							<!--  Account Info (Mobile Only)  -->
+	                        <div class="mobile-nav-title visible-xs visible-sm">
+	                    		<h5>account</h5>
+	                    	</div>
+	                    	<ul class="nav-list visible-xs visible-sm">
+	                    		<li><a ui-sref="settings"><span class="nav-sprite nav-settings"></span>Account Settings</a></li>
+	                    		<li><a ui-sref="purchase-history"><span class="nav-sprite nav-ticket"></span>Purchase History</a></li>
+	                    		<li><a href="" ng-click="logout()" class="action-signout"><span class="nav-sprite nav-signout"></span>Sign Out</a></li>
+	                    	</ul>
+	                    </div><!-- End main-menu -->
+	                    <ul id="top_tools" class="hide">
+	                    	<li>
+	                    		<div class="dropdown dropdown-search">
+                                	<a ng-show="havecart" href="" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#cartModal"><i class=" icon-basket-1"></i>{{totItem}} Item(s)</a>
+                                	<a ng-show="havenocart" href="" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#cartemptyModal"><i class=" icon-basket-1"></i>0 Item(s)</a>
+                            	</div>
+	                    	</li>
+	                    </ul>
+	                </nav>
+	            </div>
+	        </div><!-- container -->
+	    </header><!-- End Header -->

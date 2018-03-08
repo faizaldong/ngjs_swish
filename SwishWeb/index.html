@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html data-ng-app="SwishApp" data-ng-controller="MainCtrl"><!-- Directive -->
+	<head>
+		<title>Welcome to Swish - Get tickets to top attraction venues in Singapore 24/7</title>
+		<meta name="description" content="Visiting Singapore but don't want to browse endless travel guides? Discover Singapore's top attractions and enjoy your vacation when you book through us today!">
+    	<meta name="author" content="Coolasia Technology">
+		<!--<base href="https://localhost:8080/Swish/SwishWeb/"> -->
+		<!-- Important metas -->
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    	<!-- Forces the new IE to read IE9 Document mode to reduce error and backwards compatibility -->
+    	<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    	<!-- FFS PLEASE REMOVE THIS WHEN THE SITE GOES LIVE OR ELSE GOOGLE WONT RANK THIS PAGE IN THE SEARCH ENGINE -->
+    	<META name="robots" content="noindex,nofollow">
+    	<!-- FFS PLEASE REMOVE THIS WHEN THE SITE GOES LIVE OR ELSE GOOGLE WONT RANK THIS PAGE IN THE SEARCH ENGINE -->
+
+    	<!-- Facebook Properties -->
+    	<meta property="og:site_name" content="﻿Swish" />
+    	<meta property="og:title" content="Welcome to Swish!" /><!-- This will be replaced by view's <update-meta> -->
+	    <meta property="og:url" content="http://swish.sg/" /><!-- This will be replaced by view's <update-meta> -->
+	    <meta property="og:description" content="Visiting Singapore but don't want to browse endless travel guides? Discover Singapore's top attractions and enjoy your vacation when you book through us today!" /><!-- This will be replaced by view's <update-meta> -->
+	    <meta property="og:image" content="http://www.website.com/webpage-feature-image.jpg" /><!-- This will be replaced by view's <update-meta> -->
+	    
+	    <!-- Other FB Properties. Please don't edit! HISSSS!!! -->
+	    <meta property="og:image:type" content="image/jpeg" /> 
+	    <meta property="og:image:width" content="1200" /> 
+	    <meta property="og:image:height" content="630" />
+
+
+    	<!-- Remove # from URL when routing -->
+    	<base href="/">
+
+    	<!-- Favicons-->
+	    <link rel="shortcut icon" href="assets/common/img/favicon.ico" type="image/x-icon">
+	    <link rel="apple-touch-icon" type="image/x-icon" href="assets/common/img/apple-touch-icon-57x57-precomposed.png">
+	    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/common/img/apple-touch-icon-72x72-precomposed.png">
+	    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/common/img/apple-touch-icon-114x114-precomposed.png">
+	    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="assets/common/img/apple-touch-icon-144x144-precomposed.png">
+
+    	<!-- Core CSS files that need to be declared in the <head> -->
+    	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    	<!--[if lt IE 9]>
+      		<script src="assets/common/js/html5shiv.min.js"></script>
+      		<script src="assets/common/js/respond.min.js"></script>
+    	<![endif]-->
+
+  <!--       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+
+        <!-- Load environment variables -->
+        <script src="env.js"></script>
+        <script src="assets/common/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/common/css/sweetalert.css">
+
+	</head>
+	<body>
+
+		<!--[if lte IE 8]>
+		    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+		<![endif]-->
+
+		<!-- Mobile menu overlay mask -->
+		<div class="layer"></div>
+
+		<!-- HEADER
+    	================================================== -->
+        <!-- Header for guest -->
+        <div data-ng-include="'app/includes/header.html'" ng-if="name === ''" ></div>
+        <!-- Header for User -->
+    	<div data-ng-include="'app/includes/header-logged-in.html'" ng-if="name !== ''"></div>
+	    
+
+    	<!-- CONTENT
+    	================================================== -->
+    	<div data-ui-view autoscroll="true"></div>
+
+
+    	<!-- FOOTER
+    	================================================== -->
+        <div data-ng-include="'app/includes/footer.html'"></div>
+
+        <!-- LOAD MODAL IF NOT SIGNED IN
+        ================================================== -->
+        <div data-ng-include="'app/includes/modal-login-register.html'"></div><!-- should exclude when logged in -->
+    	
+        <!-- SHOPPING CART
+        ================================================== -->
+        <div data-ng-include="'app/includes/modal-cart.html'"></div><!-- should exclude when logged in -->
+
+		<div id="toTop"></div><!-- Back to top button -->
+
+        <!-- MODAL ALERT USER TO VALIDATE EMAIL AFTER REGISTRATION -->
+        <div data-ng-include="'app/includes/modal-alertto-verify.html'"></div>
+
+
+    	<!-- JQUERY (Must load first or else Angular will use its limited jqLite)
+    	================================================== -->
+        <!-- <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+        <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        
+		<!-- ANGULAR
+    	================================================== -->
+		<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script> use this dependency instead later when using dropdown menu -->
+        <script type="text/javascript" language="javascript" src="assets/common/js/angular-sanitize.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/angular-ui-router.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/ocLazyLoad.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/update-meta.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/ngParallax.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/angular-ui-notification.min.js"></script>
+
+
+        <!-- CSS
+    	================================================== -->
+    	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
+    	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:200">
+    	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/color-schemes.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/modstrap.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/animate.min.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/style.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/menu.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/responsive.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/icon_set_1.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/icon_set_2.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/fontello.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/magnific-popup.css">
+        <link rel="stylesheet" type="text/css" href="assets/common/css/pop_up.css">
+        <link rel="stylesheet" type="text/css" href="assets/common/css/angular-ui-notification.min.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/jquery.FloatLabel.css">
+        <link rel="stylesheet" type="text/css" href="assets/common/css/jquery.intlTelInput.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/swish-color.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/swish.css">
+    	<link rel="stylesheet" type="text/css" href="assets/common/css/swish-responsive.css">
+        <link rel="stylesheet" type="text/css" href="assets/common/css/toastr.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.css" />
+		
+		<!-- : colorbox : -->
+		<link rel="stylesheet" href="assets/lib/colorbox/colorbox.css" />
+		<script src="assets/lib/colorbox/jquery.colorbox.js"></script>
+		
+        <!--[if gte IE 8]>
+        <link rel="stylesheet" type="text/css" href="assets/common/css/swish-ie.css" />
+        <![endif]-->
+
+        <!-- JS
+    	================================================== -->
+        <script type="text/javascript" language="javascript" src="assets/common/js/parallax.min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/jquery.magnific-popup.min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/wow.min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/retina-replace.min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/ion.rangeSlider.min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/common_scripts_min.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/common/js/functions.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/device.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jquery.dotdotdot.min.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jquery.placeholder.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jquery.FloatLabel.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/utils.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jquery.intlTelInput.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/js.cookie.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/toastr.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jszip.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/jszip-utils.js"></script>
+        <script type="text/javascript" language="javascript" src="assets/common/js/FileSaver.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" language="javascript">
+            setTimeout(function(){ 
+                $('input, textarea').placeholder();
+                $('.js-float-label-wrapper').FloatLabel();
+                $('.js-float-label-wrapper').removeClass('populated'); //clear the sudden trigger
+                $("#reg-tel").intlTelInput({
+                    preferredCountries: [ "sg" ]
+                });
+            },1000);
+        </script>
+
+
+        <!-- ANGULAR FUNCTIONS
+    	================================================== -->
+        <script type="text/javascript" language="javascript" src="app/app.js"></script>
+		<script type="text/javascript" language="javascript" src="app/routes.js"></script>
+
+        <!-- Login Service -->
+        <script type="text/javascript" language="javascript" src="//code.angularjs.org/1.6.0/angular-cookies.min.js"></script>
+        <!-- <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+        <!-- <script type="text/javascript" language="javascript" src="app/services/authentication.service.js"></script> -->
+        <!-- <script type="text/javascript" language="javascript" src="app/services/flash.service.js"></script> -->
+
+        <!-- Real user service that uses an api -->
+        <!-- <script type="text/javascript" language="javascript" src="app/services/user.service.js"></script> -->
+
+        <!-- Fake user service for demo that uses local storage -->
+        <!-- <script type="text/javascript" language="javascript" src="app/services/user.service.local-storage.js"></script> -->
+
+	</body>
+</html>

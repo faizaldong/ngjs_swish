@@ -1,0 +1,95 @@
+<div class="container">
+        <div class="row home-attractions" ng-if="1 == 0"> <!-- default code from hazwan-->
+            
+            <!-- ngRepeat: attraction in featured --><div class="col-md-4 col-xs-6 col-xxs-12 wow zoomIn ng-scope animated" data-wow-delay="0.1s">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="attractions/sea-aquarium-maritime-museum">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-green">POPULAR</div></div><!-- Status Ribbon -->
+                        <img src="assets/common/img/attractions/thumb/sea-aquarium-maritime-museum.jpg" class="img-responsive" alt="Sea Aquarium &amp; Maritime Museum">
+                        <div class="short_info ng-binding">
+                            <img src="assets/common/img/icons/sentosa.png" class="icon-category"> &nbsp;sentosa<span class="price ng-binding"><sup>SGD</sup>39</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis ng-binding">Sea Aquarium &amp; Maritime Museum</h3>
+                    </div>
+                </div><!-- End box tour -->
+            </div>
+            <!-- end ngRepeat: attraction in featured --><div class="col-md-4 col-xs-6 col-xxs-12 wow zoomIn ng-scope animated" data-wow-delay="0.2s">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="attractions/gardens-by-the-bay">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-red">TOP RATED</div></div><!-- Status Ribbon -->
+                        <img src="assets/common/img/attractions/thumb/gardens-by-the-bay.jpg" class="img-responsive" alt="Gardens by the Bay - Flower Dome &amp; Cloud Forest">
+                        <div class="short_info ng-binding">
+                            <img src="assets/common/img/icons/city.png" class="icon-category"> &nbsp;city<span class="price ng-binding"><sup>SGD</sup>20</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis ng-binding">Gardens by the Bay - Flower Dome &amp; Cloud Forest</h3>
+                    </div>
+                </div><!-- End box tour -->
+            </div>
+            <!-- end ngRepeat: attraction in featured --><div class="col-md-4 col-xs-6 col-xxs-12 wow zoomIn ng-scope animated" data-wow-delay="0.3s">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a href="attractions/legoland-themepark-waterpark">
+                        <div class="ribbon-wrapper"><div class="ribbon ribbon-"></div></div><!-- Status Ribbon -->
+                        <img src="assets/common/img/attractions/thumb/legoland-themepark-waterpark.jpg" class="img-responsive" alt="Legoland Themepark + Waterpark">
+                        <div class="short_info ng-binding">
+                            <img src="assets/common/img/icons/others.png" class="icon-category"> &nbsp;others<span class="price ng-binding"><sup>SGD</sup>62</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis ng-binding">Legoland Themepark + Waterpark</h3>
+                    </div>
+                </div><!-- End box tour -->
+            </div>
+            <!-- end ngRepeat: attraction in featured --><div class="col-md-4 col-xs-6 col-xxs-12 wow zoomIn ng-scope animated" data-wow-delay="0.4s">
+                <div class="tour_container">
+                    <div class="img_container">
+                        <a ui-sref="attractions.madame-tussauds">
+                        <img src="assets/common/img/attractions/thumb/madame-tussauds.jpg" class="img-responsive" alt="Madame Tussauds">
+                        <div class="ribbon "></div>
+                        <div class="short_info ng-binding">
+                            <img src="assets/common/img/icons/city.png" class="icon-category"> &nbsp;city<span class="price ng-binding"><sup>SGD</sup>20</span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="tour_title">
+                        <h3 class="ellipsis ng-binding">Madame Tussauds</h3>
+                    </div>
+                </div><!-- End box tour -->
+            </div><!-- end ngRepeat: attraction in featured --><!-- End col-md-4 -->
+
+        </div><!-- //default code from hazwan-->
+
+        <div class="row home-attractions" ng-if="1 == 1">
+          <div class="col-md-4 col-xs-6 col-xxs-12 wow zoomIn animated" data-wow-delay="0.{{ $index }}s" ng-repeat="recommendList in attractionRecommenList|limitTo:3" style="visibility: visible; animation-delay: 0.{{ $index }}s; animation-name: zoomIn;">
+            <a href="{{ attraction.id }}">
+              <a href="/#/attractions/{{recommendList.productCategory}}/{{recommendList.productId}}">
+                <div class="tour_container animate">
+                  <div class="img_container" style="background: url('{{ recommendList.largeImageUrl  }}') no-repeat center center; background-size: cover;" href="" data-ng-click="attraction_details(attraction.productId,attraction.productCategory)">
+                        <div class="ribbon "></div>
+                        <div class="short_info">
+                            <img ng-src="assets/common/img/icons/city.png" class="icon-category"> &nbsp;{{ recommendList.productCategory }}
+
+                                <span class="price" ng-repeat="price in recommendList.prices" ng-if="price.priceType == 'Adult' && price.promotionPrices != null && price.specialPrices == null && price.priceTiers.length > 0"><sup>SGD{{ price.promotionPrices }}</sup></span>
+                                <span class="price" ng-repeat="price in recommendList.prices" ng-if="price.priceType == 'Adult' && price.promotionPrices == null && price.specialPrices != null && price.priceTiers.length > 0"><sup>SGD{{ price.specialPrices }}</sup></span>
+                                <span class="price" ng-repeat="price in recommendList.prices" ng-if="price.priceType == 'Adult' && price.promotionPrices == null && price.specialPrices == null && price.priceTiers.length > 0"><sup>SGD{{ price.priceTiers[0].price }}</sup></span>
+                        </div>
+                  </div>
+                  <div class="tour_title">
+                      <h3 class="ellipsis ng-binding">{{recommendList.productName}}</h3>
+                  </div>
+                </div>
+              </a>
+            </a>
+          </div>
+        </div>
+
+</div>

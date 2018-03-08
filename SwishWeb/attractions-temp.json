@@ -1,0 +1,28 @@
+[
+    {   
+        "image"				: "assets/common/img/attractions/thumb/jurong-birdpark-tram.jpg", 
+        "title"				: "Jurong Birdpark + Tram", 
+        "id"				: "jurong-birdpark-tram", 
+        "category"          : "city",
+        "label"             : "", 
+        "labelColor"		: "", 
+        "ticketType"		: "One-Day Adventure Pass", 
+        "adultPrice"		: "34", 
+        "adultSwishPrice"	: "20", 
+        "childPrice"		: "22", 
+        "childSwishPrice"	: "13" 
+    },
+    {   
+        "image"				: "assets/common/img/attractions/thumb/singapore-zoo-tram.jpg", 
+        "title"				: "Singapore Zoo + Tram", 
+        "id"				: "singapore-zoo-tram", 
+        "category"          : "city",
+        "label"             : "Top Rated", 
+        "labelColor"		: "red", 
+        "ticketType"		: "One-Day Adventure Pass", 
+        "adultPrice"		: "38", 
+        "adultSwishPrice"	: "28", 
+        "childPrice"		: "26", 
+        "childSwishPrice"	: "18" 
+    }
+]

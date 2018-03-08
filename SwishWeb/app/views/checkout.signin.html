@@ -1,0 +1,157 @@
+<div class="checkout-wrapper">
+    <!-- HEADER
+    ================================================== -->
+    <div class="header">
+        <div class="container">
+            <div class="gap-sm"></div>
+            <a ui-sref="cart" class="back-to-cart">&laquo; <i class="fa fa-shopping-cart" aria-hidden="true"></i> Back to Cart</a>
+
+            <div class="row header-contents">
+                <div class="col-sm-2 col-xs-3"><img src="assets/common/img/logo_sticky.png" class="max-width"></div><!-- Logo -->
+                <div class="col-sm-8 col-xs-9 text-center"><h1>SIGN IN TO SWISH</h1></div><!-- Title -->
+                <div class="col-sm-2 hidden-xs"><img src="assets/common/img/rapidssl.gif" class="max-width mt10"></div><!-- Security Seal -->
+            </div>
+        </div>
+    </div><!-- End Header -->
+
+    <!-- PROGRESS BAR
+    ================================================== -->
+    <div class="bg-verydarkgrey container-padding-mini">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-xs-3 progress-container current"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Sign In</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Payment Method</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Place Order</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Confirmation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container container-padding-xlarge">
+      <form name="userForm" action="#/checkout/payment-method">
+        <div class="row">
+            <div class="col-lg-11 col-lg-offset-1">
+                <div class="col-md-5 pop-content">
+                    <h3 class="text-center-xs">Member Sign In</h3>
+                    <p class="text-center-xs">Hasten your order process!</p>
+
+                    <div class="js-float-label-wrapper">
+                        <label for="email" class="float-label">Email Address</label>
+                        <input type="email" id="email" class="form-control email" ng-class="emailActive" ng-model="email">
+                        <span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailrequired">You can't leave this empty.</span>
+                        <span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailexist">Email doesn't exists</span>
+                    </div>
+
+                    <div class="js-float-label-wrapper">
+                        <label for="password" class="float-label">Password</label>
+                        <input type="password" class="form-control lock" ng-class="passwordActive" id="password" ng-model="password">
+                        <span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passrequired">You can't leave this empty.</span>
+                        <span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passinvalid">Wrong password. Please try again.</span>
+                    </div>
+
+                    <div class="gap-md"></div>
+                    <!-- <input type="submit" class="btn_1 medium green" value="PROCEED" ng-disabled="userForm.$invalid" ng-click="proceed()"> -->
+                    <div class="row">
+                        <div class="col-sm-6 hidden-xs">
+                            <a href="" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-controls-modal="#forgotpassModal" data-target="#forgotpassModal" class="pull-left" style="color:#bbb;margin-top:10px;display:block;text-decoration: underline;">Forgot Password</a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a type="button" class="btn_1 medium green proceed" ng-disabled="userForm.$invalid" ng-click="proceed()">PROCEED</a> 
+                        </div>
+                        <div class="visible-xs clearfix"></div>
+                        <div class="visible-xs text-center">
+                            <div class="gap"></div>
+                            <a href="" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-controls-modal="#forgotpassModal" data-target="#forgotpassModal" style="color:#bbb;margin-top:10px;display:block;text-decoration: underline;">Forgot Password</a>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Mobile Divider -->
+                <div class="visible-sm visible-xs clearfix"></div>
+                <div class="visible-sm visible-xs gap-sm"></div>
+                <hr class="visible-sm visible-xs" style="width:80%">
+                <div class="visible-sm visible-xs gap-md"></div>
+
+                <div class="col-md-6 divider-left">
+                    <h3 class="text-center-xs">New to Swish</h3>
+                    <p class="text-center-xs">Choose your options below</p>
+                    <div class="row">
+                        <div class="col-xs-6 col-xxs-12">
+                            <!-- <a ui-sref="checkout-signin-register" class="btn_1 medium blue full-width text-center font-12 pl0 pr0">CREATE ACCOUNT</a> -->
+                            <a href="" ng-click="createAccount()" class="btn_1 medium blue full-width text-center font-12 pl0 pr0">CREATE ACCOUNT</a>
+                        </div>
+                        <div class="col-sm-6 pl0 hidden-xs">
+                            <p class="font-12">Your preferences are saved for your next purchase with other benefits.</p>
+                        </div>
+                    
+                        <div class="gap pull-left visible-xxs"></div>
+                    
+                        <div class="col-xs-6 col-xxs-12">
+                            <!-- <a ui-sref="checkout-signin-guest" class="btn_1 medium blue full-width text-center font-12 pl0 pr0">CHECK OUT AS GUEST</a> -->
+                            <a href="" ng-click="checkoutguest()" class="btn_1 medium blue full-width text-center font-12 pl0 pr0">CHECK OUT AS GUEST</a>
+                        </div>
+                        <div class="col-sm-6 pl0 hidden-xs">
+                            <p class="font-12">One time off purchase. Might not come back here again.</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden-sm hidden-xs gap-lg"></div>
+                    <div class="gap"></div>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <div class="footer container-padding-large">
+        &copy; 2016 Swish. All rights reserved. <a ui-sref="terms" target="_blank">Terms and Conditions</a> | <a ui-sref="privacy" target="_blank">Privacy Policy</a>
+    </div>
+</div>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Checkout"></update-title>
+
+<!-- Custom CSS/JS -->
+<link rel="stylesheet" type="text/css" href="assets/common/css/swish-checkout.css">
+<style type="text/css">@media screen and (min-width:768px) and (max-width: 991px){    .checkout-wrapper .pop-content{width: 80% !important}}</style>
+
+<!-- For forms -->
+<script type="text/javascript" language="javascript" src="assets/common/js/jquery.FloatLabel.js"></script>
+<script type="text/javascript" language="javascript">
+    $('.js-float-label-wrapper').FloatLabel();
+    $('.js-float-label-wrapper').removeClass('populated'); //clear the sudden trigger
+</script>

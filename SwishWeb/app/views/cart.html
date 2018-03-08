@@ -1,0 +1,719 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/cart.jpg');">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Shopping Cart</h1>
+        	<p>You're almost there! Let's confirm your order first</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Shopping Cart</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+<!-- CONTENT
+================================================== -->
+
+
+<!-- <section class="bg-lightestgrey">
+    <div class="container container-padding-large">
+    <div class="gap-md hidden-xs"></div>
+
+        <div class="cart-action-buttons text-right hidden-xs">
+            <a ui-sref="buy-tickets" class="btn_1 medium green_inv hidden-xs pull-left">Add More Attractions</a>
+            <a ui-sref="checkout-signin" class="btn_1 medium green">Checkout</a>
+            <div class="gap-md"></div>
+        </div>
+
+        <div class="col-sm-12 buy-header buy-list-cart hidden-xs pl0">
+            <div class="row">
+                <div class="col-md-7 col-sm-6">
+                    <div class="col-sm-5 hidden-sm hidden-xs">
+                        Attraction
+                    </div>
+                    <div class="col-sm-7">
+                        Description
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 pr0">
+                    <div class="col-sm-3 col-xs-12 pl0">
+                        &nbsp;Price
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        Qty
+                    </div>
+                    <div class="col-sm-5 col-xs-6 text-right pr0">
+                        Total
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-list-container">
+            
+            <div class="item-block" data-ng-repeat="cart in cartList" id="{{ cart.id }}">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6" style="overflow:hidden">
+                        <div class="col-sm-5 hidden-sm col-xs-3">
+                            <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ cart.labelColor }}">{{ cart.label }}</div></div>
+                            <a ui-sref="{{ cart.id }}"><div class="img-container" ng-style="{'background-image' : 'url(' + cart.image + ')' }"></div></a>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-9 cart-details">
+                            <h4 class="ticket-title"><a ui-sref="{{ cart.id }}" title="{{ cart.title }}">{{ cart.title }}</a></h4>
+                            <p>{{ cart.ticketType }}</p>
+                            <a class="link" ui-sref="{{ cart.id }}">More Details</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <button class="remove-item">Remove</button>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6">
+                        
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12 price-rates">
+                                <p class="person">Adult</p>
+                                <span class="visible-xs-inline">(</span>
+                                <p class="normal-price">SGD{{ cart.adultPrice }}</p>
+                                <p class="swish-price">SGD{{ cart.adultSwishPrice }}</p>
+                                <span class="visible-xs-inline">)</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="adultAmount = adultAmount-1;adultTotalPrice = adultTotalPrice-cart.adultSwishPrice" data-ng-disabled="adultAmount == 0" data-ng-init="adultAmount=cart.adultAmount"> - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ adultAmount }}</span>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="adultAmount = adultAmount+1;adultTotalPrice = adultTotalPrice+cart.adultSwishPrice"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 buy-amount">
+                                <button class="swish-price" data-ng-init="adultTotalPrice=cart.adultTotalPrice" data-ng-disabled="adultTotalPrice == 0">SGD {{ adultTotalPrice | number:2 }}</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12 price-rates">
+                                <p class="person">Child</p>
+                                <span class="visible-xs-inline">(</span>
+                                <p class="normal-price">SGD{{ cart.childPrice }}</p>
+                                <p class="swish-price">SGD{{ cart.childSwishPrice }}</p>
+                                <span class="visible-xs-inline">)</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="childAmount = childAmount-1;childTotalPrice = childTotalPrice-cart.childSwishPrice" data-ng-disabled="childAmount == 0" data-ng-init="childAmount=cart.childAmount"> - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ childAmount }}</span>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="childAmount = childAmount+1;childTotalPrice = childTotalPrice+cart.childSwishPrice"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 buy-amount">
+                                <button class="swish-price" data-ng-init="childTotalPrice=cart.childTotalPrice" data-ng-disabled="childTotalPrice == 0">SGD {{ childTotalPrice | number:2 }}</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-sub-total">
+        <p class="text-right bold">Sub-Total <span>SGD 48.00</span></p>
+        </div>
+
+        <div class="cart-action-buttons text-right">
+            <a ui-sref="buy-tickets" class="btn_1 medium green_inv hidden-xs pull-left">Add More Attractions</a>
+            <a ui-sref="checkout-signin" class="btn_1 medium green">Checkout</a>
+            <a ui-sref="buy-tickets" class="btn_1 medium green_inv visible-xs">Add More Attractions</a>
+        </div>
+    
+    <div class="gap-md hidden-xs"></div>
+    </div>
+</section> -->
+
+<section class="bg-lightestgrey">
+    <div class="container container-padding-large">
+    <div class="gap-md hidden-xs"></div>
+
+        <div class="cart-action-buttons text-right hidden-xs">
+            <!-- <a ui-sref="buy-tickets" class="btn_1 medium green_inv hidden-xs pull-left">Add More Attractions</a> -->
+            <a class="btn_1 medium green_inv hidden-xs pull-left" ng-click="addAttractions()">Add More Attractions</a>
+            <!-- <a ui-sref="checkout-signin" class="btn_1 medium green">Checkout</a> -->
+            <a id="checkout" class="btn_1 medium green">Checkout</a>
+            <div class="gap-md"></div>
+        </div>
+
+        <div class="col-sm-12 buy-header buy-list-cart hidden-xs pl0">
+            <div class="row">
+                <div class="col-md-7 col-sm-6">
+                    <div class="col-sm-5 hidden-sm hidden-xs">
+                        Attraction
+                    </div>
+                    <div class="col-sm-7">
+                        Description
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 pr0">
+                    <div class="col-sm-3 col-xs-12 pl0">
+                        &nbsp;Price
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        Qty
+                    </div>
+                    <div class="col-sm-5 col-xs-6 text-right pr0">
+                        Total
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="cart-list-container" ng-remove-directive data-ng-repeat="order in order_history.result" ng-if="order.order.sw_order_status_id == 4 && order.order.is_paid == false"> --><!-- {{order.order.sw_order_status_id}}{{order.order.is_paid}} -->
+        <div class="cart-list-container" data-ng-repeat="order in order_history.result track by $index" ng-if="order.order.sw_order_status_id == 4 && order.order.is_paid == false || order.order.sw_order_status_id == 5">
+            
+            <div class="item-block" data-ng-repeat="cart in order.tickets track by $index">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6" style="overflow:hidden">
+                        <div class="col-sm-5 hidden-sm col-xs-3">
+                            <div class="ribbon-wrapper"><div class="ribbon ribbon-{{ cart.labelColor }}">{{ cart.label }}</div></div>
+                            <a href="" ng-click="attraction_details(cart.product_id,cart.product_name)"><div class="img-container" ng-style="{'background-image' : 'url(' + cart.img_src + ')' }"></div></a>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-9 cart-details">
+                            <h4 class="ticket-title"><a href="" ng-click="attraction_details(cart.product_id,cart.product_name)" title="{{ cart.ticket_name }}">{{ cart.ticket_name }}</a></h4>
+                            <p>{{ cart.img_desc }}</p>
+                            <a class="link" id="{{$index}}" href="" ng-click="attraction_details(cart.product_id,cart.product_name)">More Details</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <p ng-show="false" class="indexItem">{{$index}}</p>
+
+                            <p ng-show="false" data-ng-init="$rootScope.tot = 0"></p>
+                            <p ng-show="false" data-ng-repeat="totpriceTicket in cart.ticket_type_details" data-ng-init="$rootScope.tot =  $rootScope.tot + (totpriceTicket.price_ticket*totpriceTicket.total_ticket)"></p>
+                            <p ng-show="false" class="totAmount"> {{$rootScope.tot}} </p>
+
+                            <button class="remove-item" ng-click="remove(cart, $index)">Remove</button>
+                            <!-- <button class="remove-item" data-ng-init="ticketTotalAmount=0" ng-click="remove($rootScope.tot, cart.ticket_name, cart)">Remove</button> -->
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6">
+                        <!-- <p data-ng-repeat="adultTicket in cart.ticket_type_details" ng-if="adultTicket.pricing_type = 'Adult'"> {{adultTicket.pricing_type}} </p> -->
+                        <div class="row" data-ng-repeat="adultTicket in cart.ticket_type_details" ng-if="adultTicket.pricing_type == 'Adult' && adultTicket.total_ticket != 0">
+                            <div class="col-sm-3 col-xs-12 price-rates">
+                                <p class="person">{{adultTicket.pricing_type}}</p>
+                                <span class="visible-xs-inline">(</span>
+                                <p class="normal-price">SGD{{ adultTicket.original_price }}</p>
+                                <p class="swish-price">SGD{{ adultTicket.price_ticket }}</p>
+                                <span class="visible-xs-inline">)</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="adultAmount = adultAmount-1; adultnewAmount = adultnewAmount-1; adultTotalPrice = adultTotalPrice-parseInt(adultTicket.price_ticket); minus(adultTicket.price_ticket, cart, adultAmount, adultTicket.pricing_type_id)" data-ng-init="adultAmount= adultAmount + parseInt(adultTicket.total_ticket); adultnewAmount = 0" data-ng-disabled="adultAmount == 1" > - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ adultAmount }}</span>
+                                        <h6 ng-show="false">{{adultnewAmount}}</h6>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="adultAmount = adultAmount+1; adultnewAmount = adultnewAmount+1; adultTotalPrice = adultTotalPrice+parseInt(adultTicket.price_ticket); plus(adultTicket.price_ticket, cart, adultAmount, adultTicket.pricing_type_id)"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 buy-amount">
+                                <button class="swish-price" data-ng-init="adultTotalPrice= adultTotalPrice + (parseInt(adultTicket.price_ticket) * parseInt(adultTicket.total_ticket))" data-ng-disabled="adultTotalPrice == 0">SGD {{ adultTotalPrice | number:2 }}</button>
+                            </div><br><br><br><br>
+                            <ul class="prices" ng-show="false">
+                                <li class="orderId">{{ order.order.id }}</li>
+                                <li class="priceid">{{ adultTicket.pricing_id }}</li>
+                                <li class="pricetype">{{ adultTicket.pricing_type_id }}</li>
+                                <li class="pricetype_name">{{adultTicket.pricing_type}}</li>
+                                <li class="productid">{{ cart.product_id }}</li>
+                                <li class="productname">{{ cart.ticket_name }}</li>
+                                <li class="adultCount">{{ adultAmount }}</li>
+                                <li class="ticketredeem">0</li>
+                                <li class="largeImageUrl">{{cart.img_src}}</li>
+                                <li class="original_price">{{adultTicket.original_price}}</li>
+                                <li class="price">{{adultTicket.price_ticket}}</li>
+                                <li class="total_ticket">{{adultnewAmount}}</li>
+                            </ul>
+                        </div>
+
+                        <div class="row" data-ng-repeat="childTicket in cart.ticket_type_details" ng-if="childTicket.pricing_type == 'Child' && childTicket.total_ticket != 0 ">
+                            <div class="col-sm-3 col-xs-12 price-rates">
+                                <p class="person">{{childTicket.pricing_type}}</p>
+                                <span class="visible-xs-inline">(</span>
+                                <p class="normal-price">SGD{{ childTicket.original_price }}</p>
+                                <p class="swish-price">SGD{{ childTicket.price_ticket }}</p>
+                                <span class="visible-xs-inline">)</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-6 buy-qty">
+                                <div>
+                                    <div class="btn-container-decrement">
+                                        <button data-ng-click="childAmount = childAmount-1; childnewAmount = childnewAmount-1; childTotalPrice = childTotalPrice-parseInt(childTicket.price_ticket); minus(childTicket.price_ticket, cart, childAmount, childTicket.pricing_type_id)" data-ng-init="childAmount= childAmount + parseInt(childTicket.total_ticket); childnewAmount = 0" data-ng-disabled="childAmount == 1" > - </button>
+                                    </div>
+                                    <div class="num-container">
+                                        <span>{{ childAmount }}</span>
+                                        <h6 ng-show="false">{{childnewAmount}}</h6>
+                                    </div>
+                                    <div class="btn-container-increment">
+                                        <button data-ng-click="childAmount = childAmount+1; childnewAmount = childnewAmount+1; childTotalPrice = childTotalPrice+parseInt(childTicket.price_ticket); plus(childTicket.price_ticket, cart, childAmount, childTicket.pricing_type_id)"> + </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 buy-amount">
+                                <button class="swish-price" data-ng-init="childTotalPrice= (parseInt(childTicket.price_ticket) * parseInt(childTicket.total_ticket))" data-ng-disabled="childTotalPrice == 0">SGD {{ childTotalPrice | number:2 }}</button>
+                            </div><br><br><br><br>
+                            <ul class="prices" ng-show="false">
+                                <li class="orderId">{{ order.order.id }}</li>
+                                <li class="priceid">{{ childTicket.pricing_id }}</li>
+                                <li class="pricetype">{{ childTicket.pricing_type_id }}</li>
+                                <li class="pricetype_name">{{childTicket.pricing_type}}</li>
+                                <li class="productid">{{ cart.product_id }}</li>
+                                <li class="productname">{{ cart.ticket_name }}</li>
+                                <li class="adultCount">{{ childAmount }}</li>
+                                <li class="ticketredeem">0</li>
+                                <li class="ticketcode">{{ childTicket.ticket_code }}</li>
+                                <li class="largeImageUrl">{{cart.img_src}}</li>
+                                <li class="original_price">{{childTicket.original_price}}</li>
+                                <li class="price">{{childTicket.price_ticket}}</li>
+                                <li class="total_ticket">{{childnewAmount}}</li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-repeat="undoItem in UndoArray">
+                <div class='alert bg-warning text-warning'><b>{{undoItem.product_name}}</b> has been removed from your cart. <a id='{{undoItem.IndexCart}}' class='undo-remove' ng-click='undo(undoItem, undoItem.Amount)' data-width='{{undoItem.Amount}}'>Undo action</a></div>
+            </div>
+
+        </div>
+        <p id="addPrice"></p>
+
+        <div class="cart-sub-total">
+        <p class="text-right bold">Sub-Total <span>SGD {{ subTotal | number: 2}}</span></p>
+        <span id="totAmount" ng-show="false">{{subTotal}}</span>
+        </div>
+
+        <div class="cart-action-buttons text-right">
+            <!-- <a ui-sref="buy-tickets" class="btn_1 medium green_inv hidden-xs pull-left">Add More Attractions</a> -->
+            <a class="btn_1 medium green_inv hidden-xs pull-left" ng-click="addAttractions()">Add More Attractions</a>
+            <!-- <a ui-sref="checkout-signin" class="btn_1 medium green">Checkout</a> -->
+            <a class="btn_1 medium green checkout">Checkout</a>
+        </div>
+    
+    <div class="gap-md hidden-xs"></div>
+    </div>
+</section>
+
+<section class="container-padding-large bg-white">
+    <div class="main_title">
+        <h2>Recommended <span>Nearby</span> Attractions</h2>
+        <h3 class="thin lato">These attractions are nearby of those that you have picked in the cart. Why not have a look?</h3>
+    </div>
+    
+    <!-- Other random recommended attractions. this one is hard-coded of fixed 3 attractions -->
+    <div data-ng-include="'app/includes/3-col-attractions.html'"></div>
+
+</section>
+<span id="token" ng-show="false">{{token}}</span>
+<span id="host" ng-show="false">{{host}}</span>
+<span id="subTotal" ng-show="false">{{subTotal}}</span>
+<span id="orderid" ng-show="false">{{orderid}}</span>
+<span id="guestorderID" ng-show="false">{{guestorderID}}</span>
+<span id="id" ng-show="false">{{id}}</span>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Shopping Cart"></update-title>
+<update-meta name="description" content="You're almost there! Let's confirm your order first"></update-meta>
+<update-meta property="og:title" content="Shopping Cart"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/cart"></update-meta>
+<update-meta property="og:description" content="You're almost there! Let's confirm your order first"></update-meta>
+<update-meta property="og:image" content="http://www.swish.sg/assets/common/img/cart.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<script type="text/javascript">
+
+
+    var indexItems = [];
+    setTimeout(function(){ 
+        /*
+        var items = [];
+        $('.remove-item').on("click", function(){
+
+            var indexItem = $(this).parent().find("p.indexItem").text();
+            indexItems.push(parseInt(indexItem)) //to remove item and save in cookies
+            
+
+            // Add Undo message box
+                // var title = $(this).parent().find("h4 > a").attr("title");
+            // var removedID = $(this).parent().find("a.link").attr("id"); // bind unique ID to call out later
+                // var totAmount = $(this).parent().find("p.totAmount").text();
+
+            //$('.cart-list-container').append("<div class='alert bg-warning text-warning'><b>"+title+"</b> has been removed. <a id='"+removedID+"' class='undo-remove' ng-click='undo("+removedID+")' data-width='"+totAmount+"'>Undo action</a></div>");
+                // removedID++;
+
+            // Remove element and push it into array.
+            items.push($(this).parent().parent().parent().parent().detach());
+            // console.log(items);
+        });
+
+
+        // do you need these? yes.. but the id is null. seems like this not working // why do you need this?to appear message// message where? ehhh, I mean to appear back the cart item. now / / you have undo
+        // undo function. Not working... somehow vomiting back out all array objects instead :(   // no worries, just add id when do append. solved
+        $('.cart-list-container').on("click",'.undo-remove',function(){
+            var id = $(this).attr('id');
+            // console.log(id);
+            // var totAmount = $(this).attr('data-width');
+            //angular.element('#subTotal').scope().undo(parseFloat(totAmount));
+
+            //$("p#addPrice").text(subTotal.toString());
+            $('.cart-list-container').append(items[id]);
+            $(this).parent().remove();
+        });
+        */
+
+    }, 500);
+
+    
+</script>
+
+<script type="text/javascript">
+
+    $(document).on('click', '#checkout, .checkout', function() {
+        
+        var host = angular.element('#host').scope().host;
+        var token = angular.element('#token').scope().token;
+
+        var totalAmount = angular.element('#subTotal').scope().subTotal;
+        var orderid = angular.element('#orderid').scope().orderid;
+        var guestorderID = angular.element("#guestorderID").scope().guestorderID;
+        var updatetotalAmount = angular.element("#totAmount").scope().subTotal;
+
+        if(token){
+            /*
+            var tickets = [];
+            var idCheck = '';
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                tickets.push({
+                    orderId: idorder,
+                    pricing_id: $(".priceid").eq(index).text(),
+                    pricing_type_id: $(".pricetype").eq(index).text(),
+                    product_id: $(".productid").eq(index).text(),
+                    ticket_name: $(".productname").eq(index).text(),
+                    total_ticket: $(".adultCount").eq(index).text(),
+                    total_ticket_redeemed: $(".ticketredeem").eq(index).text()
+                })
+            });
+            var addtoCart = {
+                total_price: totalAmount,
+                total_price_converted_currency: '',
+                discount_amount: '',
+                exchange_rate: '',
+                email_to: '',
+                email_bcc: '',
+                invoice_number: '',
+                invoice_url: '',
+                total_tax_amount: '',
+                sw_payment_mode_id: '3',
+                sw_currency_id: '8',
+                sw_order_status_id: 4,
+                tickets: tickets
+            };
+            // console.log(addtoCart);
+
+        
+            if(orderid != undefined){
+                $.ajax({
+                    type: 'PUT',
+                    url: window.__env.apiUrl+'api/sw_orders/'+orderid,
+                    data: {tickets: tickets, replaced: true},
+                    beforeSend: function (request){
+                        request.setRequestHeader("Authorization", "Bearer "+token);
+                    },
+                    success: function(){
+                        if(token != undefined){
+                            var payment = 'http://' + angular.element("#host").scope().host + '#/checkout/payment-method';
+                            window.location = payment;
+                        }else{
+                            var login_reg = 'http://' + angular.element("#host").scope().host + '#/checkout/signin';
+                            window.location = login_reg;
+                        }
+                    }
+                })
+            }else{
+                toastr.error('Please add more attractions', 'Cart empty');
+            }
+            */
+
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: '',
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        price_ticket: $(".price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: ''
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+
+            // if(Cookies.get('userCarts')){
+            if(localStorage.getItem('userCarts')){
+                if(tickets.length > 0){
+                    // var userCarts = $.parseJSON(Cookies.get('userCarts'))
+                    var userCarts = $.parseJSON(localStorage.getItem('userCarts'))
+
+                    //add delete total ticket & push new ticket
+                    angular.forEach(tickets, function(newticket){
+
+                        // check if product is existing
+                        var product = $.grep(userCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+                        // console.log(product);
+                        if (product.length > 0)
+                        {
+                            $.each(newticket.ticket_type_details, function (i, nt) {
+                                // since there is always 1 product index 0
+                                var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+                                // console.log(ticket);
+                                /// now if ticket exist + 1
+                                if(ticket.length > 0)
+                                {
+                                    ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+                                }
+                                else {
+                                    // just push
+                                    product[0].ticket_type_details.push(nt);
+                                }
+                            });
+                        }
+                        else
+                        {
+                            userCarts.result[0].tickets(newticket)
+                        }
+
+                        // console.log(exData);
+
+                    })
+
+
+                    //remove items
+                    if(indexItems.length > 0){
+                        angular.forEach(userCarts.result, function(data){
+
+                            for (var i = indexItems.length -1; i >= 0; i--){
+                               data.tickets.splice(indexItems[i],1);
+                            }
+                        })
+                    }
+
+
+                    //add subTotal
+                    angular.forEach(userCarts.result, function(tickets){
+                        tickets.order.total_price = updatetotalAmount;
+                    })
+
+
+                    // Cookies.set('userCarts', JSON.stringify(userCarts))
+                    // document.cookie = "userCarts=" + JSON.stringify(userCarts);
+                    localStorage.setItem("userCarts", JSON.stringify(userCarts))
+                    // console.log($.parseJSON(Cookies.get('userCarts')));
+                    var payment = 'http://' + angular.element("#host").scope().host + '#/checkout/payment-method';
+                    window.location = payment;
+                    // window.location.reload();
+                }else{
+                    toastr.error('Please add more attractions', 'Cart empty');
+                }
+            }
+        }
+
+        if(token == undefined || token == ''){
+
+
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: '',
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        price_ticket: $(".price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: ''
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+
+            // if(Cookies.get('guestCarts') != undefined){
+            if(localStorage.getItem('guestCarts')){
+                
+                if(tickets.length > 0){
+                    // var guestCarts = $.parseJSON(Cookies.get('guestCarts'));
+                    var guestCarts = $.parseJSON(localStorage.getItem('guestCarts'));
+
+                    //add delete total ticket & push new ticket
+                    angular.forEach(tickets, function(newticket){
+
+                        // check if product is existing
+                        var product = $.grep(guestCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+                        // console.log(product);
+                        if (product.length > 0)
+                        {
+                            $.each(newticket.ticket_type_details, function (i, nt) {
+                                // since there is always 1 product index 0
+                                var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+                                // console.log(ticket);
+                                /// now if ticket exist + 1
+                                if(ticket.length > 0)
+                                {
+                                    ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+                                }
+                                else {
+                                    // just push
+                                    product[0].ticket_type_details.push(nt);
+                                }
+                            });
+                        }
+                        else
+                        {
+                            guestCarts.result[0].tickets(newticket)
+                        }
+
+                        // console.log(exData);
+
+                    })
+
+
+                    //remove items
+                    if(indexItems.length > 0){
+                        angular.forEach(guestCarts.result, function(data){
+
+                            for (var i = indexItems.length -1; i >= 0; i--){
+                               data.tickets.splice(indexItems[i],1);
+                            }
+                        })
+                    }
+
+
+                    //add subTotal
+                    angular.forEach(guestCarts.result, function(tickets){
+                        tickets.order.total_price = updatetotalAmount;
+                    })
+
+
+                    // console.log(guestCarts);
+                    // Cookies.set('guestCarts', JSON.stringify(guestCarts))
+                    // document.cookie = "guestCarts=" + JSON.stringify(guestCarts);
+                    localStorage.setItem("guestCarts", JSON.stringify(guestCarts));
+                    var login_reg = 'http://' + angular.element("#host").scope().host + '#/checkout/signin';
+                    window.location = login_reg;
+                    window.location.reload();
+                }else{
+                    toastr.error('Please add more attractions', 'Cart empty');
+                }
+            }
+
+        }
+    });
+
+    
+</script>

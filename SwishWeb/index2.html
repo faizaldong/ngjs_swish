@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/common/css/jquery.intlTelInput.css">
+</head>
+<body>
+	<label for="reg-tel">Phone</label>
+	<input type="tel" class="form-control phone" id="reg-tel" onkeypress="return isNumberKey(event)">
+	<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/common/js/jquery.intlTelInput.js"></script>
+        <script type="text/javascript" language="javascript">
+            setTimeout(function(){ 
+                $("#reg-tel").intlTelInput();
+            },1000);
+        </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!-- Cart Modal -->
+<div class="modal fade modal-cart" id="cartModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content pop-content">
+
+			<h1>Shopping List</h1>
+	
+			<!-- List -->
+			<ul class="dropdown-menu" id="cart_items" style="display: block;">
+			  <div data-ng-repeat="cart in order_history.result">
+				<!-- <li>
+					<div class="image"><a href="attractions.gardens-by-the-bay"><div style="background-image:url('assets/common/img/attractions/thumb/gardens-by-the-bay.jpg');"></div></a></div>
+					<strong>
+						<a href="attractions.gardens-by-the-bay">Gardens by the Bay - Flower Dome &amp; Cloud Forest Day Pass</a>1x Adult : <span class="bold">SGD 28.00</span> 
+					</strong>
+					<a href="#" class="action"><i class="icon-trash"></i><span> Remove</span></a>
+				</li>
+				<li>
+					<div class="image"><a href="attractions.madame-tussauds"><div style="background-image:url('assets/common/img/attractions/thumb/madame-tussauds.jpg');"></div></a></div>
+					<strong>
+						<a href="attractions.madame-tussauds">Madame Tussauds</a>1x Adult : <span class="bold">SGD 19.00</span> <br/> 1x Child : <span class="bold">SGD 17.00</span>
+					</strong>
+					<a href="#" class="action"><i class="icon-trash"></i><span> Remove</span></a>
+				</li> -->
+				<li data-ng-repeat="tickets in cart.tickets">
+					<!-- <div class="image"><a href=""><div ng-style="{'background-image':'url({{ tickets.img_src }})'}"></div></a></div> -->
+					<div class="image"><a href=""><img ng-src="{{tickets.img_src}}" class="full-width center" alt="{{ tickets.product_name }}" style="width: 100%; height: 50px;"></a></div>
+					<strong>
+						<a href="">{{tickets.product_name}}</a>
+							<font size="1" class="pull-left" ng-repeat="ticketAdults in tickets.ticket_type_details" ng-if="ticketAdults.pricing_type_id == 1">
+	        					{{ticketAdults.total_ticket}}x {{ticketAdults.pricing_type}} : SGD {{ticketAdults.original_price}}
+	        				</font> <br/> <br/> 
+							<font size="1" class="pull-left" ng-repeat="ticketChild in tickets.ticket_type_details" ng-if="ticketChild.pricing_type_id == 2">
+            					{{ticketChild.total_ticket}}x {{ticketChild.pricing_type}} : SGD {{ticketChild.original_price}}
+            				</font>
+					</strong>
+					<!--<a href="#" class="action"><i class="icon-trash"></i><font size="1"> Remove </font></a>-->
+					<p ng-show="false" data-ng-repeat="totpriceTicket in cart.ticket_type_details" data-ng-init="$rootScope.tot =  $rootScope.tot + (totpriceTicket.price_ticket*totpriceTicket.total_ticket)"></p>
+					<a href="" class="action" data-ng-init="ticketTotalAmount=0" ng-click="remove_($rootScope.tot, cart, $index)">Remove</a>
+				</li>
+			  </div>
+
+				<!-- Total Price -->
+				<li>
+					<div>Total: <span>SGD {{subTotal | number: 2}}</span></div>
+				</li>
+			</ul>
+	
+			<!-- Buttons -->
+			<div class="row">
+				<div class="col-xs-12">
+					<a ui-sref="checkout-payment-method" class="btn btn-primary form-control animate checkout">CHECK OUT</a>
+				</div>
+				<div class="col-xs-12">
+					<a ui-sref="cart" class="btn btn-primary form-control animate btn-greyed gotocart">GO TO CART</a>
+				</div>
+			</div>
+			
+
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button><!-- Exit Button -->
+		</div>
+	</div>
+</div>
+
+<!-- Cart Modal Empty (Temp) for mobile view -->
+<div class="modal fade modal-cart" id="cartemptyModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content pop-content empty-cart">
+
+			<h1>Shopping List</h1>
+
+			<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+		    <h4>WHOA!</h4>
+		    <p>Your cart is empty. Let's shop!</p>
+	
+			<!-- Buttons -->
+			<div class="gap"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- you should change here -->
+		            <a ui-sref="buy-tickets" class="btn btn-primary buyticket">BUY TICKETS</a>
+				</div>
+			</div>
+			
+
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button><!-- Exit Button -->
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	
+	// plus this jquery make modal close when user click BUY TICKETS button
+	$( document ).ready(function(){
+
+		$(".buyticket").on('click', function(){
+
+			$("#cartemptyModal").modal('hide');
+		})
+
+		$(".checkout").on('click', function(){
+
+			$("#cartModal").modal('hide');
+		})
+
+		$(".gotocart").on('click', function(){
+
+			$("#cartModal").modal('hide');
+		})
+	})
+</script>

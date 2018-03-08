@@ -1,0 +1,179 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/purchase-history.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Purchase History</h1>
+        	<p>Your previous purchases history list</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Account</li>
+            <li>Purchase History</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-large">
+    <div class="row">
+        
+        <aside class="col-lg-3 col-md-3 sidebar hidden-xs hidden-sm">
+        
+            <div class="box_style_cat attractions-nav">
+                <ul id="cat_nav">
+                    <li><a id="active"><div class="sub-nav city"></div>Purchase History <span>({{totHistory}})</span></a></li>
+                    <li><a ui-sref="settings"><div class="sub-nav settings"></div>Settings</a></li>
+                </ul>
+            </div>
+
+            <a ng-click="logout()" class="btn btn-secondary form-control grey">Sign Out</a>
+
+            <div class="gap-md"></div>
+
+            <!-- <div ng-init="friends = [{name:'John', phone:'555-1276'},
+                         {name:'Mary', phone:'800-BIG-MARY'},
+                         {name:'Mike', phone:'555-4321'},
+                         {name:'Adam', phone:'555-5678'},
+                         {name:'Julie', phone:'555-8765'},
+                         {name:'Juliette', phone:'555-5678'}]">
+                        
+            </div>
+            {{friends}}
+
+
+
+            <select ng-model="search.name">
+              <option value="adam">adam</option>
+            </select>
+            {{search.name}}
+            <label>Name only <input ng-model="search.name"></label><br>
+            <label>Phone only <input ng-model="search.phone"></label><br>
+
+
+            <table id="searchObjResults">
+              <tr><th>Name</th><th>Phone</th></tr>
+              <tr ng-repeat="friendObj in friends | filter:search:strict">
+                <td>{{friendObj.name}}</td>
+                <td>{{friendObj.phone}}</td>
+              </tr>
+            </table> -->
+
+
+            
+        </aside><!--End aside -->
+        <div class="col-lg-9 col-md-8">
+                
+            <!-- Filter -->
+            <div id="tools">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5 col-xs-6">
+                        <div class="styled-select-filters">
+                            <select name="sort_price" id="sort_price" ng-model="search.order.created_at">
+                                <option value="" selected="">Sort by : Latest Purchases</option>
+                                <option value="2017-04-21T01:15:14.509Z">Latest Purchases</option>
+                                <option value="2017-01-01">Ticket Expiry Date</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-xs-6 pl0">
+                        <div class="styled-select-filters">
+                             <select name="sort_rating" id="sort_rating" ng-model="search.type" >
+                                <option value="" selected="">Filter by : All</option>
+                                <option value="">All</option>
+                                <!-- <option value="Validity">Validity</option> -->
+                                <option value="Adult">Adult</option>
+                                <option value="Child">Child</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="cart-list-container history-list-container" >
+                <!-- Order Block -->
+                <div class="order-block">
+               		<!-- {{historyPurchase}} -->
+               		<div data-ng-repeat="orderList in historyPurchase | orderBy:search:true" ng-if="orderList.order.is_paid == true && orderList.order.sw_order_status_id == 2">
+                    <div class="order-header">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Order #{{ orderList.order.order_number }}</h3>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Purchased on {{ orderList.order.created_at | date:'MM/dd/yyyy @ h:mma'}}</p>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="order-body">
+                        <!-- Attraction list -->
+                        <!-- <div class="item-block" data-ng-repeat="tickets in orderList.ticket_details" id="{{ ride.id }}" ng-if="tickets.tickets.length > 0"> -->
+                        <div class="item-block" data-ng-repeat="tickets in orderList.ticket_details | filter:search:strict ">
+                            <div class="row">
+                                <div class="col-md-9 col-sm-9" style="overflow:hidden">
+                                    <div class="col-md-5 col-sm-5 col-xs-4 col-xxs-12">
+                                        <div class="ribbon-wrapper"><div class="ribbon ribbon-green">purchased</div></div><!-- Status Ribbon -->
+                                        <a href="http://localhost/#/attractions/{{tickets.tickets[0].ticket_name}}/{{tickets.tickets[0].ProductId}}"><div class="img-container" ng-style="{'background-image' : 'url(' + tickets.image.LargeImageUrl + ')' }"></div></a><!-- Image -->
+                                    </div>
+                                    <div class="col-md-7 col-sm-7 col-xs-8 col-xxs-12 cart-details"><!-- Description -->
+                                        <h4 class="ticket-title"><a href="http://localhost/#/attractions/{{tickets.tickets[0].ticket_name}}/{{tickets.tickets[0].ProductId}}" title="{{ tickets.tickets[0].ticket_name }}">{{ tickets.tickets[0].ticket_name }}</a></h4>
+                                        <p class="ticket-type">{{ ride.passType }}</p>
+                                        <p>{{ tickets.type }} x {{ tickets.tickets.length }}</p>  
+										
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 action-buttons">
+                                   
+                                    <a class="btn_1 green" href="" ng-click="download($index)">Download PDF</a>
+                                    <a class="btn_1 grey" href="http://localhost/#/attractions/{{tickets.tickets[0].ticket_name}}/{{tickets.tickets[0].ProductId}}">More Details</a>
+
+                                </div>
+                            </div>
+                        </div><!-- /.attraction-list -->
+		                </div>
+					        </div>
+				        </div>	
+            </div>
+
+            <div class="gap-md"></div>
+
+            <!-- <a ui-sref="buy-tickets" class="btn_1 medium blue pull-right">Buy More Tickets</a> -->
+            <a ng-show="buttonnotEmpty" ui-sref="buy-tickets" class="btn_1 medium blue pull-right">Buy More Tickets</a>
+						<a ng-show="buttonisEmpty" ui-sref="buy-tickets" class="btn_1 medium blue pull-right">Shop for attactions now</a>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Purchase History"></update-title>
+<update-meta name="description" content="Your previous purchases history list"></update-meta>
+<update-meta property="og:title" content="Past Purchases"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/account/purchase-history"></update-meta>
+<update-meta property="og:description" content="Your previous purchases history list"></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<!-- Custom CSS/JS -->
+<style type="text/css">
+    .order-block{background-color: #fff; margin-bottom: 20px}
+    .order-header{border-bottom: 1px solid #b3b3b3;overflow:hidden;padding: 15px;}
+    .order-header h3{margin-top: 0;margin-bottom: 0;}
+    .order-header p{margin-top: 5px;font-size: 14px;margin-bottom: 0;text-align: right;}
+    .order-body{padding: 0 15px 15px 15px;}
+</style>
+
+<script type="text/javascript"></script>

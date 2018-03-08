@@ -1,0 +1,865 @@
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		setTimeout(function(){    $(".flag-container").click(function(){     $(this).parent().parent().addClass("focused populated");   }); },1000);  $("#reg-tel").click(function(){    $(this).parent().find(".flag-container").addClass("visible")  });
+	})
+</script> -->
+
+<style> 
+.glyphicon.spinning {
+	animation: spin 1s infinite linear;
+	-webkit-animation: spin2 1s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+</style> 
+
+<!-- Login Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content pop-content">
+
+			<h1>Sign In to Swish</h1>
+
+			<!-- Social Login -->
+			<!-- <div class="row social-login">
+				<div class="col-xs-6">
+					<a href="" class="btn_1 login-fb"><i class="fa fa-facebook" aria-hidden="true"></i> &nbsp; Facebook</a>
+				</div>
+				<div class="col-xs-6">
+					<a href="" class="btn_1 login-g"><i class="fa fa-google-plus" aria-hidden="true"></i> &nbsp; Google+</a>
+				</div>
+			</div> -->
+
+			<!-- OR -->
+			<!-- <div class="gap"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h5><span>OR</span></h5>
+				</div>
+			</div> -->
+
+				<form name="userForm">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="js-float-label-wrapper">
+								<label for="email" class="float-label">Email Address / Contact No</label>
+								<input type="email" id="email" class="form-control email" ng-class="emaillogActive" name="username" ng-model="usernameLogin">
+								<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailrequired">You can't leave this empty.</span>
+								<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailinvaid">Email doesn't exists</span>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<div class="js-float-label-wrapper">
+								<label for="password" class="float-label">Password</label>
+								<input type="password" class="form-control lock" ng-class="passwordlogActive" id="password" name="password" ng-model="passwordLogin">
+								<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passwordrequired">You can't leave this empty.</span>
+								<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passwordInvalid">Wrong password. Please try again.</span>
+							</div>
+						</div>
+					</div>
+			
+					<div class="gap"></div>
+					<div class="row">
+						<div class="form-actions col-xs-12">
+							<!-- <input type="submit" class="btn btn-primary form-control animate" value="SIGN IN" ng-disabled="userForm.$invalid" ng-click="submit()" /> -->
+							<button type="submit" class="btn btn-primary form-control animate" ng-disabled="userForm.$invalid" ng-click="submit()"><span ng-show="spinLogin"><i class="glyphicon glyphicon-refresh spinning"></i></span> SIGN IN</button>
+						</div>&nbsp; 
+						<div class="col-xs-12">
+							<button class="btn btn-primary form-control animate btn-greyed" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">REGISTER</button>
+						</div>
+					</div>
+				</form>
+
+			<!-- <form name="userForm">
+		      <input type="text" name="username" placeholder="username" ng-model="username"/><br/>
+		      <input type="text" name="password" placeholder="password" ng-model="password"/><br/>
+		      <input type="submit" value="submit" ng-disabled="userForm.$invalid" ng-click="submit()"/>
+		    </form> -->
+		 	
+			
+			<!-- Forgot Password -->
+			<div class="gap"></div>
+			<div class="row">
+				<div class="col-sm-12 mini-link">
+					<a href="" class="hidden-xs" data-dismiss="modal" data-toggle="modal" data-target="#forgotpassModal">Forgot Password</a>
+					<a href="" class="visible-xs" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-controls-modal="#forgotpassModal" data-target="#forgotpassModal">Forgot Password</a><!-- Add static modal background -->
+				</div>
+			</div>
+
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button><!-- Exit Button -->
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Register Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content pop-content">
+
+		<form name="regForm">
+			<h1>Register for Swish</h1>
+
+			<h4>ACCOUNT INFO</h4>
+			<div class="gap-sm"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper" >
+						<label for="reg-email">Email Address</label>
+						<input id="reg-email" type="email" class="form-control email" ng-class="emailActive"  ng-model="email"><span class="asterisc">*</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailr" >You can't leave this empty.</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailvalidate" >Email Exists</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="emailinvalid" >Email Invalid</span>
+						<!-- <span ng-style="{color:'green'}" ng-show="emailvalidateAvai" >Email Available</span> -->
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-password">Password</label>
+						<input id="reg-password" type="password" class="form-control lock" ng-class="passwordActive" ng-model="password"><span class="asterisc">*</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passrequired">You can't leave this empty.</span>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-confirm-password">Confirm Password</label>
+						<input id="reg-confirm-password" type="password" class="form-control lock" ng-class="passwordconfirmActive" ng-model="password_confirmation"><span class="asterisc">*</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="passconfirmrequired">You can't leave this empty.</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="IsMatch" class="required">Confirm Password Not Match</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="gap-sm"></div>
+			<h4>PERSONAL INFO</h4>
+			<div class="gap-sm"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-first-name">First Name</label>
+						<input id="reg-name" name="username" type="text" class="form-control user" ng-class="firstnameActive" ng-model="first_name"><span class="asterisc">*</span>
+						<span ng-style="{ color:'red' }" ng-show="namerequired" >You can't leave this empty.</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="namevalidate" >First Name Exists</span>
+						<!-- <span ng-style="{color:'green'}" ng-show="namevalidateAvai" >User Name Available</span> -->
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-last-name">Last Name</label>	
+						<input id="reg-last-name" type="text" class="form-control user" ng-model="last_name">
+					</div>
+				</div>
+				<!-- Hidden Input Age -->
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-age">Age</label>	
+						<input id="reg-age" type="hidden" class="form-control user" ng-model="age">
+					</div>
+				</div>
+				<!-- <div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-tel">Secondary Phone</label>
+						<input id="reg-tel" type="tel" class="form-control phone" onkeypress="return isNumberKey(event)" ng-model="secondary_phone_number">
+					</div>
+				</div> -->
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-occupation">Occupation</label>	
+						<input id="reg-occupation" type="text" class="form-control user" ng-model="occupation">
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-tel">Contact Phone</label>
+						<input id="reg-tel" type="tel" class="form-control phone" ng-class="contactnoActive" onkeypress="return isNumberKey(event)" ng-model="contact_no"><span class="asterisc">*</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="contactrequired" >You can't leave this empty.</span>
+						<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="contactvalidate" >Contact No Exists</span>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-wrapper">
+						<label for="reg-dob">Date of Birth (DD/MM/YYYY)</label>
+						<input id="reg-dob" type="date" class="form-control calendar" ng-model="dob">
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-dropdown-wrapper">
+						<label for="select-gender" class="float-label float-drop">Gender</label>
+						<select id="select-gender" class="demo-default flag" placeholder="Gender" ng-model="gender">
+							<option value="">Gender</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="js-float-label-dropdown-wrapper">
+						<label for="select-marital-status" class="float-label float-drop">Marital Status</label>
+						<select id="select-marital-status" class="demo-default flag" placeholder="Marital Status" ng-model="marital_status">
+							<option value="">Marital Status</option>
+							<option value="single">Single</option>
+							<option value="double">Married</option>
+						</select>
+					</div>
+				</div>
+				<!--<div class="col-xs-12">
+				 	<div class="js-float-label-wrapper">
+
+
+						<select id="select-country" class="demo-default flag" placeholder="Country of residence" ng-model="contact_country_code">
+						    <option value="">Country of residence</option>
+							<option value="93">Afghanistan</option>
+						    <option value="0000">&Aring;land Islands</option>
+						    <option value="355">Albania</option>
+						    <option value="213">Algeria</option>
+						    <option value="1-684">American Samoa</option>
+						    <option value="376">Andorra</option>
+						    <option value="244">Angola</option>
+						    <option value="1-264">Anguilla</option>
+						    <option value="672">Antarctica</option>
+						    <option value="1-268">Antigua and Barbuda</option>
+						    <option value="54">Argentina</option>
+						    <option value="374">Armenia</option>
+						    <option value="297">Aruba</option>
+						    <option value="61">Australia</option>
+						    <option value="43">Austria</option>
+						    <option value="994">Azerbaijan</option>
+						    <option value="1-242">Bahamas</option>
+						    <option value="973">Bahrain</option>
+						    <option value="880">Bangladesh</option>
+						    <option value="1-246">Barbados</option>
+						    <option value="375">Belarus</option>
+						    <option value="32">Belgium</option>
+						    <option value="501">Belize</option>
+						    <option value="229">Benin</option>
+						    <option value="1-441">Bermuda</option>
+						    <option value="975">Bhutan</option>
+						    <option value="591">Bolivia, Plurinational State of</option>
+						    <option value="387">Bosnia and Herzegovina</option>
+						    <option value="267">Botswana</option>
+						    <option value="0000">Bouvet Island</option>
+						    <option value="55">Brazil</option>
+						    <option value="246">British Indian Ocean Territory</option>
+						    <option value="673">Brunei Darussalam</option>
+						    <option value="359">Bulgaria</option>
+						    <option value="226">Burkina Faso</option>
+						    <option value="257">Burundi</option>
+						    <option value="855">Cambodia</option>
+						    <option value="237">Cameroon</option>
+						    <option value="1">Canada</option>
+						    <option value="238">Cape Verde</option>
+						    <option value="1-345">Cayman Islands</option>
+						    <option value="236">Central African Republic</option>
+						    <option value="235">Chad</option>
+						    <option value="56">Chile</option>
+						    <option value="86">China</option>
+						    <option value="61">Christmas Island</option>
+						    <option value="61">Cocos (Keeling) Islands</option>
+						    <option value="57">Colombia</option>
+						    <option value="269">Comoros</option>
+						    <option value="242">Congo</option>
+						    <option value="243">Congo, the Democratic Republic</option>
+						    <option value="682">Cook Islands</option>
+						    <option value="506">Costa Rica</option>
+						    <option value="225">C&ocirc;te d'Ivoire</option>
+						    <option value="385">Croatia</option>
+						    <option value="53">Cuba</option>
+						    <option value="357">Cyprus</option>
+						    <option value="420">Czech Republic</option>
+						    <option value="45">Denmark</option>
+						    <option value="253">Djibouti</option>
+						    <option value="1-767">Dominica</option>
+						    <option value="1-809, 1-829, 1-849">Dominican Republic</option>
+						    <option value="593">Ecuador</option>
+						    <option value="20">Egypt</option>
+						    <option value="503">El Salvador</option>
+						    <option value="240">Equatorial Guinea</option>
+						    <option value="291">Eritrea</option>
+						    <option value="372">Estonia</option>
+						    <option value="251">Ethiopia</option>
+						    <option value="500">Falkland Islands (Malvinas)</option>
+						    <option value="298">Faroe Islands</option>
+						    <option value="679">Fiji</option>
+						    <option value="358">Finland</option>
+						    <option value="33">France</option>
+						    <option value="0000">French Guiana</option>
+						    <option value="689">French Polynesia</option>
+						    <option value="0000">French Southern Territories</option>
+						    <option value="241">Gabon</option>
+						    <option value="220">Gambia</option>
+						    <option value="995">Georgia</option>
+						    <option value="49">Germany</option>
+						    <option value="233">Ghana</option>
+						    <option value="350">Gibraltar</option>
+						    <option value="30">Greece</option>
+						    <option value="299">Greenland</option>
+						    <option value="1-473">Grenada</option>
+						    <option value="0000">Guadeloupe</option>
+						    <option value="1-671">Guam</option>
+						    <option value="502">Guatemala</option>
+						    <option value="44-1481">Guernsey</option>
+						    <option value="224">Guinea</option>
+						    <option value="245">Guinea-Bissau</option>
+						    <option value="592">Guyana</option>
+						    <option value="509">Haiti</option>
+						    <option value="0000">Heard Island and McDonald Islands</option>
+						    <option value="379">Holy See (Vatican City State)</option>
+						    <option value="504">Honduras</option>
+						    <option value="852">Hong Kong</option>
+						    <option value="36">Hungary</option>
+						    <option value="354">Iceland</option>
+						    <option value="91">India</option>
+						    <option value="62">Indonesia</option>
+						    <option value="98">Iran, Islamic Republic of</option>
+						    <option value="964">Iraq</option>
+						    <option value="353">Ireland</option>
+						    <option value="44-1624">Isle of Man</option>
+						    <option value="!@#$%^&*()_+}{">Israel</option>
+						    <option value="39">Italy</option>
+						    <option value="1-876">Jamaica</option>
+						    <option value="81">Japan</option>
+						    <option value="44-1534">Jersey</option>
+						    <option value="JO">Jordan</option>
+						    <option value="7">Kazakhstan</option>
+						    <option value="254">Kenya</option>
+						    <option value="686">Kiribati</option>
+						    <option value="850">Korea, Democratic People's Republic of</option>
+						    <option value="82">Korea, Republic of</option>
+						    <option value="965">Kuwait</option>
+						    <option value="996">Kyrgyzstan</option>
+						    <option value="856">Lao People's Democratic Republic</option>
+						    <option value="371">Latvia</option>
+						    <option value="961">Lebanon</option>
+						    <option value="266">Lesotho</option>
+						    <option value="231">Liberia</option>
+						    <option value="218">Libyan Arab Jamahiriya</option>
+						    <option value="423">Liechtenstein</option>
+						    <option value="370">Lithuania</option>
+						    <option value="352">Luxembourg</option>
+						    <option value="853">Macao</option>
+						    <option value="389">Macedonia, the former Yugoslav Republic of</option>
+						    <option value="261">Madagascar</option>
+						    <option value="265">Malawi</option>
+						    <option value="60">Malaysia</option>
+						    <option value="960">Maldives</option>
+						    <option value="223">Mali</option>
+						    <option value="356">Malta</option>
+						    <option value="692">Marshall Islands</option>
+						    <option value="0000">Martinique</option>
+						    <option value="222">Mauritania</option>
+						    <option value="230">Mauritius</option>
+						    <option value="262">Mayotte</option>
+						    <option value="52">Mexico</option>
+						    <option value="691">Micronesia, Federated States of</option>
+						    <option value="373">Moldova, Republic of</option>
+						    <option value="377">Monaco</option>
+						    <option value="976">Mongolia</option>
+						    <option value="382">Montenegro</option>
+						    <option value="1-664">Montserrat</option>
+						    <option value="212">Morocco</option>
+						    <option value="258">Mozambique</option>
+						    <option value="95">Myanmar</option>
+						    <option value="264">Namibia</option>
+						    <option value="674">Nauru</option>
+						    <option value="977">Nepal</option>
+						    <option value="31">Netherlands</option>
+						    <option value="599">Netherlands Antilles</option>
+						    <option value="687">New Caledonia</option>
+						    <option value="64">New Zealand</option>
+						    <option value="505">Nicaragua</option>
+						    <option value="227">Niger</option>
+						    <option value="234">Nigeria</option>
+						    <option value="683">Niue</option>
+						    <option value="0000">Norfolk Island</option>
+						    <option value="1-670">Northern Mariana Islands</option>
+						    <option value="47">Norway</option>
+						    <option value="968">Oman</option>
+						    <option value="92">Pakistan</option>
+						    <option value="680">Palau</option>
+						    <option value="970">Palestinian Territory, Occupied</option>
+						    <option value="507">Panama</option>
+						    <option value="675">Papua New Guinea</option>
+						    <option value="595">Paraguay</option>
+						    <option value="51">Peru</option>
+						    <option value="63">Philippines</option>
+						    <option value="64">Pitcairn</option>
+						    <option value="48">Poland</option>
+						    <option value="351">Portugal</option>
+						    <option value="1-787, 1-939">Puerto Rico</option>
+						    <option value="974">Qatar</option>
+						    <option value="262">R&eacute;union</option>
+						    <option value="40">Romania</option>
+						    <option value="7">Russian Federation</option>
+						    <option value="250">Rwanda</option>
+						    <option value="590">Saint Barth&eacute;lemy</option>
+						    <option value="290">Saint Helena, Ascension and Tristan da Cunha</option>
+						    <option value="1-869">Saint Kitts and Nevis</option>
+						    <option value="	1-758">Saint Lucia</option>
+						    <option value="590">Saint Martin (French part)</option>
+						    <option value="508">Saint Pierre and Miquelon</option>
+						    <option value="1-784">Saint Vincent and the Grenadines</option>
+						    <option value="685">Samoa</option>
+						    <option value="378">San Marino</option>
+						    <option value="239">Sao Tome and Principe</option>
+						    <option value="966">Saudi Arabia</option>
+						    <option value="221">Senegal</option>
+						    <option value="381">Serbia</option>
+						    <option value="248">Seychelles</option>
+						    <option value="232">Sierra Leone</option>
+						    <option value="65">Singapore</option>
+						    <option value="421">Slovakia</option>
+						    <option value="386">Slovenia</option>
+						    <option value="677">Solomon Islands</option>
+						    <option value="252">Somalia</option>
+						    <option value="27">South Africa</option>
+						    <option value="0000">South Georgia and the South Sandwich Islands</option>
+						    <option value="34">Spain</option>
+						    <option value="94">Sri Lanka</option>
+						    <option value="249">Sudan</option>
+						    <option value="597">Suriname</option>
+						    <option value="47">Svalbard and Jan Mayen</option>
+						    <option value="268">Swaziland</option>
+						    <option value="46">Sweden</option>
+						    <option value="41">Switzerland</option>
+						    <option value="963">Syrian Arab Republic</option>
+						    <option value="886">Taiwan, Province of China</option>
+						    <option value="992">Tajikistan</option>
+						    <option value="255">Tanzania, United Republic of</option>
+						    <option value="66">Thailand</option>
+						    <option value="670">Timor-Leste</option>
+						    <option value="228">Togo</option>
+						    <option value="690">Tokelau</option>
+						    <option value="676">Tonga</option>
+						    <option value="1-868">Trinidad and Tobago</option>
+						    <option value="216">Tunisia</option>
+						    <option value="90">Turkey</option>
+						    <option value="993">Turkmenistan</option>
+						    <option value="1-649">Turks and Caicos Islands</option>
+						    <option value="688">Tuvalu</option>
+						    <option value="256">Uganda</option>
+						    <option value="380">Ukraine</option>
+						    <option value="971">United Arab Emirates</option>
+						    <option value="44">United Kingdom</option>
+						    <option value="1">United States</option>
+						    <option value="0000">United States Minor Outlying Islands</option>
+						    <option value="598">Uruguay</option>
+						    <option value="998">Uzbekistan</option>
+						    <option value="678">Vanuatu</option>
+						    <option value="58">Venezuela, Bolivarian Republic of</option>
+						    <option value="84">Viet Nam</option>
+						    <option value="1-284">Virgin Islands, British</option>
+						    <option value="1-340">Virgin Islands, U.S.</option>
+						    <option value="681">Wallis and Futuna</option>
+						    <option value="212">Western Sahara</option>
+						    <option value="967">Yemen</option>
+						    <option value="260">Zambia</option>
+						    <option value="263">Zimbabwe</option>
+						</select>
+					</div>
+				</div>-->
+				<div class="col-xs-12">
+					<div class="js-float-label-dropdown-wrapper">
+						<label for="select-nationality" class="float-label float-drop">Nationality</label>
+						<!-- <input type="text" class="form-control flag" id="select-country" placeholder="Nationality"> -->
+						<select id="select-nationality" class="demo-default flag" placeholder="Nationality" ng-model="nationality">
+						    <option value="">Nationality</option>
+							<option value="AF">Afghanistan</option>
+						    <option value="AX">&Aring;land Islands</option>
+						    <option value="AL">Albania</option>
+						    <option value="DZ">Algeria</option>
+						    <option value="AS">American Samoa</option>
+						    <option value="AD">Andorra</option>
+						    <option value="AO">Angola</option>
+						    <option value="AI">Anguilla</option>
+						    <option value="AQ">Antarctica</option>
+						    <option value="AG">Antigua and Barbuda</option>
+						    <option value="AR">Argentina</option>
+						    <option value="AM">Armenia</option>
+						    <option value="AW">Aruba</option>
+						    <option value="AU">Australia</option>
+						    <option value="AT">Austria</option>
+						    <option value="AZ">Azerbaijan</option>
+						    <option value="BS">Bahamas</option>
+						    <option value="BH">Bahrain</option>
+						    <option value="BD">Bangladesh</option>
+						    <option value="BB">Barbados</option>
+						    <option value="BY">Belarus</option>
+						    <option value="BE">Belgium</option>
+						    <option value="BZ">Belize</option>
+						    <option value="BJ">Benin</option>
+						    <option value="BM">Bermuda</option>
+						    <option value="BT">Bhutan</option>
+						    <option value="BO">Bolivia, Plurinational State of</option>
+						    <option value="BA">Bosnia and Herzegovina</option>
+						    <option value="BW">Botswana</option>
+						    <option value="BV">Bouvet Island</option>
+						    <option value="BR">Brazil</option>
+						    <option value="IO">British Indian Ocean Territory</option>
+						    <option value="BN">Brunei Darussalam</option>
+						    <option value="BG">Bulgaria</option>
+						    <option value="BF">Burkina Faso</option>
+						    <option value="BI">Burundi</option>
+						    <option value="KH">Cambodia</option>
+						    <option value="CM">Cameroon</option>
+						    <option value="CA">Canada</option>
+						    <option value="CV">Cape Verde</option>
+						    <option value="KY">Cayman Islands</option>
+						    <option value="CF">Central African Republic</option>
+						    <option value="TD">Chad</option>
+						    <option value="CL">Chile</option>
+						    <option value="CN">China</option>
+						    <option value="CX">Christmas Island</option>
+						    <option value="CC">Cocos (Keeling) Islands</option>
+						    <option value="CO">Colombia</option>
+						    <option value="KM">Comoros</option>
+						    <option value="CG">Congo</option>
+						    <option value="CD">Congo, the Democratic Republic of the</option>
+						    <option value="CK">Cook Islands</option>
+						    <option value="CR">Costa Rica</option>
+						    <option value="CI">C&ocirc;te d'Ivoire</option>
+						    <option value="HR">Croatia</option>
+						    <option value="CU">Cuba</option>
+						    <option value="CY">Cyprus</option>
+						    <option value="CZ">Czech Republic</option>
+						    <option value="DK">Denmark</option>
+						    <option value="DJ">Djibouti</option>
+						    <option value="DM">Dominica</option>
+						    <option value="DO">Dominican Republic</option>
+						    <option value="EC">Ecuador</option>
+						    <option value="EG">Egypt</option>
+						    <option value="SV">El Salvador</option>
+						    <option value="GQ">Equatorial Guinea</option>
+						    <option value="ER">Eritrea</option>
+						    <option value="EE">Estonia</option>
+						    <option value="ET">Ethiopia</option>
+						    <option value="FK">Falkland Islands (Malvinas)</option>
+						    <option value="FO">Faroe Islands</option>
+						    <option value="FJ">Fiji</option>
+						    <option value="FI">Finland</option>
+						    <option value="FR">France</option>
+						    <option value="GF">French Guiana</option>
+						    <option value="PF">French Polynesia</option>
+						    <option value="TF">French Southern Territories</option>
+						    <option value="GA">Gabon</option>
+						    <option value="GM">Gambia</option>
+						    <option value="GE">Georgia</option>
+						    <option value="DE">Germany</option>
+						    <option value="GH">Ghana</option>
+						    <option value="GI">Gibraltar</option>
+						    <option value="GR">Greece</option>
+						    <option value="GL">Greenland</option>
+						    <option value="GD">Grenada</option>
+						    <option value="GP">Guadeloupe</option>
+						    <option value="GU">Guam</option>
+						    <option value="GT">Guatemala</option>
+						    <option value="GG">Guernsey</option>
+						    <option value="GN">Guinea</option>
+						    <option value="GW">Guinea-Bissau</option>
+						    <option value="GY">Guyana</option>
+						    <option value="HT">Haiti</option>
+						    <option value="HM">Heard Island and McDonald Islands</option>
+						    <option value="VA">Holy See (Vatican City State)</option>
+						    <option value="HN">Honduras</option>
+						    <option value="HK">Hong Kong</option>
+						    <option value="HU">Hungary</option>
+						    <option value="IS">Iceland</option>
+						    <option value="IN">India</option>
+						    <option value="ID">Indonesia</option>
+						    <option value="IR">Iran, Islamic Republic of</option>
+						    <option value="IQ">Iraq</option>
+						    <option value="IE">Ireland</option>
+						    <option value="IM">Isle of Man</option>
+						    <option value="IL">Israel</option>
+						    <option value="IT">Italy</option>
+						    <option value="JM">Jamaica</option>
+						    <option value="JP">Japan</option>
+						    <option value="JE">Jersey</option>
+						    <option value="JO">Jordan</option>
+						    <option value="KZ">Kazakhstan</option>
+						    <option value="KE">Kenya</option>
+						    <option value="KI">Kiribati</option>
+						    <option value="KP">Korea, Democratic People's Republic of</option>
+						    <option value="KR">Korea, Republic of</option>
+						    <option value="KW">Kuwait</option>
+						    <option value="KG">Kyrgyzstan</option>
+						    <option value="LA">Lao People's Democratic Republic</option>
+						    <option value="LV">Latvia</option>
+						    <option value="LB">Lebanon</option>
+						    <option value="LS">Lesotho</option>
+						    <option value="LR">Liberia</option>
+						    <option value="LY">Libyan Arab Jamahiriya</option>
+						    <option value="LI">Liechtenstein</option>
+						    <option value="LT">Lithuania</option>
+						    <option value="LU">Luxembourg</option>
+						    <option value="MO">Macao</option>
+						    <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+						    <option value="MG">Madagascar</option>
+						    <option value="MW">Malawi</option>
+						    <option value="MY">Malaysia</option>
+						    <option value="MV">Maldives</option>
+						    <option value="ML">Mali</option>
+						    <option value="MT">Malta</option>
+						    <option value="MH">Marshall Islands</option>
+						    <option value="MQ">Martinique</option>
+						    <option value="MR">Mauritania</option>
+						    <option value="MU">Mauritius</option>
+						    <option value="YT">Mayotte</option>
+						    <option value="MX">Mexico</option>
+						    <option value="FM">Micronesia, Federated States of</option>
+						    <option value="MD">Moldova, Republic of</option>
+						    <option value="MC">Monaco</option>
+						    <option value="MN">Mongolia</option>
+						    <option value="ME">Montenegro</option>
+						    <option value="MS">Montserrat</option>
+						    <option value="MA">Morocco</option>
+						    <option value="MZ">Mozambique</option>
+						    <option value="MM">Myanmar</option>
+						    <option value="NA">Namibia</option>
+						    <option value="NR">Nauru</option>
+						    <option value="NP">Nepal</option>
+						    <option value="NL">Netherlands</option>
+						    <option value="AN">Netherlands Antilles</option>
+						    <option value="NC">New Caledonia</option>
+						    <option value="NZ">New Zealand</option>
+						    <option value="NI">Nicaragua</option>
+						    <option value="NE">Niger</option>
+						    <option value="NG">Nigeria</option>
+						    <option value="NU">Niue</option>
+						    <option value="NF">Norfolk Island</option>
+						    <option value="MP">Northern Mariana Islands</option>
+						    <option value="NO">Norway</option>
+						    <option value="OM">Oman</option>
+						    <option value="PK">Pakistan</option>
+						    <option value="PW">Palau</option>
+						    <option value="PS">Palestinian Territory, Occupied</option>
+						    <option value="PA">Panama</option>
+						    <option value="PG">Papua New Guinea</option>
+						    <option value="PY">Paraguay</option>
+						    <option value="PE">Peru</option>
+						    <option value="PH">Philippines</option>
+						    <option value="PN">Pitcairn</option>
+						    <option value="PL">Poland</option>
+						    <option value="PT">Portugal</option>
+						    <option value="PR">Puerto Rico</option>
+						    <option value="QA">Qatar</option>
+						    <option value="RE">R&eacute;union</option>
+						    <option value="RO">Romania</option>
+						    <option value="RU">Russian Federation</option>
+						    <option value="RW">Rwanda</option>
+						    <option value="BL">Saint Barth&eacute;lemy</option>
+						    <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+						    <option value="KN">Saint Kitts and Nevis</option>
+						    <option value="LC">Saint Lucia</option>
+						    <option value="MF">Saint Martin (French part)</option>
+						    <option value="PM">Saint Pierre and Miquelon</option>
+						    <option value="VC">Saint Vincent and the Grenadines</option>
+						    <option value="WS">Samoa</option>
+						    <option value="SM">San Marino</option>
+						    <option value="ST">Sao Tome and Principe</option>
+						    <option value="SA">Saudi Arabia</option>
+						    <option value="SN">Senegal</option>
+						    <option value="RS">Serbia</option>
+						    <option value="SC">Seychelles</option>
+						    <option value="SL">Sierra Leone</option>
+						    <option value="SG">Singapore</option>
+						    <option value="SK">Slovakia</option>
+						    <option value="SI">Slovenia</option>
+						    <option value="SB">Solomon Islands</option>
+						    <option value="SO">Somalia</option>
+						    <option value="ZA">South Africa</option>
+						    <option value="GS">South Georgia and the South Sandwich Islands</option>
+						    <option value="ES">Spain</option>
+						    <option value="LK">Sri Lanka</option>
+						    <option value="SD">Sudan</option>
+						    <option value="SR">Suriname</option>
+						    <option value="SJ">Svalbard and Jan Mayen</option>
+						    <option value="SZ">Swaziland</option>
+						    <option value="SE">Sweden</option>
+						    <option value="CH">Switzerland</option>
+						    <option value="SY">Syrian Arab Republic</option>
+						    <option value="TW">Taiwan, Province of China</option>
+						    <option value="TJ">Tajikistan</option>
+						    <option value="TZ">Tanzania, United Republic of</option>
+						    <option value="TH">Thailand</option>
+						    <option value="TL">Timor-Leste</option>
+						    <option value="TG">Togo</option>
+						    <option value="TK">Tokelau</option>
+						    <option value="TO">Tonga</option>
+						    <option value="TT">Trinidad and Tobago</option>
+						    <option value="TN">Tunisia</option>
+						    <option value="TR">Turkey</option>
+						    <option value="TM">Turkmenistan</option>
+						    <option value="TC">Turks and Caicos Islands</option>
+						    <option value="TV">Tuvalu</option>
+						    <option value="UG">Uganda</option>
+						    <option value="UA">Ukraine</option>
+						    <option value="AE">United Arab Emirates</option>
+						    <option value="GB">United Kingdom</option>
+						    <option value="US">United States</option>
+						    <option value="UM">United States Minor Outlying Islands</option>
+						    <option value="UY">Uruguay</option>
+						    <option value="UZ">Uzbekistan</option>
+						    <option value="VU">Vanuatu</option>
+						    <option value="VE">Venezuela, Bolivarian Republic of</option>
+						    <option value="VN">Viet Nam</option>
+						    <option value="VG">Virgin Islands, British</option>
+						    <option value="VI">Virgin Islands, U.S.</option>
+						    <option value="WF">Wallis and Futuna</option>
+						    <option value="EH">Western Sahara</option>
+						    <option value="YE">Yemen</option>
+						    <option value="ZM">Zambia</option>
+						    <option value="ZW">Zimbabwe</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="gap"></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- <input type="submit" class="btn btn-primary form-control animate" value="REGISTER" ng-disabled="regForm.$invalid" ng-click="register()"> -->
+					<button type="submit" class="btn btn-primary form-control animate" ng-disabled="userForm.$invalid" ng-click="register()"><span ng-show="registerUs == 'regis'"><i class="glyphicon glyphicon-refresh spinning"></i></span> REGISTER</button>
+				</div>
+			</div>
+		</form>
+
+
+			<div class="gap-sm"></div>
+			<div class="row">
+				<div class="col-sm-12 mini-link">
+					<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">Have an account? Sign in now</a>
+				</div>
+			</div>
+
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button><!-- Exit Button -->
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotpassModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content pop-content">
+
+			<h1>Find your account</h1>
+
+			<p>Enter your email address below and we will send you a link to reset your password.</p>
+			  <form name="forgotForm">	
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="js-float-label-wrapper">
+							<label for="forgot-email">Email Address</label>
+							<input id="forgot-email" type="email" class="form-control email emailtoget" ng-model="email">
+							<span ng-style="{ color: 'red'}" ng-show="emailrequired" >Email required!</span>
+							<span ng-style="{ color: 'red'}" ng-show="emailinvalid" >Email not exists!</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="gap"></div>
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- <input type="submit" class="btn btn-primary form-control animate" ng-disabled="forgotForm.$invalid" value="SUBMIT" ng-click="forgot()"> -->
+						<input type="submit" id="forgot" class="btn btn-primary form-control animate" ng-disabled="forgotForm.$invalid" ng-click="forgot()" value="RESET PASSWORD">
+					</div>
+				</div>
+
+				<div class="gap-sm"></div>
+				<div class="row">
+					<div class="col-sm-12 mini-link">
+						<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">Back to Sign In</a>
+					</div>
+				</div>
+			  </form>
+
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button><!-- Exit Button -->
+		</div>
+	</div>
+</div>
+
+
+<!-- Used for Register -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css">
+<script type="text/javascript" language="javascript" src="assets/common/js/selectize.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#select-country,#select-nationality,#select-gender,#select-marital-status').selectize();
+});
+
+// Numerical key press only
+  function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+  }
+
+  $(".js-float-label-dropdown-wrapper").click(function(){    $(this).find("label").css("opacity","1")  });
+
+  setTimeout(function(){    
+  	$(".flag-container").click(function(){     
+  		$(this).parent().parent().addClass("focused populated");   
+  	});
+  },1000);  
+
+  $("#reg-tel").click(function(){
+    $(this).parent().find(".flag-container").addClass("visible")  
+  });
+
+  // $("#forgot").on('click', function(){
+
+  // 	var email = $(".emailtoget").val();
+  // 	if(email != 'Email Address'){
+  // 		$("#emailrequired").hide();
+	 //  	$.ajax({
+	 //  		type: 'GET',
+	 //  		url: window.__env.apiUrl+'api/check/available?email='+email+'&contact_no=',
+	 //  		success: function(emailvalid){
+		// 	  	if(emailvalid.status == true){
+		// 	  		$("#emailinvalid").modal('hide');
+		// 	  		$.ajax({
+		// 	  			type: 'POST',
+		// 	  			data: {email: email},
+		// 	  			url: window.__env.apiUrl+'api/users/forgot/password',
+		// 	  			success: function(){
+		// 	  				$("#forgotpassModal").modal('hide');
+		// 					swal({
+		// 					    title: "Password reset sent!",
+		// 						text: "We've sent an email to <b>"+email+"</b> with a link to reset your password. ",
+		// 						type: "success",
+		// 						// timer: 5000,
+		// 						showConfirmButton: true,
+		// 					    html: true
+		// 					});
+		// 	  			}
+		// 	  		})
+		// 	  	}else{
+		// 	  		$("#forgotpassModal").modal('show');
+		// 	  		$("#emailinvalid").modal('show');
+		// 	  	}
+	 //  		}
+	 //  	})		
+  // 	}else{
+  // 		$("#emailrequired").show();
+  // 	}
+  // });
+  
+</script>

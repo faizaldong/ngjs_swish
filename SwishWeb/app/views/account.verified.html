@@ -1,0 +1,62 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/verified.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+            <h1>Verify Account</h1>
+            <p>Almost there...</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Verify Account</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-xlarge text-center">
+    
+     <div ng-show="verify">
+        <img src="assets/common/img/verify.png" alt="Success" class="max-width center">
+        <div class="gap"></div>
+        <h3 class="text-center bold">ONE LAST STEP!</h3>
+        <p style="font-size: 16px;">To keep your account secure, we need to know that is you who decided to use this email for Swish.</p>
+        <div class="gap-md"></div>
+        <a ng-click="verifyacc()" class="btn btn_1 green large">VERIFY MY ACCOUNT</a> 
+    </div>
+    
+    <div ng-show="success">
+        <img src="assets/common/img/success.png" alt="Success" class="max-width center">
+        <div class="gap"></div>
+        <h3 class="text-center bold">SUCCESS!</h3>
+        <p style="font-size: 16px;margin-bottom: 5px">Congratulations! Your Swish account has been verified.</p>
+        <p style="font-size: 16px;">Let's shop for attraction passes!</p>
+        <div class="gap-md"></div>
+        <a ui-sref="buy-tickets" class="btn btn_1 large blue"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; SHOP NOW</a>
+    </div>
+</section>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Account Verified"></update-title>
+<update-meta name="description" content=""></update-meta>
+<update-meta property="og:title" content="Swish Account Verified!"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/"></update-meta>
+<update-meta property="og:description" content=""></update-meta>
+<update-meta property="og:image" content=""></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<!-- Custom CSS/JS -->
+<style type="text/css"></style>
+
+<script type="text/javascript"></script>

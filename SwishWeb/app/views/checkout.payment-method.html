@@ -1,0 +1,415 @@
+<div class="checkout-wrapper">
+    <!-- HEADER
+    ================================================== -->
+    <div class="header">
+        <div class="container">
+            <div class="gap-sm"></div>
+            <a ui-sref="cart" class="back-to-cart">&laquo; <i class="fa fa-shopping-cart" aria-hidden="true"></i> Back to Cart</a>
+
+            <div class="row header-contents">
+                <div class="col-sm-2 col-xs-3"><img src="assets/common/img/logo_sticky.png" class="max-width"></div><!-- Logo -->
+                <div class="col-sm-8 col-xs-9 text-center"><h1>SELECT PAYMENT METHOD</h1></div><!-- Title -->
+                <div class="col-sm-2 hidden-xs"><img src="assets/common/img/rapidssl.gif" class="max-width mt10"></div><!-- Security Seal -->
+            </div>
+        </div>
+    </div><!-- End Header -->
+
+    <!-- PROGRESS BAR
+    ================================================== -->
+    <div class="bg-verydarkgrey container-padding-mini">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Sign In</p>
+                        </div>
+                        <div class="col-xs-3 progress-container current"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Payment Method</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Place Order</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Confirmation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container container-padding-xlarge">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h3 class="text-center-xs">Your choice of payment:</h3>
+                <div class="gap-md"></div>
+
+                <div class="panel-group payment-options" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default" ng-show="true">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <label class="radio-inline row">
+                                    <div class="col-sm-4 col-xs-5 mt10"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ng-model="payment" ng-change="payments()"> <span>PayPal&reg;</span></div>
+                                    <div class="col-sm-8 col-xs-7 text-right-xs pl0-xs"><img src="assets/common/img/PayPal.png"></div>
+                                </label>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <label class="radio-inline row">
+                                    <div class="col-sm-4 col-xs-5 mt10"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ng-model="payment" ng-change="payments()"> <span>Credit Card</span></div>
+                                    <div class="col-sm-8 col-xs-7 text-right-xs pl0-xs">
+                                        <div class="card-holder card_logos">
+                                            <img src="assets/common/img/cc/visa.png" alt="" class="card_visa">
+                                            <img src="assets/common/img/cc/mastercard.png" alt="" class="card_mastercard">
+                                            <img src="assets/common/img/cc/american-express.png" alt="" class="card_amex">
+                                            <img src="assets/common/img/cc/diners-club.png" alt="" class="card_diners">
+                                            <img src="assets/common/img/cc/discover.png" alt="" class="card_discover">
+                                        </div>
+                                    </div>
+                                </label>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body pt0-xs" style="padding-top:20px">
+                                <div class="row">
+                                    <div class="col-sm-5 visible-xs">
+                                        <div class="secure-message">
+                                            <h4>Secure credit card payment</h4>
+                                            <p>This is a secure 128-bit SSL encrypted payment. You're payment is safe. Please fill in the fields to proceed.</p>
+                                            <div class="gap-lg visible-md visible-lg"></div>
+                                        </div>
+                                        <div class="gap"></div>
+                                    </div>
+                                    <div class="col-sm-7 pop-content">
+                                        
+                                        <p style="color:#565a5c">Please fill in all of the fields below:</p>
+                                        
+                                        <div class="js-float-label-wrapper">
+                                            <label for="cc" class="float-label">Card Number</label>
+                                            <input type="text" id="cc" class="form-control card card_logos cardnumber" pattern="[0-9]*" required="required" inputmode="numeric" autocomplete="cc-number" ng-model="cardnumber">
+                                            <!-- <span ng-style="{color: 'red'}" ng-show="cardnumberrequired">card number required</span> -->
+                                            <span ng-style="{color: 'red'}" style="display: none;" class="cardnumberrequired">card number required</span>
+                                        </div>
+
+                                        <div class="js-float-label-wrapper">
+                                            <label for="cc-name" class="float-label">Name on Card</label>
+                                            <input type="text" id="cc-name" class="form-control user cardname" required="required" ng-model="cardname">
+                                            <!-- <span ng-style="{color: 'red'}" ng-show="namecardrequired">name on card required</span> -->
+                                            <span ng-style="{color: 'red'}" style="display: none;" class="cardnamerequired">name on card required</span>
+                                        </div>
+                                        
+                                        <div class="gap-sm visible-xs"></div>
+
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <label>Expiration Date</label>
+                                                <div class="row" style="margin-top: 5px">
+                                                    <div class=" col-xs-4 pr0">
+                                                        <select id="cc-month" class="demo-default cardmonth" ng-model="cardmonth">
+                                                            <option value="00">mm</option>
+                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
+                                                            <option value="03">03</option>
+                                                            <option value="03">03</option>
+                                                            <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                        <!-- <span ng-style="{color: 'red'}" ng-show="ccmonthrequired">month required</span> -->
+                                                        <span ng-style="{color: 'red'}" style="display: none;" class="cardmonthrequired">month required</span>
+                                                    </div>
+                                                    <div class="col-xs-2 pr0">
+                                                        <p class="text-center" style="margin-top:5px;font-size: 16px;">/</p>
+                                                    </div>
+                                                    <div class="col-xs-4 pr0">
+                                                        <select id="cc-year" class="demo-default cardyear" ng-model="cardyear">
+                                                            <option value="0000">yy</option>
+                                                            <option value="2017">17</option>
+                                                            <option value="2018">18</option>
+                                                            <option value="2019">19</option>
+                                                            <option value="2020">20</option>
+                                                            <option value="2021">21</option>
+                                                            <option value="2022">22</option>
+                                                            <option value="2023">23</option>
+                                                            <option value="2024">24</option>
+                                                            <option value="2025">25</option>
+                                                            <option value="2026">26</option>
+                                                            <option value="2027">27</option>
+                                                            <option value="2028">28</option>
+                                                            <option value="2029">29</option>
+                                                            <option value="2030">30</option>
+                                                            <option value="2031">31</option>
+                                                            <option value="2032">32</option>
+                                                            <option value="2033">33</option>
+                                                            <option value="2034">34</option>
+                                                            <option value="2035">35</option>
+                                                            <option value="2036">36</option>
+                                                        </select>
+                                                        <!-- <span ng-style="{color: 'red'}" ng-show="ccyearrequired">year required</span> -->
+                                                        <span ng-style="{color: 'red'}" style="display: none;" class="cardyearrequired">year required</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="gap visible-xs"></div>
+                                            <div class="col-sm-5 col-xs-6">
+                                                <label>Security Code &nbsp;
+                                                    <div class="tooltip_styled tooltip-effect-4">
+                                                        <span class="tooltip-item hidden-xs">?</span>
+                                                        <div class="tooltip-content card_logos">
+                                                            <span class="others"><img src="assets/common/img/is_cc.png" align="left" style="margin-right:10px"> The last 3 digits displayed at the back of your card</span>
+                                                            <span class="amex"><img src="assets/common/img/is_amex.png" align="left" style="margin-right:10px"> The 4 digits displayed above your card number</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <input type="text" pattern="[0-9]*" inputmode="numeric" id="cvv" class="form-control text-center pl0 pr0 cardsecurity" required="required" ng-model="cardsecurity">
+                                                <!-- <span ng-style="{color: 'red'}" ng-show="securityrequired">security code required</span> -->
+                                                <span ng-style="{color: 'red'}" style="display: none;" class="cardsecurityrequired">security code required</span>
+                                            </div>
+                                            <div class="col-xs-6 visible-xs pl0-xs">
+                                                <div class="tooltip-content card_logos cvv-xs">
+                                                    <span class="others"><img src="assets/common/img/is_cc.png" align="left" style="margin-right:10px"> The last 3 digits displayed at the back of your card</span>
+                                                    <span class="amex"><img src="assets/common/img/is_amex.png" align="left" style="margin-right:10px"> The 4 digits displayed above your card number</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Address</label> <!-- <p ng-repeat="userAddress in address.sw_user_addresses">{{ userAddress.address }}</p> -->
+                                                <div class="row" style="margin-top: 5px">
+                                                    <div class=" col-xs-11 pr0">
+                                                        <div class="styled-select-filters">
+                                                            <select class="cardaddress">
+                                                                <option value="null"></option>
+                                                                <option ng-repeat="userAddress in address.sw_user_addresses" value="{{ userAddress.name }}">{{ userAddress.address }}</option>
+                                                            </select>
+                                                        </div> 
+                                                        <span ng-style="{color: 'red'}" style="display: none;" class="cardaddressrequired">address required</span>
+                                                        <!-- <select id="cc-address" class="demo-default cardaddress" ng-model="cardyear">
+                                                            <option ng-repeat="userAddress in address.sw_user_addresses" value="{{ userAddress.id}}">{{ userAddress.address }}</option>
+                                                        </select>
+                                                        <span ng-style="{color: 'red'}" style="display: none;" class="cardaddressrequired">address required</span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 hidden-xs">
+                                        <div class="gap-md"></div>
+                                        <div class="gap"></div>
+                                        <div class="secure-message">
+                                            <h4>Secure credit card payment</h4>
+                                            <p>This is a secure 256-bit SSL encrypted payment. You're payment is safe. Please fill in the fields to proceed.</p>
+                                            <div class="gap-lg visible-md visible-lg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /#accodrdion -->
+
+                <div class="gap-md hidden-xs"></div>
+                <div class="gap visible-xs"></div>
+                
+                <!-- Whichever feels comfortable for you to use  -->
+                <button class="btn_1 green pull-right disabled btn-huge-xs" ng-click="paymentType()">REVIEW YOUR ORDER</button>
+                <!-- <button class="btn_1 green pull-right disabled btn-huge-xs order" ng-click="paymentMethod()">REVIEW YOUR ORDER</button> -->
+                <p id="protocol" ng-show="false">{{protocol}}</p>
+                <p id="host" ng-show="false">{{host}}</p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- FOOTER
+    ================================================== -->
+    <div class="footer container-padding-large">
+        &copy; 2016 Swish. All rights reserved. <br class="visible-xs"/> <a ui-sref="terms" target="_blank">Terms and Conditions</a> | <a ui-sref="privacy" target="_blank">Privacy Policy</a>
+    </div>
+</div>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Checkout"></update-title>
+
+<!-- Custom CSS/JS -->
+<link rel="stylesheet" type="text/css" href="assets/common/css/swish-checkout.css">
+<style type="text/css">
+    #cc,#cc-name{font-size: 18px}
+    .radio-inline.row > div > span{display: inline-block;margin-left: 15px;}
+    .panel-body > .row{padding-left: 24px}
+    .tooltip-item{background-color: #CCC;color: #fff;padding: 5px 5px 6px 8px;width: 20px;height: 20px;border-radius: 10px;line-height: 1;}
+
+    .tooltip-content.card_logos span.amex{display: none;}
+    .tooltip-content.card_logos.is_amex span.others{display: none;}
+    .tooltip-content.card_logos.is_amex span.amex{display: block;}
+
+    .selectize-input.has-items, .selectize-input.dropdown-active{padding-left: 12px !important;}
+    .selectize-control.single .selectize-input:after{right: 12px !important}
+
+    .secure-message{background-color: #f2f2f2;padding: 15px;}
+    .secure-message h4{font-size: 16px;margin-top: 0;}
+    .secure-message p{margin-bottom: 0;color:#999;}
+
+    .card_logos img{transition: all 0.3s ease;}
+    .card-holder.is_visa img:not(.card_visa){opacity: .1;}
+    .card-holder.is_mastercard img:not(.card_mastercard){opacity: .1;}
+    .card-holder.is_amex img:not(.card_amex){opacity: .1;}
+    .card-holder.is_diners img:not(.card_diners){opacity: .1;}
+    .card-holder.is_discover img:not(.card_discover){opacity: .1;}
+
+    .pop-content input.card{background:url('assets/common/img/icons/card.png') no-repeat left center;}
+</style>
+
+<!-- For forms -->
+<script type="text/javascript" language="javascript" src="assets/common/js/jquery.FloatLabel.js"></script>
+<script type="text/javascript" language="javascript">
+    $('.js-float-label-wrapper').FloatLabel();
+    $('.js-float-label-wrapper').removeClass('populated'); //clear the sudden trigger
+</script>
+
+<!-- For accordion+radio  -->
+<script type="text/javascript">
+$(document).ready(function () {
+    $("input[name='inlineRadioOptions']").click(function () {
+        var checkedValue = $("input[name='inlineRadioOptions']:checked").val();
+        console.log(checkedValue);
+        if (checkedValue == "option1") {
+            $("#collapseTwo").collapse('hide');
+            $("#headingTwo").css('opacity','.4');
+            $("#headingOne").css('opacity','1');
+            $(".disabled").removeClass("disabled");
+        } else if (checkedValue == "option2") {
+            $("#headingOne").css('opacity','.4');
+            $("#headingTwo").css('opacity','1');
+            $("#collapseTwo").collapse('show');
+            // $("#collapseTwo").collapse('hide');
+            $(".disabled").removeClass("disabled");
+        } else {
+            console.log("Oops.");
+        }
+    });
+});
+</script>
+
+<!-- Credit Cart Detector -->
+<script type="text/javascript" src="assets/common/js/jquery.creditCardTypeDetector.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#cc').creditCardTypeDetector({ 'credit_card_logos' : '.card_logos' });
+    });
+    $('.card_logos img').on('dragstart', function(event) { event.preventDefault(); }); // prevent on drag cc icons
+</script>
+
+<!-- Awesome Form Masking -->
+<script type="text/javascript" src="assets/common/js/payform.min.js"></script>
+<script type="text/javascript">
+     payform.cardNumberInput(document.getElementById('cc'));
+</script>
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    $(function() {
+        $('#cc-month, #cc-year').selectize(); // fancy dropdown for expiration dates
+    });
+
+    $('#cc-address').selectize();
+</script>
+
+<script type="text/javascript">
+    
+    $(".order").on('click', function(){
+        
+        var protocol = angular.element("#protocol").scope().protocol;
+        var host = angular.element("#host").scope().host;
+        var payment = $("input[name='inlineRadioOptions']:checked").val();
+
+        var cardnumber = $(".cardnumber").val();
+        var cardname = $(".cardname").val();
+        var cardmonth = $(".cardmonth").val();
+        var cardyear = $(".cardyear").val();
+        var cardsecurity = $(".cardsecurity").val();
+        var cardaddress = $(".cardaddress").val();
+
+        if(payment == "option1"){
+            var place_order = protocol+'://' + host + '/#/checkout/place-order/';
+            window.location = place_order;
+        }else{
+
+            if(cardnumber == 'Card Number' || cardnumber == ''){
+                $(".cardnumberrequired").show();
+            }else{
+                $(".cardnumberrequired").hide();
+
+                if(cardname == 'Name on Card' || cardname == ''){
+                    $(".cardnamerequired").show();
+                }else{
+                    $(".cardnamerequired").hide();
+
+                    if(cardmonth == '? undefined:undefined ?' || cardmonth == '00'){
+                        $(".cardmonthrequired").show();
+                    }else{
+                        $(".cardmonthrequired").hide();
+
+                        if(cardyear == '? undefined:undefined ?' || cardyear == '0000'){
+                            $(".cardyearrequired").show();
+                        }else{
+                            $(".cardyearrequired").hide();
+
+                            if(cardsecurity == ''){
+                                $(".cardsecurityrequired").show();
+                            }else{
+                                $(".cardsecurityrequired").hide();
+
+                                if(cardaddress == '' || cardaddress == 'null'){
+                                    $(".cardaddressrequired").show();
+                                }else{
+                                    $(".cardaddressrequired").hide();
+
+                                    var place_order = protocol+'://' + host + '/#/checkout/place-order/';
+                                    window.location = place_order;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>

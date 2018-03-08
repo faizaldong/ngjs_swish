@@ -1,0 +1,151 @@
+<!-- BANNER
+================================================== -->
+<section class="parallax-window bg-center" style="background-image:url('assets/common/img/covers/contact.jpg')">
+    <div class="overlay"></div>
+    <div class="parallax-content-1">
+        <div class="animated fadeInDown">
+        	<h1>Contact Swish</h1>
+        	<p>Get in touch with us today!</p>
+        </div>
+    </div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a ui-sref="home">Home</a></li>
+            <li>Contact Swish</li>
+        </ul>
+    </div>
+</div><!-- Position -->
+
+
+<!-- CONTENT
+================================================== -->
+<section class="container container-padding-xlarge">
+	<div class="main_title p0">
+		<h2>We'd love to <span>hear</span> from you</h2>
+		<p class="lato col-sm-10 col-sm-offset-1 hidden-xs mt10 p0" style="line-height: 1.4;float:none;">Whether you have a question, want to learn more about our packages or simply chat about your travel experience, make your trip an even more pleasant and comfortable by getting in touch with us today!</p>
+	</div>
+
+	<div class="gap-md hidden-xs"></div>
+    
+    <div class="row">
+		<div class="col-md-8">
+
+			<div class="step contact-form">
+				<form id="contactform">
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label for="contact-name">Name<span>*</span></label>
+								<div class="form-group salutation-field">
+								    <select class="form-control" ng-model="title">
+								       	<option value="Mr" selected="selected">Mr</option>
+								       	<option value="Mrs">Mrs</option>
+								       	<option value="Ms">Ms</option>
+								    </select>
+								</div>
+								<div class="form-group name-field">
+								    <input type="text" name="contact-name" id="name" class="form-control" value="{{ name }}" ng-model="name">
+								</div>
+								<span style="color:red;margin-top:-14px;margin-bottom:5px;display:block;" ng-show="namerequired" >Name required!</span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label for="contact-mail">Email<span>*</span></label>
+								<input type="email" name="contact-mail" id="email" class="form-control" ng-model="email">
+								<span ng-style="{ color: 'red'}" ng-show="emailrequired" >Email required!</span>
+							</div>
+						</div>
+					</div>
+					<!-- End row -->
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label for="contact-tel">Phone<span>*</span></label>
+								<input type="tel" name="contact-tel" id="phone" class="form-control" ng-model="phone">
+								<span style="color:red;margin-top:-2px;margin-bottom:5px;display:block;" ng-show="phonerequired" >You can't leave this empty.</span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label for="contact-subject">Subject<span>*</span></label>
+								<select name="contact-subject"  id="subject" class="form-control" ng-model="subject">
+									<option selected disabled>Choose Subject</option>
+									<option value="Enquiry">Enquiry</option>
+									<option value="Partnership">Partnership</option>
+									<option value="Others">Others</option>
+								</select>
+								<span ng-style="{ color: 'red'}" ng-show="subjectrequired" >Subject required!</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="contact-message">Message<span>*</span></label>
+								<textarea rows="5" name="contact-message" id="message" class="form-control" style="height:200px;" ng-model="message"></textarea>
+								<span ng-style="{ color: 'red'}" ng-show="msgrequired" >Message required!</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+						<div class="checkbox-container"> 
+							
+							<input type="checkbox" name="agreement" id="agreement" ng-model="hasagree" ng-checked="true">
+							<label for="agreement"> I hereby give my consent to Swish on sending SMS/MMS message, call, email and/or mail to my contact particulars provided herein.</label>
+						</div>
+						<span ng-style="{ color: 'red'}" ng-show="checkreq" >You have not checked</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="submit" class="mt20 btn_1 blue medium" ng-click="register()">
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div><!-- End col-md-8 -->
+        
+		<div class="col-md-4">
+			<div class="box_style_1">
+				<h4>Address <span><i class="icon-location pull-right color-green"></i></span></h4>
+				<p>16A, Trengganu Street, Singapore (058470)</p>
+
+				<hr>
+
+				<h4>Tel <span><i class="icon-phone pull-right color-green"></i></span></h4>
+				<p>(65) 8688 8398</p>
+
+				<hr>
+
+				<h4>Opening Hours <span><i class="icon-clock pull-right color-green"></i></span></h4>
+				<p class="mb0">Monday - Friday</p>
+				<p class="mb0">9 A.M. - 7 P.M.</p>
+			</div>
+		</div><!-- End col-md-4 -->
+	</div>
+
+</section>
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Contact Swish"></update-title>
+<update-meta name="description" content="Get in touch with us today!"></update-meta>
+<update-meta property="og:title" content="Contact Swish today"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/contact"></update-meta>
+<update-meta property="og:description" content="Get in touch with us today!"></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<!-- Custom styles -->
+<style type="text/css"></style>
+
+<!-- Custom Scripts -->
+<script type="text/javascript"></script>

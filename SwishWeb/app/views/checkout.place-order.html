@@ -1,0 +1,886 @@
+<div id="token" ng-style="{display: 'none'}">{{ token }}</div>
+<div class="checkout-wrapper">
+    <!-- HEADER
+    ================================================== -->
+    <div class="header">
+        <div class="container">
+            <div class="gap-sm"></div>
+            <a ui-sref="cart" class="back-to-cart">&laquo; <i class="fa fa-shopping-cart" aria-hidden="true"></i> Back to Cart</a>
+
+            <div class="row header-contents">
+                <div class="col-sm-2 col-xs-3"><img src="assets/common/img/logo_sticky.png" class="max-width"></div><!-- Logo -->
+                <div class="col-sm-8 col-xs-9 text-center"><h1>PLACE ORDER</h1></div><!-- Title -->
+                <div class="col-sm-2 hidden-xs"><img src="assets/common/img/rapidssl.gif" class="max-width mt10"></div><!-- Security Seal -->
+            </div>
+        </div>
+    </div><!-- End Header -->
+
+    <!-- PROGRESS BAR
+    ================================================== -->
+    <div class="bg-verydarkgrey container-padding-mini">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Sign In</p>
+                        </div>
+                        <div class="col-xs-3 progress-container completed"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Payment Method</p>
+                        </div>
+                        <div class="col-xs-3 progress-container current"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Place Order</p>
+                        </div>
+                        <div class="col-xs-3 progress-container"><!-- blank , .completed , current  -->
+                            <div class="progress-line progress-before"></div>
+                            <div class="progress-line progress-after"></div>
+                            <div class="dot"></div>
+                            <div class="plane-container"><img src="assets/common/img/paper-plane.png" class="plane"></div>
+                            <p>Confirmation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container container-padding-xlarge">
+
+        <!-- Error Message hidden. remove "hide" to show -->
+        <div class="row hide">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="error">
+                    <div class="icon">!</div>
+                    <div class="error-content">
+                        <h5>Ooops... There is a problem while processing your payment.</h5>
+                        <p>Please check with your local bank for transaction issues. We apologise for the inconvenience.</p>
+                    </div>
+                </div>
+                <div class="gap-md"></div>
+            </div>
+        </div>
+    
+
+        <h3 class="text-center">You're almost there! <br class="visible-xs"/>Let's review your order first.</h3>
+        <div class="gap-md"></div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 class="mb10">1. Payment method <span><a ui-sref="checkout-payment-method">edit</a></span></h2>
+                <div class="gap hidden-xs"></div>
+
+                <!-- <p class="confirm" ng-show="payvisa"><img src="assets/common/img/icons/correct-cc.png" alt=""> &nbsp; Visa ending in {{ cardsecurity }}</p> -->
+                <p class="confirm" ng-show="paypaypal"><img src="assets/common/img/icons/correct-cc.png" alt=""> &nbsp; Pay via paypal</p>
+                <p class="confirm" ng-show="payvisa"><img src="assets/common/img/icons/correct-cc.png" alt=""> &nbsp; Pay via Credit Card</p>
+                <div class="gap hidden-xs"></div>
+                <div class="gap-sm visible-xs"></div>
+                <hr/>
+                <div class="gap"></div>
+
+                <h2>2. Your orders</h2>
+                <p id="prodChoose" ng-show="false"></p>
+                <p id="orderid" ng-show="false">{{orderid}}</p>
+                <p id="subTotal" ng-show="false">{{subTotal}}</p>
+                <p id="paymenttype" ng-show="false">{{paymenttype}}</p>
+                <p id="host" ng-show="false">{{host}}</p>
+                <p id="guestuserID" ng-show="false">{{guestuserID}}</p>
+                <p id="userID" ng-show="false">{{userID}}</p>
+
+                <div class="gap"></div>
+
+                <!-- Order Starts Here -->
+                <div class="row ml0 mr0 order-list-container">
+
+                    <!-- Header -->
+                    <div class="col-sm-12 buy-header buy-list-header hidden-xs">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs hidden-sm"><p>Attraction</p></div><!-- Image -->
+                            <div class="col-md-4 col-sm-6"><p>Description</p></div><!-- Title + Description -->
+                            <div class="col-sm-6 pr0"><!-- Price & Qty -->
+                                <div class="row">
+                                    <div class="col-sm-2"><p class="text-right">Type</p></div>
+                                    <div class="col-sm-3"><p class="text-right">Price /unit</p></div>
+                                    <div class="col-sm-3"><p class="text-center">Qty</p></div>
+                                    <div class="col-sm-4"><p class="text-right">Totale</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-sm-12 item-list" data-ng-repeat="item in orderList">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs hidden-sm"><img ng-src="{{ item.image }}" alt="{{ item.title }}" class="full-width"></div>
+                            <div class="col-md-4 col-sm-6"><h5>{{ item.title }}</h5><p>{{ item.ticketType }}</p></div>
+                            <div class="col-sm-6 pr0">
+
+                                <div class="row mb10 mt10">
+                                    <div class="col-sm-2 col-xs-3">
+                                        <p class="text-right text-left-xs">Adult</p>
+                                    </div>
+                                    <div class="col-sm-3 tix-price hidden-xs">
+                                        <p class="text-right">SGD {{ item.adultSwishPrice | number:2 }}</p>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <p class="text-center tix-amount text-left-xs">
+                                            <span class="mobile-x">x</span>
+                                            <button data-ng-click="adultAmount = adultAmount-1;adultTotalPrice = adultTotalPrice-item.adultSwishPrice" data-ng-disabled="adultAmount == 0" data-ng-init="adultAmount=item.adultAmount"> - </button>
+                                            <span>{{ adultAmount }}</span>
+                                            <button data-ng-click="adultAmount = adultAmount+1;adultTotalPrice = adultTotalPrice+item.adultSwishPrice"> + </button>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-5 tix-total">
+                                        <p class="text-right">
+                                            <button class="swish-price" data-ng-init="adultTotalPrice=item.adultTotalPrice" data-ng-disabled="adultTotalPrice == 0">SGD {{ adultTotalPrice | number:2 }}</button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="gap"></div>
+
+                                <div class="row">
+                                    <div class="col-sm-2 col-xs-3">
+                                        <p class="text-right text-left-xs">Child</p>
+                                    </div>
+                                    <div class="col-sm-3 tix-price hidden-xs">
+                                        <p class="text-right">SGD {{ item.childSwishPrice | number:2 }}</p>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4">
+                                        <p class="text-center tix-amount text-left-xs">
+                                            <span class="mobile-x">x</span>
+                                            <button data-ng-click="childAmount = childAmount-1;childTotalPrice = childTotalPrice-item.childSwishPrice" data-ng-disabled="childAmount == 0" data-ng-init="childAmount=item.childAmount"> - </button>
+                                            <span>{{ childAmount }}</span>
+                                            <button data-ng-click="childAmount = childAmount+1;childTotalPrice = childTotalPrice+item.childSwishPrice"> + </button>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-5 tix-total">
+                                        <p class="text-right">
+                                            <button class="swish-price" data-ng-init="childTotalPrice=item.childTotalPrice" data-ng-disabled="childTotalPrice == 0">SGD {{ childTotalPrice | number:2 }}</button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="gap"></div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 text-right edit-buttons">
+                                        <p>
+                                            <a class="edit-mode-activate">Edit or remove</a>
+                                            <a class="edit-mode-remove">Remove</a>
+                                            <a class="edit-mode-deactivate">Save</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Item Listing -->
+                    <!-- {{history.order.sw_order_status_id}}{{history.order.is_paid}} -->
+                    <div ng-if="history.order.sw_order_status_id == 4 && history.order.is_paid == false || history.order.sw_order_status_id == 5">
+                        <div class="col-sm-12 item-list" data-ng-repeat="cart in history.tickets" ng-if="1 == 1">
+                            <div class="row"><input type="hidden" class="productName" name="productName" value="{{cart.product_name}}">
+                                <div class="col-sm-2 hidden-xs hidden-sm"><img ng-src="{{ cart.img_src }}" alt="{{ cart.product_name }}" class="full-width"></div><!-- Image -->
+                                <div class="col-md-4 col-sm-6"><h5>{{ cart.product_name }}</h5><p>{{ cart.img_desc }}</p></div><!-- Title + Description -->
+                                <div ng-show="false"><p class="indexItem">{{ $index }}</p></div>
+                                <div class="col-sm-6 pr0">
+
+                                <p ng-show="false" data-ng-init="$rootScope.tot = 0"></p>
+                                <p ng-show="false" data-ng-repeat="totpriceTicket in cart.ticket_type_details" data-ng-init="$rootScope.tot =  $rootScope.tot + (totpriceTicket.price_ticket*totpriceTicket.total_ticket)"></p>
+                                <p ng-show="false" class="totAmount"> {{$rootScope.tot}} </p>
+
+                                    <!-- Adult Tix -->
+                                    <div class="row mb10 mt10" data-ng-repeat="adultDetails in cart.ticket_type_details" ng-if="adultDetails.pricing_type_id == 1"><!-- add "no-stock" class to see magic! -->
+                                        <div class="col-sm-2 col-xs-3"><!-- Ticket Type -->
+                                            <p class="text-right text-left-xs">{{ adultDetails.pricing_type }}</p>
+                                        </div>
+                                        <div class="col-sm-3 tix-price hidden-xs"><!-- Price/unit -->
+                                            <p class="text-right">SGD {{ adultDetails.price_ticket | number:2 }}</p>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-4"><!-- Qty -->
+                                            <p class="text-center tix-amount text-left-xs">
+                                                <span class="mobile-x">x</span>
+                                                <button data-ng-click="adultAmount = adultAmount-1; newadultAmount = newadultAmount-1; adultTotalPrice = adultTotalPrice-parseInt(adultDetails.price_ticket); minus(adultDetails.price_ticket)" data-ng-disabled="adultAmount == 0" data-ng-init="adultAmount= adultAmount + parseInt(adultDetails.total_ticket); newadultAmount=0"> - </button>
+                                                <span>{{ adultAmount }}</span>
+                                                <span ng-show="false">{{newadultAmount}}</span>
+                                                <button data-ng-click="adultAmount = adultAmount+1; newadultAmount = newadultAmount+1; adultTotalPrice = adultTotalPrice+parseInt(adultDetails.price_ticket); plus(adultDetails.price_ticket)"> + </button>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-5 tix-total"><!-- Total -->
+                                            <p class="text-right">
+                                                <button class="swish-price" data-ng-init="adultTotalPrice=adultTotalPrice+(parseInt(adultDetails.price_ticket) * parseInt(adultDetails.total_ticket))" data-ng-disabled="adultTotalPrice == 0">SGD {{ adultTotalPrice | number:2 }}</button><!-- using this element for the purpose of taking advantage of the disabled element -->
+                                            </p>
+                                        </div><br><br>
+                                        <ul class="prices" ng-show="false">
+                                            <li class="orderId">{{ history.order.id }}</li>
+                                            <li class="priceid">{{ adultDetails.pricing_id }}</li>
+                                            <li class="price_tier_id">{{cart.price_tier_id}}</li>
+                                            <li class="pricetype">{{ adultDetails.pricing_type_id }}</li>
+                                            <li class="pricetype_name">{{adultDetails.pricing_type}}</li>
+                                            <li class="productid">{{ cart.product_id }}</li>
+                                            <li class="productname">{{ cart.ticket_name }}</li>
+                                            <li class="totTicket">{{ adultAmount }}</li>
+                                            <li class="ticketredeem">0</li>
+                                            <li class="largeImageUrl">{{cart.img_src}}</li>
+                                            <li class="original_price">{{adultDetails.original_price}}</li>
+                                            <li class="price">{{adultDetails.price_ticket}}</li>
+                                            <li class="total_ticket">{{newadultAmount}}</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="gap"></div><!-- only visible for mobile edit mode -->
+                                    
+                                    <!-- Child Tix -->
+                                    <div class="row" data-ng-repeat="childDetails in cart.ticket_type_details" ng-if="childDetails.pricing_type_id == 2"><!-- add "no-stock" class to see magic! -->
+                                        <div class="col-sm-2 col-xs-3"><!-- Ticket Type -->
+                                            <p class="text-right text-left-xs">{{ childDetails.pricing_type }}</p>
+                                        </div>
+                                        <div class="col-sm-3 tix-price hidden-xs"><!-- Price/unit -->
+                                            <p class="text-right">SGD {{ childDetails.price_ticket | number:2 }}</p>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-4"><!-- Qty -->
+                                            <p class="text-center tix-amount text-left-xs">
+                                                <span class="mobile-x">x</span>
+                                                <button data-ng-click="childAmount = childAmount-1; newchildAmount = newchildAmount-1; childTotalPrice = childTotalPrice-parseInt(childDetails.price_ticket); minus(childDetails.price_ticket)" data-ng-disabled="childAmount == 0" data-ng-init="childAmount=childAmount + parseInt(childDetails.total_ticket); newchildAmount = 0;"> - </button>
+                                                <span>{{ childAmount }}</span>
+                                                <span ng-show="false">{{ newchildAmount }}</span>
+                                                <button data-ng-click="childAmount = childAmount+1; newchildAmount = newchildAmount+1; childTotalPrice = childTotalPrice+parseInt(childDetails.price_ticket); plus(childDetails.price_ticket)"> + </button>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-5 tix-total"><!-- Total -->
+                                            <p class="text-right">
+                                                <button class="swish-price" data-ng-init="childTotalPrice=childTotalPrice+(parseInt(childDetails.price_ticket) * parseInt(childDetails.total_ticket))" data-ng-disabled="childTotalPrice == 0">SGD {{ childTotalPrice | number:2 }}</button><!-- using this element for the purpose of taking advantage of the disabled element -->
+                                            </p>
+                                        </div><br><br>
+                                        <ul class="prices" ng-show="false">
+                                            <li class="orderId">{{ history.order.id }}</li>
+                                            <li class="priceid">{{ childDetails.pricing_id }}</li>
+                                            <li class="price_tier_id">{{cart.price_tier_id}}</li>
+                                            <li class="pricetype">{{ childDetails.pricing_type_id }}</li>
+                                            <li class="pricetype_name">{{childDetails.pricing_type}}</li>
+                                            <li class="productid">{{ cart.product_id }}</li>
+                                            <li class="productname">{{ cart.ticket_name }}</li>
+                                            <li class="totTicket">{{ childAmount }}</li>
+                                            <li class="ticketredeem">0</li>
+                                            <li class="largeImageUrl">{{cart.img_src}}</li>
+                                            <li class="original_price">{{childDetails.original_price}}</li>
+                                            <li class="price">{{childDetails.price_ticket}}</li>
+                                            <li class="total_ticket">{{newchildAmount}}</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="gap"></div><!-- only visible for mobile edit mode -->
+
+                                    <div class="row">
+                                        <div class="col-xs-12 text-right edit-buttons">
+                                            <p>
+                                                <a class="edit-mode-activate">Edit or remove</a>
+                                                <!-- <a class="edit-mode-remove">Remove</a> -->
+                                                <a class="edit-mode-remove" ng-click="remove($rootScope.tot, cart, $index)">Remove</a>
+                                                <a class="edit-mode-deactivate">Save</a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- item-list -->
+                    </div>
+
+                    <div ng-repeat="removeItem in removeArr">
+                        <div class='alert bg-warning text-warning pull-left mt10 full-width'><b>{{removeItem.product_name}}</b> has been removed from your cart. <a id='{{removeItem.IndexCart}}' class='undo-remove' ng-click="undoRemove(removeItem, removeItem.Amount)">Undo action</a></div>
+                    </div>
+
+                </div><!-- order-list-container -->
+                
+                <div class="row total">
+                    <!-- Taxes -->
+                    <div class="col-sm-9 col-xs-7">
+						<h5 class="bold text-right">Taxes inclusive in total</h5>
+                    </div>
+                    <div class="col-sm-3 col-xs-5 pr0">
+						<h5 class="bold text-right">SGD {{totalAmount | number: 2}}</h5>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="col-sm-9 col-xs-7">
+                        <h3 class="bold text-right">Grand Total</h3>
+                    </div>
+                    <div class="col-sm-3 col-xs-5 pr0">
+                        <h3 class="bold text-right grandTotal">SGD {{subTotal | number: 2}}</h3>
+                    </div>
+                </div>
+
+                <p class="saved"  ng-show="false"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Congratulations! You saved <span class="bold">SGD 26.00</span> with Swish!</p>
+                <div class="gap"></div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                    <div class="gap-sm"></div>
+                        <p class="mb0 text-right hidden-xs">Your order will not be processed until you click "Place Order"</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <!-- <a ui-sref="checkout-confirmation" class="btn_1 green full-width text-center btn-huge-xs"><i class="fa fa-lock" aria-hidden="true"></i> &nbsp; PLACE ORDER</a> -->
+                        <button class="btn_1 green full-width text-center btn-huge-xs" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Get details.." id="placeholder"><i class="fa fa-lock" aria-hidden="true"></i> &nbsp; PLACE ORDER</button>
+                    </div>
+                </div>
+
+                
+                
+                <div class="gap"></div>
+                <div class="gap-md hidden-xs"></div>
+    
+                <div class="checkout-terms">
+                    <p class="text-center">By placing your order, you are agreeing to our <a ui-sref="terms">Terms and Conditions</a> and <a ui-sref="privacy">Privacy Policy</a>. Tickets sold are non-exchangable and non-refundable, please refer to our <a data-toggle="modal" data-target="#climateModal">Climate</a> for outdoor activities.</p>
+                    <p class="text-center">Upon purchase, your free swish credits will be deducted from the original price of tickets. 1 Swish Credits = SGD$1.00</p>    
+                </div>
+                
+            </div> 
+        </div>
+
+        <div id="invoiceModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <form name="fomo" id="fomo" action="" method="POST" >
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">FOMO PAYMENT GATEWAY</h4>
+                </div>
+
+                <div class="modal-body" ng-show="false">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <!-- <label>callback_url</label> -->
+                            <input type="text" name="callback_url" class="form-control">
+                            <!-- <label>currency_code</label> -->
+                            <input type="text" name="currency_code" class="form-control">
+                            <!-- <label>description</label> -->
+                            <input type="text" name="description" class="form-control">
+                            <!-- <label>merchant</label> -->
+                            <input type="text" name="merchant" class="form-control">
+                            <!-- <label>nonce</label> -->
+                            <input type="text" name="nonce" class="form-control">
+                            <!-- <label>price</label> -->
+                            <input type="text" name="price" class="form-control">
+                            <!-- <label>return_url</label> -->
+                            <input type="text" name="return_url" class="form-control">
+                            <!-- <label>signature</label> -->
+                            <input type="text" name="signature" class="form-control">
+                            <!-- <label>timeout</label> -->
+                            <input type="text" name="timeout" class="form-control">
+                            <!-- <label>transaction</label> -->
+                            <input type="text" name="transaction" class="form-control">
+                            <!-- <label>type</label> -->
+                            <input type="text" name="type" class="form-control">
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button class="btn_1 green proceedpayment" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Redirect to Fomo Gateway.." id="placeholder"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp; PROCEED TO PAYMENT</button>
+                  <!-- <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button> -->
+                </div>
+
+          </form>
+          <!-- Modal content-->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <div class="footer container-padding-large pt0">
+        &copy; 2016 Swish. All rights reserved. <br class="visible-xs"/> <a ui-sref="terms" target="_blank">Terms and Conditions</a> | <a ui-sref="privacy" target="_blank">Privacy Policy</a>
+    </div>
+
+
+    <!-- CLIMATE MODAL. NOT TO LINK TO THEIR ORGINAL PAGE SO THAT USERS WONT WANDER OFF SOMEWHERE AND NEVER COMPLETE THE TRANSACTION
+    ================================================== -->
+    <div class="modal fade modal-cart" id="climateModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <h4 class="text-center">Singapore's Climate</h4>
+
+                    <img src="assets/common/img/tourist-info/climate.jpg" alt="Singapore's Climate" class="full-width mt10 mb30">
+
+                    <p class="mb40">Singapore has a tropical rainforest climate. Owing to its geographical location and maritime exposure, its climate is characterized by uniform temperature and pressure, high humidity and abundant rainfall. So it is almost always warm and wet. Temperature range during day time is around 28°C - 32°C with it reaching 35°C at times, while night time temperature hardly falls below 23°C.</p>
+                    
+                    <h5>Pre-Southwest Monsoon Season</h5>
+                    <p>From March till May, Singapore sees the pre-southwest monsoon season, throughout which it goes through heavy early evening showers. It is not considered a good time to visit the city during this season. However, as the season progresses, the level of rainfall and humidity reduce dramatically and winds appear less strong.</p>
+
+                    <h5>Southwest Monsoon Season</h5>
+                    <p>June till September is the period of Southwest Monsoon Season for the Singapore city. Visitors from across the world wait for this season to visit the city as rainfall reduces. However, the winds often become very strong in the mornings and mist is most likely at this time of year.</p>
+
+                    <h5>Pre-Northeast Monsoon Season</h5>
+                    <p>October and November are considered as pre-northeast monsoon season in Singapore. During this season, cool sea breeze helps reduce the afternoon heat. Although storms often occur in the evening but winds generally remain reduced.</p>
+
+                    <h5>Northeast Monsoon Season</h5>
+                    <p>Northeast monsoon season starts in December and lasts till March in Singapore. From the northeast strong winds bring the heaviest rain of the year. Although mornings remain clear cloudy conditions triumphs most the days.  Nonstop showers for several days may spoil tourists’ plan. During January and February winds appear as violent, even the worst.</p>
+                    
+                    <div class="row mt40">
+                        <div class="col-sm-9"><p class="mb10">SOURCE LINKS:<br><a href="http://www.worldweatheronline.com/" target="_blank">www.worldweatheronline.com</a></p></div>
+                        <div class="col-sm-3"><button class="btn_1 medium green full-width" data-dismiss="modal">CLOSE</button></div>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span></button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.checkout-wrapper -->
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Checkout"></update-title>
+
+<!-- Custom CSS/JS -->
+<link rel="stylesheet" type="text/css" href="assets/common/css/swish-checkout.css">
+<style type="text/css">
+    p.confirm{color: #333;font-size: 14px;}
+</style>
+
+<script type="text/javascript">
+
+    var indexItems = [];
+    setTimeout(function(){ 
+
+        // On Edit Mode
+        $(document).on("click", '.edit-mode-activate', function(){
+            $(this).parents(".item-list").eq(0).addClass('edit-mode');
+        });
+
+        // Off Edit Mode
+        $('.edit-mode-deactivate').on("click", function(){
+            $(this).parent().parent().parent().parent().parent().parent().removeClass('edit-mode'); //instead use this, better use    parents(".class").eq(0)
+        });
+
+
+        // // Remove Item with undo
+        // var items = [];
+
+        // $('.edit-mode-remove').on("click", function(){
+        //     // Add Undo message box
+
+        //     var indexItem = $(this).parent().parent().parent().parent().parent().find("p.indexItem").text(); 
+        //     indexItems.push(parseInt(indexItem));
+
+        //     var title = $(this).parent().parent().parent().parent().parent().find("h5").text(); 
+        //     var removedID = $(this).parent().parent().parent().parent().parent().find("h5").text(); // bind unique ID to call out later
+        //     $('.order-list-container').append("<div class='alert bg-warning text-warning pull-left mt10 full-width'><b>"+title+"</b> has been removed. <a id='"+removedID+"' class='undo-remove'>Undo action</a></div>");
+
+        //     // Remove element and push it into array.
+        //     $(this).parent().parent().parent().parent().parent().parent().removeClass("edit-mode");
+        //     items.push($(this).parent().parent().parent().parent().parent().parent().detach());
+        // });
+
+        // // Undo function. Not working... somehow vomiting back out all array objects instead :(
+        // $('.order-list-container').on("click",'.undo-remove',function(){
+        //     // for(var i = 0; i < items.length; i++) {
+        //         $('.order-list-container').append(items);
+        //     // }
+        //     // items = [];
+        //     $(this).parent().remove();
+        // });
+    }, 500);
+
+    $("#placeholder").on('click', function(){
+
+        var host = angular.element("#host").scope().host;
+
+        var prod = [];
+        $.each($('.productName'),function(index,element){
+            var productName = $("[name=productName]").eq(index).val();
+            prod.push(productName);
+        });
+        prod.splice();
+        document.getElementById("prodChoose").innerHTML = prod;
+        var prodChoose = $("#prodChoose").text();
+
+        var token = angular.element("#token").scope().token;
+        var order_id = angular.element("#orderid").scope().orderid;
+        var payment_total = angular.element("#subTotal").scope().subTotal;
+        var payment_desc = "This is a payments for "+prodChoose;
+        var payment_method = angular.element("#paymenttype").scope().paymenttype;
+
+        // console.log(token+"-------"+order_id+"-------"+payment_total+"-------"+payment_desc+"-------"+payment_method);
+
+
+        if(token != undefined){
+
+            var $this = $(this);
+            $this.button('loading');
+
+            /*
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                tickets.push({
+                    orderId: idorder,
+                    pricing_id: $(".priceid").eq(index).text(),
+                    pricing_type_id: $(".pricetype").eq(index).text(),
+                    product_id: $(".productid").eq(index).text(),
+                    ticket_name: $(".productname").eq(index).text(),
+                    total_ticket: $(".totTicket").eq(index).text(),
+                    total_ticket_redeemed: $(".ticketredeem").eq(index).text()
+                })
+            });
+
+
+            if(order_id != undefined){
+                $.ajax({
+                    type: 'PUT',
+                    url: window.__env.apiUrl+'api/sw_orders/'+order_id,
+                    data: {tickets: tickets, replaced: true},
+                    beforeSend: function (request){
+                        request.setRequestHeader("Authorization", "Bearer "+token);
+                    },
+                    success: function(res){
+                        
+                        $.ajax({
+                            type: 'POST',
+                            // url: window.__env.apiUrl+'api/paypal/payments',
+                            url: window.__env.apiUrl+'api/summary/payments',
+                            data: {price: payment_total, description: payment_desc, currency_code: 'sgd', upstreams: 'fomo', order_id: order_id, fail_url: 'http://'+host+'/hashtag/checkout/place-order/', return_url: 'http://'+host+'/hashtag/checkout/confirmation'},
+                            beforeSend: function (request)
+                            {
+                                request.setRequestHeader("Authorization", "Bearer "+token);
+                            },
+                            success: function(data){
+                                $this.button('reset');
+                                // var paypal = paypal.redirect_url;
+                                // window.location.href = paypal;
+                                console.log(data);
+                                $("#invoiceModal").modal('show');
+                                $("[name=callback_url]").val(data.result.callback_url);
+                                $("[name=currency_code]").val(data.result.currency_code);
+                                $("[name=description]").val(data.result.description);
+                                $("[name=merchant]").val(data.result.merchant);
+                                $("[name=nonce]").val(data.result.nonce);
+                                $("[name=price]").val(data.result.price);
+                                $("[name=return_url]").val(data.result.return_url);
+                                $("[name=signature]").val(data.result.signature);
+                                $("[name=timeout]").val(data.result.timeout);
+                                $("[name=transaction]").val(data.result.transaction);
+                                $("[name=type]").val(data.result.type);
+                                $("[name=url]").val(data.url);
+                                $("#fomo").attr("action", ""+data.url);
+                            }
+                        })
+                    }
+                })
+            }else{
+                toastr.error('Please add more attractions', 'Cart empty');
+            }
+            */
+
+            var updatetotalAmount = angular.element("#subTotal").scope().subTotal;
+            var userID  =angular.element("#userID").scope().userID;
+
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: '',
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        price_ticket: $(".price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: ''
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+            // console.log(tickets);
+
+            // if(Cookies.get('userCarts')){
+            if(localStorage.getItem('userCarts')){
+                
+                if(tickets.length > 0){
+
+                    var tickets = [];
+                    $.each($('ul.prices'),function(index,element){
+                        var idorder = $(".orderId").eq(index).text();
+
+                        tickets.push({
+                            pricing_id: $(".priceid").eq(index).text(),
+                            price_tier_id: $(".price_tier_id").eq(index).text(),
+                            special_price_id: null,
+                            promotion_price_id: null,
+                            product_id: $(".productid").eq(index).text(),
+                            total_ticket: $(".totTicket").eq(index).text()
+
+                        })
+                    });
+
+                    var addtoCart = {
+                        email_to: '',
+                        email_bcc: '',
+                        sw_payment_mode_id: '3',
+                        tickets: tickets
+                    };
+
+                    // console.log(addtoCart);
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: window.__env.apiUrl+'api/sw_orders',
+                        data: addtoCart,
+                        beforeSend: function (request){
+                          request.setRequestHeader("Authorization", "Bearer "+token);
+                        },
+                        success: function(res){
+                            // console.log(res);
+                            if(res.status == true){
+
+                                var userOrders = res.result;
+                                Cookies.set('guestorderID', userOrders.id);
+                                // console.log("userID="+userID+"userorderID="+userOrders.id);
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: window.__env.apiUrl+'api/summary/payments',
+                                    data: {price: payment_total, description: payment_desc, currency_code: 'sgd', upstreams: 'fomo', order_id: userOrders.id, fail_url: 'http://'+host+'/hashtag/checkout/place-order/', return_url: 'http://'+host+'/hashtag/checkout/confirmation', user_id: userID},
+                                    success: function(data){
+                                        $this.button('reset');
+
+                                        // console.log(data);
+                                        //$("#invoiceModal").modal('show');
+                                        $("[name=callback_url]").val(data.result.callback_url);
+                                        $("[name=currency_code]").val(data.result.currency_code);
+                                        $("[name=description]").val(data.result.description);
+                                        $("[name=merchant]").val(data.result.merchant);
+                                        $("[name=nonce]").val(data.result.nonce);
+                                        $("[name=price]").val(data.result.price);
+                                        $("[name=return_url]").val(data.result.return_url);
+                                        $("[name=signature]").val(data.result.signature);
+                                        $("[name=timeout]").val(data.result.timeout);
+                                        $("[name=transaction]").val(data.result.transaction);
+                                        $("[name=type]").val(data.result.type);
+                                        $("[name=url]").val(data.url);
+                                        $("#fomo").attr("action", ""+data.url);
+										$("#fomo").submit();  //-- Akbar Code;
+                                    }
+                                })
+                            }
+                        },
+                        error: function(res){
+                          var responseError = $.parseJSON(res.responseText);
+                          if(responseError.status == false){
+                            toastr["error"](responseError.message, "Out of Stock");
+                            $this.button('reset');
+                          }
+                        }
+                    })
+
+                }else{
+                    toastr.error('Please add more attractions', 'Cart empty');
+                }
+            }
+
+        }
+
+
+        if(token == undefined || token == ''){
+
+            var $this = $(this);
+            $this.button('loading');
+
+            var updatetotalAmount = angular.element("#subTotal").scope().subTotal;
+            var guestuserID  =angular.element("#guestuserID").scope().guestuserID;
+
+            var ticket_type_details = [];
+            $.each($('ul.prices'),function(index,element){
+                var idorder = $(".orderId").eq(index).text();
+
+                    ticket_type_details.push({
+                        product_id: $(".productid").eq(index).text(),
+                        ticket_code: '',
+                        pricing_id: $(".priceid").eq(index).text(),
+                        pricing_name: '',
+                        pricing_type_id: $(".pricetype").eq(index).text(),
+                        pricing_type: $(".pricetype_name").eq(index).text(),
+                        total_ticket: $(".total_ticket").eq(index).text(),
+                        original_price: $(".original_price").eq(index).text(),
+                        price_ticket: $(".price").eq(index).text(),
+                        pricing_promotional_price: '',
+                        pricing_special_price: ''
+                    })
+            });
+
+
+            var unique = [];
+            var tickets = [];
+            $.each($('ul.prices'),function(index,element){
+                var product_id = $(".productid").eq(index).text();
+
+                var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+                if(idnotFound == false){
+                    unique.push(product_id);
+
+                    tickets.push({
+                        ticket_id: '',
+                        ticket_name: $(".productname").eq(index).text(),
+                        img_src: $(".largeImageUrl").eq(index).text(),
+                        img_desc: '',
+                        product_id: product_id,
+                        product_name: $(".productname").eq(index).text(),
+                        ticket_type_details: []
+                    })
+
+                }                
+            });
+
+            $.each(tickets, function(i, ticketsD){
+                $.each(ticket_type_details, function(i, pricetypeD){                    
+                    if(ticketsD.product_id == pricetypeD.product_id){
+                        ticketsD.ticket_type_details.push(ticket_type_details[i])
+                    }
+                })
+            })
+
+            // console.log(tickets);
+            if(localStorage.getItem('guestCarts')){
+                if(tickets.length > 0){
+                    var tickets = [];
+                    $.each($('ul.prices'),function(index,element){
+                        var idorder = $(".orderId").eq(index).text();
+                        tickets.push({
+                            pricing_id: $(".priceid").eq(index).text(),
+                            price_tier_id: $(".price_tier_id").eq(index).text(),
+                            special_price_id: null,
+                            promotion_price_id: null,
+                            product_id: $(".productid").eq(index).text(),
+                            total_ticket: $(".totTicket").eq(index).text()
+
+                        })
+                    });
+
+                    var addtoCart = {
+                        email_to: '',
+                        email_bcc: '',
+                        sw_payment_mode_id: '3',
+                        user_id: guestuserID,
+                        tickets: tickets
+                    };
+                    // console.log(addtoCart);
+                    $.ajax({
+                        type: 'POST',
+                        url: window.__env.apiUrl+'api/sw_orders',
+                        data: addtoCart,
+                        success: function(res){
+                            // console.log(res);
+                            if(res.status == true){
+
+                                var guestOrders = res.result;
+                                Cookies.set('guestorderID', guestOrders.id);
+                                // console.log("guestuserID="+guestuserID+"guestorderID="+guestOrders.id);
+                                // console.log(guestOrders)
+                                $.ajax({
+                                    type: 'POST',
+                                    url: window.__env.apiUrl+'api/summary/payments',
+                                    data: {price: payment_total, description: payment_desc, currency_code: 'sgd', upstreams: 'fomo', order_id: guestOrders.id, fail_url: 'http://'+host+'/hashtag/checkout/place-order/', return_url: 'http://'+host+'/hashtag/checkout/confirmation', user_id: guestuserID},
+                                    success: function(data){
+                                        $this.button('reset');
+                                        // console.log(data);
+                                        //$("#invoiceModal").modal('show');
+                                        $("[name=callback_url]").val(data.result.callback_url);
+                                        $("[name=currency_code]").val(data.result.currency_code);
+                                        $("[name=description]").val(data.result.description);
+                                        $("[name=merchant]").val(data.result.merchant);
+                                        $("[name=nonce]").val(data.result.nonce);
+                                        $("[name=price]").val(data.result.price);
+                                        $("[name=return_url]").val(data.result.return_url);
+                                        $("[name=signature]").val(data.result.signature);
+                                        $("[name=timeout]").val(data.result.timeout);
+                                        $("[name=transaction]").val(data.result.transaction);
+                                        $("[name=type]").val(data.result.type);
+                                        $("[name=url]").val(data.url);
+                                        $("#fomo").attr("action", ""+data.url);
+										$("#fomo").submit();  //-- Akbar Code;
+                                    }
+                                })
+                            }
+                        },
+                        error: function(res){
+                          var responseError = $.parseJSON(res.responseText);
+                          if(responseError.status == false){
+                            toastr["error"](responseError.message, "Out of Stock");
+                            $this.button('reset');
+                          }
+                        }
+                    })
+
+                }else{
+                    toastr.error('Please add more attractions', 'Cart empty');
+                }
+            }
+
+        }
+    });
+
+    $(".proceedpayment").on('click', function(){
+        var $this = $(this);
+        $this.button('loading');
+		$("#fomo").submit();
+    });

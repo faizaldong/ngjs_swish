@@ -1,0 +1,1105 @@
+<!-- BANNER
+================================================== -->
+<!-- <section class="parallax-window bg-center" ng-parallax pattern="'assets/common/img/covers/attractions-segway-fun-ride.jpg'" speed="3" reverse="false"> -->
+<!-- <section class="parallax-window bg-center" style="background-image:url('https://s3-ap-southeast-1.amazonaws.com/fleetionary.com/product/Adventure%20River%20Surround%20Aquarium_large.jpg')"> -->
+<section class="parallax-window bg-center" style="background-image:url('{{ attractionDetails.details.LargeImageUrl }}')"><!-- {{ product_images.LargeImageUrl }} -->
+<div class="overlay"></div>
+<div class="parallax-content-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<!-- <h1>Segway® Fun Ride</h1> -->
+				<h1>{{ attractionDetails.details.ProductName }}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+</section><!-- End section -->
+
+
+<!-- BREADCRUMBS
+================================================== -->
+<div id="position">
+<div class="container">
+	<ul>
+		<li><a ui-sref="home">Home</a></li>
+		<li><a ui-sref="attractions">Attractions</a></li>
+		<!-- <li>Segway Fun Ride</li>{{prodTabActiveId}} -->
+		<li>{{ attractionDetails.details.ProductName }}</li>
+	</ul>
+</div>
+</div><!-- Position -->
+
+<!-- CONTENT
+================================================== -->
+<section class="bg-verylightgrey">
+<div class="container container-padding-large">
+	<div class="row">
+
+		<div class="col-lg-8 col-md-7" id="single_tour_desc">
+			
+			<!-- NAV TABS
+			================================================== -->    
+			<ul class="nav nav-tabs">
+				<li ng-repeat="prodTab in attractionDetails.details.product_attributes" ng-attr-class="{{ prodTab.ProductInfoId == prodTabActiveId && prodTab.Title != null ? 'active':'' }}">
+					<a data-target="#{{ prodTab.ProductInfoId}}" data-toggle="tab">{{ prodTab.Title }}</a>
+				</li>
+				<!-- <li class="active"><a data-target="#general-info" data-toggle="tab">General Info</a></li>
+				<li><a data-target="#tourist-info" data-toggle="tab">Tourist Info</a></li>
+				<li><a data-target="#faq" data-toggle="tab">FAQ</a></li>
+				<li><a data-target="#directions" data-toggle="tab">Directions</a></li> -->
+				<li ng-attr-class="{{ attractionDetails.details.product_attributes.length == 0 ? 'active': ''}}">
+					<a data-target="#image-gallery" data-toggle="tab">Image Gallery</a>
+				</li>
+			</ul>
+			
+			<!-- Content container -->
+			<div class="tab-content attraction-details-content" ng-if="1 == 1">
+				<div ng-repeat="prodTab in attractionDetails.details.product_attributes" ng-attr-class="{{ prodTab.ProductInfoId == prodTabActiveId ? 'tab-pane fade in active':'tab-pane fade' }}" id="{{ prodTab.ProductInfoId }}">
+					<p ng-bind-html="prodTab.Description"></p>
+				</div>
+
+				<!-- <p ng-show="noproduct">No product details found.</p> -->
+
+				<div ng-attr-class="{{attractionDetails.details.product_attributes.length == 0 ? 'tab-pane fade in active':'tab-pane fade'}}" id="image-gallery">
+				   <div class="row magnific-gallery">
+					  <div class="col-sm-3 col-xs-6" ng-if="attractionDetails.details.product_images !== ''" ng-repeat="product_images in attractionDetails.details.product_images" >
+							<a href="{{ product_images.LargeImageUrl }}" data-fancybox="gallery" data-type="image">
+								<img ng-src="{{ product_images.LargeImageUrl }}" alt="" class="full-width" ng-if="product_images.IsPdfImage == false">
+							</a>
+					  </div>
+					</div>
+			   </div>
+			</div>
+
+
+			<div class="tab-content attraction-details-content" ng-if=" 1 == 0">
+
+				<!-- GENERAL INFO
+				================================================== -->
+				<div class="tab-pane fade in active" id="general-info"  >
+					Hop on the Segway® Personal Transporter (PT) for an introductory experience on the Segway® Fun Ride, a circuit ride full of twists and turns. Trainers are always on hand to assist you and in a matter of minutes you will master this futuristic mobility device. The Gogreen circuit consists of a training ground and an interesting trial of twist, turns and inclined slopes. Guaranteed to make your Segway® Fun Ride (2 Rounds) experience truly exhilarating!
+					<p ng-if="attractionDetails.product_attributes !== ''" ng-bind-html="guideline"></p>
+				</div>
+
+				<!-- TOURIST INFO
+				================================================== -->
+				<div class="tab-pane fade" id="tourist-info">
+					<div class="row">
+
+						<div class="col-md-4">
+							<br><h4>Opening Hours</h4>
+						</div>
+						<div class="col-md-8">
+							<p>Gogreen Segway operates 365 days of the year including weekends and Public Holidays. (Subject to weather permitting).</p>
+							<p>Daily from 10:00 AM – 8.00 PM (Last ticket sales at 9.15pm)</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<br><h4>Contacts</h4>
+						</div>
+						<div class="col-md-8">
+							<p>Beach Station<br/>21 Siloso Road, Sentosa, Singapore 098968<br/>Phone: +65 9825 4066</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<br><h4>Restrictions</h4>
+						</div>
+						<div class="col-md-8">
+							<!-- <p>- Minimum height of 105cm<br/>- Maximum weight 120kg</p> -->
+						</div>
+					</div>
+
+				</div>
+				
+				<!-- CONTENT FAQ
+				================================================== -->
+				<div class="tab-pane fade" id="faq">
+					<p><span class="bold">What is a Segway®?</span><br/>
+					The Segway® Personal Transporter (PT) is the first of its kind-a self-balancing, personal transportation device designed to go anywhere people do. Easy to use and operate, the two-wheeled Segway® sports high-tech gyroscopes that automatically respond to your body's movements, "sensing" when it should speed up and slow down.<br/>
+					You stand on a small platform between left and right wheels as you hold onto handlebars at a comfortable waist height. The Segway® handles the balancing for you, so that you're always upright as you glide through any environment.</p>
+
+					<p><span class="bold">Is there a weight limit for the Segway® PT?</span><br/>
+					There is a recommended limit of 117 kg. and we ask our guests to be within a reasonable range of this limit.</p>
+
+					<p><span class="bold">Are the tours cancelled in case of rain?</span><br/>
+					We reserve the right to suspend the tour when it is deemed unsafe to carry on.</p>
+
+					<p>For your own safety, we do not allow guests with the following conditions from going on rides, including but not limited to:◾Heart and Cardiac Conditions<br/>
+					Motion Sickness and Vertigo<br/>
+					Back and Spinal Problems<br/>
+					Pregnancy<br/>
+					Intoxication</p>
+
+					<p>A disclaimer form must be signed before commencement of Segway® rides. All guests below 18 yrs of age must have the disclaimer form signed by their legal guardian. Please obtain your disclaimer form from our friendly staff.</p>
+				</div>
+				
+				<!-- DIRECTIONS
+				================================================== -->
+				<div class="tab-pane fade" id="directions">
+
+					<div class="row">
+						<div class="col-md-4">
+							<h4>Google Maps</h4>
+						</div>
+						<div class="col-md-8">
+							<p>Type in your location and get your directions.</p>
+							<form action="http://maps.google.com/maps" method="get" target="_blank">
+								<div class="input-group">
+									<input type="text" name="saddr" placeholder="Enter your starting point" class="form-control style-2" />
+									<input type="hidden" name="daddr" value="{{ attractionDetails.ProductName }}"/><!-- Write here your end point -->
+									<span class="input-group-btn">
+										<button class="btn btn-secondary" type="submit" value="Get directions" style="margin-left:0;">GET DIRECTIONS &raquo;</button>
+									</span>
+								</div><!-- /input-group -->
+							</form>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<h4>Via Cable Car</h4>
+						</div>
+						<div class="col-md-8">
+							<p>Take a scenic Cable Car ride from Mount Faber or HarbourFront Tower 2. Alight at the Singapore Cable Car Station at Imbiah Lookout, Sentosa, transfer to Bus 2 to Beach Station, Sentosa.</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<h4>Via Sentosa Express</h4>
+						</div>
+						<div class="col-md-8">
+							<p>From Harbour Front Station, proceed to VivoCity Lobby L, Level 3. Board the Sentosa Express and alight at Beach Station. Turn left at gantry exit.</p>
+						</div>
+					</div>
+
+			   </div>
+				
+				<!-- IMAGE GALLERY
+				================================================== -->
+				<div class="tab-pane fade" id="image-gallery">
+					<div class="attractions-gallery">
+						<p>Click to enlarge photo.</p>
+						<div class="row magnific-gallery">
+
+							<!-- <div class="col-sm-3 col-xs-6" ng-if="attractionDetails.product_images !== ''" ng-repeat="product_images in attractionDetails.product_images">
+								<a ng-href="{{ product_images.LargeImageUrl }}" Title="Image 1">
+									<img ng-src="{{ product_images.LargeImageUrl }}" alt="Image 1" class="full-width">
+								</a>
+							</div> -->
+
+							<!-- <div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-02-500x500.jpg" Title="Image 2">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-02-200x200.jpg" alt="Image 2" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-03-500x500.jpg" Title="Image 3">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-03-200x200.jpg" alt="Image 3" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-04-500x500.jpg" Title="Image 4">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-04-200x200.jpg" alt="Image 4" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-05-500x500.jpg" Title="Image 5">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-05-200x200.jpg" alt="Image 5" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-07-500x500.jpg" Title="Image 6">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-07-200x200.jpg" alt="Image 6" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-08-500x500.jpg" Title="Image 7">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-08-200x200.jpg" alt="Image 7" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-09-500x500.jpg" Title="Image 8">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-09-200x200.jpg" alt="Image 8" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-10-500x500.jpg" Title="Image 9">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-10-200x200.jpg" alt="Image 9" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-11-500x500.jpg" Title="Image 10">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-11-200x200.jpg" alt="Image 10" class="full-width">
+								</a>
+							</div>
+
+							<div class="col-sm-3 col-xs-6">
+								<a href="assets/common/img/attractions/segway-fun-ride/segway-12-500x500.jpg" Title="Image 11">
+									<img src="assets/common/img/attractions/segway-fun-ride/thumbs/segway-12-200x200.jpg" alt="Image 11" class="full-width">
+								</a>
+							</div> -->
+
+						</div><!-- /.magnific-gallery -->
+					</div><!-- /.attractions-gallery -->
+			   </div><!-- /.tab-pane -->
+
+		   </div><!-- /.tab-content -->
+
+		</div><!-- /#single_tour_desc-->
+		
+		<!-- CONTENT
+		================================================== -->
+		<aside class="col-lg-4 col-md-5">
+
+			<div class="sticky-box buy-tix-box">
+				<div class="buy-title">
+					<h3>Buy Tickets</h3>
+				</div>
+				<p ng-show="false" class="text-center" style="margin-bottom: 0px;background-color: red; color: #fff; padding: 5px">Limited Stocks</p>
+				<div class="buy-content">
+
+					<!-- Header -->
+					<div class="buy-header">
+						<div class="col-sm-4 col-xs-6">Usual Price</div>
+						<div class="col-sm-4 col-xs-6">Swish Price</div>
+						<div class="col-sm-4 hidden-xs"><center>Qty</center></div>
+					</div>
+
+					<!-- Adult Tix -->
+					<div ng-repeat="adultTicket in attractionDetails.prices" ng-if="adultTicket.pricingTypeId == 1">
+						<div ng-show="true" ng-if="adultTicket.priceTiers[0].price > 0">  
+						<div class="col-sm-12 col-xs-6" >
+							{{ adultTicket.pricingName }}                              
+						</div>
+						<div class="col-sm-4 col-xs-6" >
+							{{ adultTicket.priceType }} <span class="stroke">SGD{{ adultTicket.originalPrice | number: 2}}</span>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							{{ adultTicket.priceType }}<span class="text-green" ng-if="adultTicket.promotionPrices != null && adultTicket.specialPrices == null && adultTicket.priceTiers.length > 0">SGD{{ adultTicket.promotionPrices | number:2 }} <p data-ng-init="priceticket=adultTicket.promotionPrices"></p> </span>
+													   <span class="text-green" ng-if="adultTicket.specialPrices != null && adultTicket.promotionPrices == null && adultTicket.priceTiers.length > 0">SGD{{ adultTicket.specialPrices | number:2 }} <p data-ng-init="priceticket=adultTicket.specialPrices"></p> </span>
+													   <span class="text-green" ng-if="adultTicket.promotionPrices == null && adultTicket.specialPrices == null" >SGD{{ adultTicket.priceTiers[0].price | number:2 }} <span data-ng-init="priceticket=adultTicket.priceTiers[0].price"></span> </span>
+													   <p ng-show="false" class="text-green" ng-if="adultTicket.specialPrices != null && adultTicket.promotionPrices == null && adultTicket.priceTiers.length > 0">SGD{{ adultTicket.specialPrices | number:2 }} <p data-ng-init="priceticket=adultTicket.specialPrices"></p> </p>
+													   <p ng-show="false" class="text-green" ng-if="adultTicket.promotionPrices != null && adultTicket.specialPrices == null && adultTicket.priceTiers.length > 0">SGD{{ adultTicket.promotionPrices | number:2 }} <p data-ng-init="priceticket=adultTicket.promotionPrices"></p> </p>
+													   <p ng-show="false" class="text-green" ng-if="adultTicket.promotionPrices == null && adultTicket.specialPrices == null" >SGD{{ adultTicket.priceTiers[0].price | number:2 }} <p data-ng-init="priceticket=adultTicket.priceTiers[0].price"></p> </p>
+						</div>
+						<div class="col-sm-4 col-xs-12 buy-qty">
+							<div>
+								<div class="btn-container-decrement">
+									<button ng-click="adultCount = adultCount-1; adultnewAmount = adultnewAmount-1; minus(priceticket)" ng-disabled="adultCount == 0" ng-init="adultCount=0"> - </button>
+								</div>
+								<div class="num-container">
+									<span>{{ adultCount }}</span>
+								</div>
+								<div class="btn-container-increment">
+									<button ng-click="adultCount = adultCount+1; adultnewAmount = adultnewAmount+1; plus(priceticket)"> + </button>
+								</div>
+							</div>
+						</div><br><br><br><br>
+						<ul class="prices" ng-if="adultCount != 0" ng-show="false">
+							<li class="orderId">{{ orderId }}</li>
+							<li class="priceid">{{ adultTicket.pricingId }}</li>
+							<li class="pricetype">{{ adultTicket.pricingTypeId }}</li>
+							<li class="pricetype_name">{{adultTicket.priceType}}</li>
+							<li class="productid">{{ adultTicket.productId }}</li>
+							<li class="productname">{{ attractionDetails.details.ProductName }}</li>
+							<li class="adultCount">{{ adultCount }}</li>
+							<li class="ticketredeem">0</li>
+							<li class="ticketcode">{{ adultTicket.ticket_code }}</li>
+							<li class="largeImageUrl">{{attractionDetails.details.LargeImageUrl}}</li>
+							<li class="original_price">{{adultTicket.originalPrice}}</li>
+							<li class="total_ticket">{{adultnewAmount}}</li>
+							<li class="pricingName">{{adultTicket.pricingName}}</li>
+							<li class="price">{{priceticket}}</li>
+							<li class="price_tier_id">{{adultTicket.priceTiers[0].priceTierId}}</li>
+						</ul><hr>
+						</div>
+					</div>
+
+					<!-- Child Tix -->
+					<div ng-repeat="childTicket in attractionDetails.prices" ng-if="childTicket.pricingTypeId == 2">
+						<div ng-show="true" ng-if="childTicket.priceTiers[0].price > 0">
+						<div class="col-sm-12 col-xs-6" >
+							{{ childTicket.pricingName }}                              
+						</div>
+						
+						<div class="col-sm-4 col-xs-6">
+							{{ childTicket.priceType }}<span class="stroke">SGD{{ childTicket.originalPrice | number: 2}}</span>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							{{ childTicket.priceType }}<span class="text-green" ng-if="childTicket.promotionPrices != null && childTicket.specialPrices == null && childTicket.priceTiers.length > 0">SGD{{ childTicket.promotionPrices | number:2 }} <p data-ng-init="priceticket=childTicket.promotionPrices"></p> </span>
+													   <span class="text-green" ng-if="childTicket.specialPrices != null && childTicket.promotionPrices == null && childTicket.priceTiers.length > 0">SGD{{ childTicket.specialPrices | number:2 }} <p data-ng-init="priceticket=childTicket.specialPrices"></p> </span>
+													   <span class="text-green" ng-if="childTicket.promotionPrices == null && childTicket.specialPrices == null" >SGD{{ childTicket.priceTiers[0].price | number:2 }} <p data-ng-init="priceticket=childTicket.priceTiers[0].price"></p> </span>
+													   <p ng-show="false" class="text-green" ng-if="childTicket.specialPrices != null && childTicket.promotionPrices == null && childTicket.priceTiers.length > 0">SGD{{ childTicket.specialPrices | number:2 }} <p data-ng-init="priceticket=childTicket.specialPrices"></p> </p>
+													   <p ng-show="false" class="text-green" ng-if="childTicket.promotionPrices != null && childTicket.specialPrices == null && childTicket.priceTiers.length > 0">SGD{{ childTicket.promotionPrices | number:2 }} <p data-ng-init="priceticket=childTicket.promotionPrices"></p> </p>
+													   <p ng-show="false" class="text-green" ng-if="childTicket.promotionPrices == null && childTicket.specialPrices == null" >SGD{{ childTicket.priceTiers[0].price | number:2 }} <p data-ng-init="priceticket=childTicket.priceTiers[0].price"></p> </p>
+						</div>
+						<div class="col-sm-4 col-xs-12 buy-qty">
+							<div>
+								<div class="btn-container-decrement">
+									<button data-ng-click="childCount = childCount-1; childnewAmount = childnewAmount-1; minus(priceticket)" data-ng-disabled="childCount == 0" data-ng-init="childCount=0"> - </button>
+								</div>
+								<div class="num-container">
+									<span>{{ childCount }}</span>
+								</div>
+								<div class="btn-container-increment">
+									<button data-ng-click="childCount = childCount+1; childnewAmount = childnewAmount+1; plus(priceticket)"> + </button>
+								</div>
+							</div>
+						</div><br><br><br><br>
+						<ul class="prices" ng-if="childCount != 0" ng-show="false">
+							<li class="orderId">{{ orderId }}</li>
+							<li class="priceid">{{ childTicket.pricingId }}</li>
+							<li class="pricetype">{{ childTicket.pricingTypeId }}</li>
+							<li class="pricetype_name">{{childTicket.priceType}}</li>
+							<li class="productid">{{ childTicket.productId }}</li>
+							<li class="productname">{{ attractionDetails.details.ProductName }}</li>
+							<li class="adultCount">{{ childCount }}</li>
+							<li class="ticketredeem">0</li>
+							<li class="ticketcode">{{ childTicket.ticket_code }}</li>
+							<li class="largeImageUrl">{{attractionDetails.details.LargeImageUrl}}</li>
+							<li class="original_price">{{childTicket.originalPrice}}</li>
+							<li class="total_ticket">{{childnewAmount}}</li>
+							<li class="pricingName">{{childTicket.pricingName}}</li>
+							<li class="price">{{priceticket}}</li>
+							<li class="price_tier_id">{{childTicket.priceTiers[0].priceTierId}}</li>
+						</ul><hr>
+						</div>
+					</div>
+
+				<button class="btn btn-primary btn-add-cart center saveCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</button>
+				<p id="subTotal" ng-show="false">{{subTotal}}</p>
+				<p id="host" ng-show="false">{{host}}</p>
+				<p id="token" ng-show="false">{{token}}</p>
+				<p id="orderId" ng-show="false">{{orderId}}</p>
+				<p id="ticketsprodID" ng-show="false">{{ticketsprodID}}</p>
+				<p id="outofStock" ng-show="false"></p>
+
+				</div>
+			</div><!--/sticky-box -->
+		
+		</aside>
+
+	</div><!-- /.row -->
+</div><!-- /.container -->
+</section><!-- bg-verylightgrey -->
+
+<section class="container-padding-large">
+<div class="main_title">
+	<h2>Recommended <span>Nearby</span> Attractions</h2>
+</div>
+
+<div data-ng-include="'app/includes/3-col-attractions.html'"></div>
+
+<div class="gap"></div>
+<div class="text-center">
+	<a ui-sref="attractions" class="btn_1 large blue">MORE ATTRACTIONS</a>
+</div>
+</section>
+
+
+<!-- THIS PAGE'S META/CSS/JS
+================================================== -->
+<update-title title="Swish :: Segway Fun Ride"></update-title>
+<update-meta name="description" content="Hop on the Segway® Personal Transporter (PT) for an introductory experience on the Segway® Fun Ride, a circuit ride full of twists and turns. Trainers are always on hand to assist you and in a matter of minutes you will master this futuristic mobility device."></update-meta>
+<update-meta property="og:title" content="Buy Segway Fun Ride tickets"></update-meta>
+<update-meta property="og:url" content="http://www.swish.sg/attractions/segway-fun-ride"></update-meta>
+<update-meta property="og:description" content="Hop on the Segway® Personal Transporter (PT) for an introductory experience on the Segway® Fun Ride, a circuit ride full of twists and turns. Trainers are always on hand to assist you and in a matter of minutes you will master this futuristic mobility device."></update-meta>
+<update-meta property="og:image" content="http://www.website.com/homepage-feature-image.jpg"></update-meta><!-- Please target a suitable image to display on FB post. MAX size within 1200 x 630 boundary -->
+
+<style type="text/css"></style>
+
+<!-- jQuery only -->
+<script type="text/javascript">
+$('.magnific-gallery').each(function() {
+$(this).magnificPopup({
+	delegate: 'a', 
+	type: 'image',
+	gallery:{enabled:true}
+});
+}); 
+
+// jQuery Ellipsis trigger function upon load view
+$(document).ready(function() {
+	setTimeout(function(){ 
+	$(".ellipsis").dotdotdot({
+	  /*  The text to add as ellipsis. */
+	  ellipsis  : '... ',   
+	  /*  Whether to update the ellipsis: true/'window' */
+	  watch   : "window"
+	});
+	}, 1000); //delay 1sec
+	// More scripts below here
+	// $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+});
+</script>
+
+<script type="text/javascript">
+$(".saveCart").on('click', function(){
+	var host = 'http://' + angular.element("#host").scope().host + '#/cart';
+	var token = angular.element("#token").scope().token;
+	var subTotal = angular.element("#subTotal").scope().subTotal;
+	var orderId = angular.element("#orderId").scope().orderId;
+	if(token){
+		/*
+		var tickets = [];
+		$.each($('ul.prices'),function(index,element){
+			var idorder = $(".orderId").eq(index).text();
+
+			tickets.push({
+				orderId: idorder,
+				pricing_id: $(".priceid").eq(index).text(),
+				pricing_type_id: $(".pricetype").eq(index).text(),
+				product_id: $(".productid").eq(index).text(),
+				ticket_name: $(".productname").eq(index).text(),
+				total_ticket: $(".adultCount").eq(index).text(),
+				total_ticket_redeemed: $(".ticketredeem").eq(index).text()
+			})
+		});
+
+		var addtoCart = {
+			total_price: subTotal,
+			total_price_converted_currency: '',
+			discount_amount: '',
+			exchange_rate: '',
+			email_to: '',
+			email_bcc: '',
+			invoice_number: '',
+			invoice_url: '',
+			total_tax_amount: '',
+			sw_payment_mode_id: '3',
+			sw_currency_id: '8',
+			sw_order_status_id: '4',
+			tickets: tickets
+		};
+		// console.log(addtoCart);
+
+
+		console.log(Cookies.get('loggerorderID'));
+		if(Cookies.get('loggerorderID') == undefined){
+			$.ajax({
+				type: 'GET',
+				url: window.__env.apiUrl+'api/sw_orders',
+				beforeSend: function (request){
+					request.setRequestHeader("Authorization", "Bearer "+token);
+				},
+				success: function(res){
+					// console.log(res);
+					//create new order
+					if(res.result.length == 0){
+						// console.log(res.result.length);
+						$.ajax({
+							type: 'POST',
+							url: window.__env.apiUrl+'api/sw_orders',
+							data: addtoCart,
+							beforeSend: function (request){
+								request.setRequestHeader("Authorization", "Bearer "+token);
+							},
+							success: function(res){
+								Cookies.set('loggerorderID', res.result.id);
+
+								swal({
+								  title: "Successfuly add to cart",
+								  text: "Item has been added to your cart",
+								  type: "success",
+								  showCancelButton: true,
+								  showConfirmButton: true,
+								  cancelButtonText: "Continue buy tiket",
+								  confirmButtonText: "Go to cart",
+								  html: true
+								},
+								function(isConfirm){
+									if (isConfirm) {
+										window.location = host;
+										location.reload();
+									}else{
+										location.reload();
+									}
+								});
+							}
+						})
+						console.log('create new order');
+					}
+
+					//create another order
+					if(res.result.length > 0){
+						// console.log(res.result.length);
+						$.ajax({
+							type: 'POST',
+							url: window.__env.apiUrl+'api/sw_orders',
+							data: addtoCart,
+							beforeSend: function (request){
+								request.setRequestHeader("Authorization", "Bearer "+token);
+							},
+							success: function(res){
+								Cookies.set('loggerorderID', res.result.id);
+
+								swal({
+								  title: "Successfuly add to cart",
+								  text: "Item has been added to your cart",
+								  type: "success",
+								  showCancelButton: true,
+								  showConfirmButton: true,
+								  cancelButtonText: "Continue buy tiket",
+								  confirmButtonText: "Go to cart",
+								  html: true
+								},
+								function(isConfirm){
+									if (isConfirm) {
+										window.location = host;
+										location.reload();
+									}else{
+										location.reload();
+									}
+								});
+							}
+						})
+						console.log('create another order');
+
+					}
+				}
+			})
+		}
+
+		//update cart
+		if(Cookies.get('loggerorderID')){
+			var orderid = Cookies.get('loggerorderID');
+
+			$.ajax({
+				type: 'PUT',
+				url: window.__env.apiUrl+'api/sw_orders/'+orderid,
+				data: {tickets: tickets},
+				beforeSend: function (request){
+					request.setRequestHeader("Authorization", "Bearer "+token);
+				},
+				success: function(){
+					swal({
+					  title: "Your order has been added to cart",
+					  // text: "Item has been added to your cart",
+					  type: "success",
+					  showCancelButton: true,
+					  showConfirmButton: true,
+					  cancelButtonText: "Continue shopping",
+					  confirmButtonText: "Go to cart",
+					  html: true,
+					  allowOutsideClick: true
+					},
+					function(isConfirm){
+						if (isConfirm) {
+							window.location = host;
+							location.reload();
+						}else{
+							location.reload();
+						}
+					});
+				}
+			})
+		}
+		*/
+
+		var ticket_type_details = [];
+		$.each($('ul.prices'),function(index,element){
+			var idorder = $(".orderId").eq(index).text();
+
+				ticket_type_details.push({
+					product_id: $(".productid").eq(index).text(),
+					ticket_code: '',
+					pricing_id: $(".priceid").eq(index).text(),
+					pricing_name: '',
+					pricing_type_id: $(".pricetype").eq(index).text(),
+					pricing_type: $(".pricetype_name").eq(index).text(),
+					total_ticket: $(".total_ticket").eq(index).text(),
+					original_price: $(".original_price").eq(index).text(),
+					pricing_promotional_price: '',
+					pricing_special_price: '',
+					price_ticket: $(".price").eq(index).text(),
+					ticket_name: $(".productname").eq(index).text(),
+				})
+		});
+
+
+		var unique = [];
+		var tickets = [];
+		$.each($('ul.prices'),function(index,element){
+			var product_id = $(".productid").eq(index).text();
+
+			var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+			if(idnotFound == false){
+				unique.push(product_id);
+
+				tickets.push({
+					ticket_id: '',
+					ticket_name: $(".productname").eq(index).text(),
+					img_src: $(".largeImageUrl").eq(index).text(),
+					img_desc: $(".ShortDescription").eq(index).text(),
+					product_id: product_id,
+					product_name: $(".productname").eq(index).text(),
+					ticket_type_details: []
+				})
+
+			}                
+		});
+
+		$.each(tickets, function(i, ticketsD){
+			$.each(ticket_type_details, function(i, pricetypeD){                    
+				if(ticketsD.product_id == pricetypeD.product_id){
+					ticketsD.ticket_type_details.push(ticket_type_details[i])
+				}
+			})
+		})
+
+
+		var result = []
+			var order = { 
+				order:{
+					total_price: subTotal,
+					total_price_converted_currency: '',
+					discount_amount: '',
+					exchange_rate: '',
+					email_to: '',
+					email_bcc: '',
+					invoice_number: '',
+					invoice_url: '',
+					total_tax_amount: '',
+					sw_payment_mode_id: '3',
+					sw_currency_id: '125',
+					sw_order_status_id: 4,
+					is_paid: false
+				},
+				tickets: tickets
+			};
+		result.push(order);
+
+		var cart = {
+			status: true,
+			result: result     
+		};
+		// console.log(cart);
+
+
+		// this JSON is submit to check the stock list
+		var ticketsCheck = [];
+		$.each($('ul.prices'),function(index,element){
+			var idorder = $(".orderId").eq(index).text();
+
+			ticketsCheck.push({
+				pricing_id: $(".priceid").eq(index).text(),
+				price_tier_id: $(".price_tier_id").eq(index).text(),
+				special_price_id: null,
+				promotion_price_id: null,
+				product_id: $(".productid").eq(index).text(),
+				total_ticket: $(".total_ticket").eq(index).text()
+
+			})
+		});
+
+		var addtoCart = {
+			email_to: '',
+			email_bcc: '',
+			sw_payment_mode_id: '3',
+			// user_id: guestuserID,
+			tickets: ticketsCheck
+		};
+		// console.log(addtoCart)
+
+
+		if(tickets != ''){
+
+		  $.ajax({
+			  type: 'POST',
+			  url: window.__env.apiUrl+'api/stock_checks',
+			  data: addtoCart,
+			  success: function(res){
+
+				  var checkuserexistCart = localStorage.getItem('userCarts')
+				  
+				  if(checkuserexistCart == undefined){
+
+					  localStorage.setItem('userCarts', JSON.stringify(cart))
+					  // Cookies.set('userCarts', JSON.stringify(cart));
+					  // console.log($.parseJSON(Cookies.get('userCarts')))
+					  swal({
+						title: "Your order has been added to cart",
+						// text: "Item has been added to your cart",
+						type: "success",
+						showCancelButton: true,
+						showConfirmButton: true,
+						cancelButtonText: "Continue shopping",
+						confirmButtonText: "Go to cart",
+						html: true,
+						allowOutsideClick: true
+					  },
+					  function(isConfirm){
+						  if (isConfirm) {
+							  window.location = host;
+						  }else{
+							  location.reload();
+						  }
+					  });
+
+				  }else{
+
+					  var updatetotalAmount = subTotal;
+					  var userCarts = $.parseJSON(localStorage.getItem('userCarts'))
+					  var ticketsprodID = angular.element("#ticketsprodID").scope().ticketsprodID; //get product Id from existing cart tickets
+
+					  angular.forEach(tickets, function(newticket){
+
+						  var idFound = ticketsprodID.includes(newticket.product_id);
+						  if(idFound == false){ //if product id not found then add new ticket to tickets array
+							  angular.forEach(userCarts.result, function(existticket){
+								  existticket.tickets.push(newticket);
+							  })
+						  } else { //if product id found
+
+						  
+							  // check if you product is existing
+							  var product = $.grep(userCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+							  // console.log(product);
+							  if (product.length > 0)
+							  {
+								  $.each(newticket.ticket_type_details, function (i, nt) {
+									  // since there is always 1 product index 0
+									  var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+									  // console.log(ticket);
+									  /// now if ticket exist + 1
+									  if(ticket.length > 0)
+									  {
+										  ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+									  }
+									  else {
+										  // just push
+										  product[0].ticket_type_details.push(nt);
+									  }
+								  });
+							  }
+							  else
+							  {
+								  userCarts.result[0].tickets(newticket)
+							  }
+
+							  // console.log(exData);
+						  }
+
+					  })
+
+					  
+					  
+					  angular.forEach(userCarts.result, function(tickets){
+						  tickets.order.total_price = tickets.order.total_price + updatetotalAmount;
+					  })
+
+
+					  // console.log(userCarts)
+					  // Cookies.set('userCarts', JSON.stringify(userCarts));
+					  // document.cookie = "userCarts=" + JSON.stringify(userCarts);
+					  localStorage.setItem('userCarts', JSON.stringify(userCarts))
+					  // console.log($.parseJSON(Cookies.get('userCarts')));
+
+					  swal({
+						title: "Your order has been added to cart",
+						// text: "Item has been added to your cart",
+						type: "success",
+						showCancelButton: true,
+						showConfirmButton: true,
+						cancelButtonText: "Continue shopping",
+						confirmButtonText: "Go to cart",
+						html: true,
+						allowOutsideClick: true
+					  },
+					  function(isConfirm){
+						  if (isConfirm) {
+							  var cart = 'http://' + angular.element("#host").scope().host + '#/cart';;
+							  window.location = cart;
+							  window.location.reload(true);
+						  }else{
+							  location.reload();
+						  }
+					  });
+				  }
+			  },
+			  error: function(res){
+				  // console.log(res)
+				  var outofStock_arr = [];
+				  var outofStock = $.parseJSON(res.responseText);
+
+				  $.each(outofStock.sold_out_product, function(i, v){
+					outofStock_arr.push(v.ProductName)
+				  })
+				  outofStock_arr.splice();
+				  document.getElementById("outofStock").innerHTML = outofStock_arr;
+				  var outofStockList = $("#outofStock").text();
+
+				  toastr.error(outofStockList, outofStock.message)
+			  }
+		  })
+
+				
+		}else{
+			toastr.error('Please add cart.', 'Empty')
+		}
+	}
+
+
+	if(token == undefined || token == ''){
+
+		var ticket_type_details = [];
+		$.each($('ul.prices'),function(index,element){
+			var idorder = $(".orderId").eq(index).text();
+
+				ticket_type_details.push({
+					product_id: $(".productid").eq(index).text(),
+					ticket_code: '',
+					pricing_id: $(".priceid").eq(index).text(),
+					pricing_name: $(".pricingName").eq(index).text(),
+					pricing_type_id: $(".pricetype").eq(index).text(),
+					pricing_type: $(".pricetype_name").eq(index).text(),
+					total_ticket: $(".total_ticket").eq(index).text(),
+					original_price: $(".original_price").eq(index).text(),
+					price_ticket: $(".price").eq(index).text(),
+					pricing_promotional_price: '',
+					pricing_special_price: '',
+					ticket_name: $(".productname").eq(index).text(),
+				})
+		});
+
+
+		var unique = [];
+		var tickets = [];
+		$.each($('ul.prices'),function(index,element){
+			var product_id = $(".productid").eq(index).text();
+
+			var idnotFound = unique.includes(product_id); //return value false if not found product id in unique array
+			if(idnotFound == false){
+				unique.push(product_id);
+
+				tickets.push({
+					ticket_id: '',
+					ticket_name: $(".productname").eq(index).text(),
+					img_src: $(".largeImageUrl").eq(index).text(),
+					img_desc: '',
+					product_id: product_id,
+					product_name: $(".productname").eq(index).text(),
+					ticket_type_details: []
+				})
+
+			}                
+		});
+
+		$.each(tickets, function(i, ticketsD){
+			$.each(ticket_type_details, function(i, pricetypeD){                    
+				if(ticketsD.product_id == pricetypeD.product_id){
+					ticketsD.ticket_type_details.push(ticket_type_details[i])
+				}
+			})
+		})
+
+
+		var result = []
+			var order = { 
+				order:{
+					total_price: subTotal,
+					total_price_converted_currency: '',
+					discount_amount: '',
+					exchange_rate: '',
+					email_to: '',
+					email_bcc: '',
+					invoice_number: '',
+					invoice_url: '',
+					total_tax_amount: '',
+					sw_payment_mode_id: '3',
+					sw_currency_id: '8',
+					sw_order_status_id: 4,
+					is_paid: false
+				},
+				tickets: tickets
+			};
+		result.push(order);
+
+		var cart = {
+			status: true,
+			result: result     
+		};
+		// console.log(cart);
+
+
+		// this JSON is submit to check the stock list
+		var ticketsCheck = [];
+		$.each($('ul.prices'),function(index,element){
+			var idorder = $(".orderId").eq(index).text();
+
+			ticketsCheck.push({
+				pricing_id: $(".priceid").eq(index).text(),
+				price_tier_id: $(".price_tier_id").eq(index).text(),
+				special_price_id: null,
+				promotion_price_id: null,
+				product_id: $(".productid").eq(index).text(),
+				total_ticket: $(".total_ticket").eq(index).text()
+
+			})
+		});
+
+		var addtoCart = {
+			email_to: '',
+			email_bcc: '',
+			sw_payment_mode_id: '3',
+			// user_id: guestuserID,
+			tickets: ticketsCheck
+		};
+		// console.log(addtoCart)
+
+
+		  if(tickets != ''){
+
+			$.ajax({
+			  type: 'POST',
+			  url: window.__env.apiUrl+'api/stock_checks',
+			  data: addtoCart,
+			  success: function(res){
+				
+				// var checkguestexistCart = Cookies.get('guestCarts');
+				var checkguestexistCart = localStorage.getItem('guestCarts')
+			
+				if(checkguestexistCart == undefined){
+
+					
+					// Cookies.set('guestCarts', JSON.stringify(cart));
+					localStorage.setItem('guestCarts', JSON.stringify(cart))
+					swal({
+					  title: "Your order has been added to cart",
+					  // text: "Item has been added to your cart",
+					  type: "success",
+					  showCancelButton: true,
+					  showConfirmButton: true,
+					  cancelButtonText: "Continue shopping",
+					  confirmButtonText: "Go to cart",
+					  html: true,
+					  allowOutsideClick: true
+					},
+					function(isConfirm){
+						if (isConfirm) {
+							window.location = host;
+						}else{
+							location.reload();
+						}
+					});
+				}else{
+
+					var updatetotalAmount = subTotal;
+					// var guest = $.parseJSON(Cookies.get('guestCarts'))
+					var guest = $.parseJSON(localStorage.getItem('guestCarts'))
+					var guestCarts = guest;
+					var ticketsprodID = angular.element("#ticketsprodID").scope().ticketsprodID; //get product Id from existing cart tickets
+
+					angular.forEach(tickets, function(newticket){
+
+						var idFound = ticketsprodID.includes(newticket.product_id);
+						if(idFound == false){ //if product id not found then add new ticket to tickets array
+							angular.forEach(guestCarts.result, function(existticket){
+								existticket.tickets.push(newticket);
+							})
+						} else { //if product id found
+
+						
+							// check if you product is existing
+							var product = $.grep(guestCarts.result[0].tickets, function (d) { return newticket.product_id == d.product_id });
+
+							// console.log(product);
+							if (product.length > 0)
+							{
+								$.each(newticket.ticket_type_details, function (i, nt) {
+									// since there is always 1 product index 0
+									var ticket = $.grep(product[0].ticket_type_details, function (dt) { return nt.pricing_id == dt.pricing_id });
+
+									// console.log(ticket);
+									/// now if ticket exist + 1
+									if(ticket.length > 0)
+									{
+										ticket[0].total_ticket = parseInt(ticket[0].total_ticket) + parseInt(nt.total_ticket);
+									}
+									else {
+										// just push
+										product[0].ticket_type_details.push(nt);
+									}
+								});
+							}
+							else
+							{
+								guestCarts.result[0].tickets(newticket)
+							}
+
+							// console.log(exData);
+						}
+
+					})
+
+					
+					
+					angular.forEach(guestCarts.result, function(tickets){
+						tickets.order.total_price = tickets.order.total_price + updatetotalAmount;
+					})
+
+
+					// Cookies.set('guestCarts', JSON.stringify(guestCarts));
+					// document.cookie = "guestCarts=" + JSON.stringify(userCarts);
+					localStorage.setItem('guestCarts', JSON.stringify(guestCarts));
+
+					swal({
+					  title: "Your order has been added to cart",
+					  // text: "Item has been added to your cart",
+					  type: "success",
+					  showCancelButton: true,
+					  showConfirmButton: true,
+					  cancelButtonText: "Continue shopping",
+					  confirmButtonText: "Go to cart",
+					  html: true,
+					  allowOutsideClick: true
+					},
+					function(isConfirm){
+						if (isConfirm) {
+							var cart = 'http://' + angular.element("#host").scope().host + '#/cart';;
+							window.location = cart;
+							window.location.reload(true);
+						}else{
+							location.reload();
+						}
+					});
+				}
+			  },
+			  error: function(res){
+
+				var outofStock_arr = [];
+				var outofStock = $.parseJSON(res.responseText);
+
+				$.each(outofStock.sold_out_product, function(i, v){
+				  outofStock_arr.push(v.ProductName)
+				})
+				outofStock_arr.splice();
+				document.getElementById("outofStock").innerHTML = outofStock_arr;
+				var outofStockList = $("#outofStock").text();
+
+				toastr.error(outofStockList, outofStock.message)
+			  }
+			})
+
+		}else{
+			toastr.error('Please add cart.', 'Empty')
+		}
+	}
+});
+</script>
